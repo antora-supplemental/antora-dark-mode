@@ -79,7 +79,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ github.ref_name }}
-          GITHUB_SHA: ${{ github.sha }}
+          RELEASE_SHA: ${{ github.sha }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: node .github/scripts/post-release.mjs "${VERSION#v}"
 

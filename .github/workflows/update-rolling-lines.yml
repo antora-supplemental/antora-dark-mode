@@ -14,11 +14,14 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout release tag
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: refs/tags/v${{ inputs.version }}
+
+      - name: Resolve release commit
+        id: rel
+        run: echo "sha=$(git rev-list -n 1 refs/tags/v${{ inputs.version }})" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -35,7 +38,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: v${{ inputs.version }}
-          GITHUB_SHA: ${{ github.sha }}
+          RELEASE_SHA: ${{ steps.rel.outputs.sha }}
           GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Commit supported-lines.json on main
