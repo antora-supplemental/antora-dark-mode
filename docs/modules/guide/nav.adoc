@@ -3,6 +3,7 @@
 * xref:installation.adoc[Installation]
 * xref:npm-deprecation.adoc[npm deprecation]
 * xref:configuration.adoc[Configuration]
+* xref:version-pinning.adoc[Version Pinning]
 * xref:customization.adoc[Customization]
 * xref:vcs-repo-logo.adoc[VCS Repo Logo]
 * xref:how-it-works.adoc[How It Works]

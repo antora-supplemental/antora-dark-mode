@@ -10,6 +10,14 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+== [1.1.0] - 2026-06-08
+
+* *Distribution:* Release workflow publishes rolling prerelease aliases (`v1`, `v1.0`, `v1.1`, …) that track the latest patch within each semver line; `supported-lines.json` records current pointers.
+* *Documentation:* Version Pinning guide (exact pin, `releases/latest`, Renovate `~1.0.0`, rolling line URLs); `examples/renovate.json` regex manager for playbook URLs.
+* *Semver:* Minor line for additive branding and pinning infrastructure (`site.keys.header_logo` shipped in v1.0.12).
+
+link:changelog-details/2026-06-08%20-%201.1.0%20version%20pinning%20and%20rolling%20lines.adoc[Detailed notes — 2026-06-08]
+
 == [1.0.12] - 2026-06-08
 
 * *Branding:* `header-content.hbs` — playbook `site.keys.header_logo` selects the header image basename under `img/` (default `logo.svg`); consumers can brand via supplemental assets without forking the header partial.

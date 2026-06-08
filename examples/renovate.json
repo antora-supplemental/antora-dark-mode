@@ -1,0 +1,35 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "description": "Antora Dark Theme UI bundle — patch-only within the pinned minor line",
+      "matchManagers": ["regex"],
+      "matchPackageNames": ["antora-dark-theme-ui-bundle"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": false
+    },
+    {
+      "description": "Do not auto-merge minor/major theme bumps",
+      "matchManagers": ["regex"],
+      "matchPackageNames": ["antora-dark-theme-ui-bundle"],
+      "matchUpdateTypes": ["minor", "major"],
+      "enabled": true
+    }
+  ],
+  "regexManagers": [
+    {
+      "description": "Pin antora-dark-theme ui-bundle.zip in antora-playbook.yml",
+      "fileMatch": ["(^|/)antora-playbook(-local)?\\.ya?ml$"],
+      "matchStrings": [
+        "url:\\s*https://github\\.com/antora-supplemental/antora-dark-theme/releases/download/v(?<currentValue>\\d+\\.\\d+\\.\\d+)/ui-bundle\\.zip"
+      ],
+      "depNameTemplate": "antora-dark-theme-ui-bundle",
+      "datasourceTemplate": "github-releases",
+      "versioningTemplate": "semver",
+      "extractVersionTemplate": "^v(?<version>.*)$",
+      "registryUrlTemplate": "https://github.com",
+      "packageNameTemplate": "antora-supplemental/antora-dark-theme"
+    }
+  ]
+}

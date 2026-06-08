@@ -27,11 +27,11 @@ In `antora-playbook.yml`:
 ```yaml
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.11/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.1.0/ui-bundle.zip
     snapshot: true
 ```
 
-Replace `v1.0.11` with the latest tag from [GitHub Releases](https://github.com/antora-supplemental/antora-dark-theme/releases).
+Pin an exact semver tag for production. See [Version Pinning](https://antora-supplemental.github.io/antora-dark-theme/antora-dark-theme/guide/version-pinning.html) for `releases/latest`, rolling line tags (`v1.0`, `v1`), and Renovate.
 
 ### 2. Optional branding (one directory only)
 

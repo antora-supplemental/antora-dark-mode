@@ -73,3 +73,30 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update rolling release lines
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ github.ref_name }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: node .github/scripts/post-release.mjs "${VERSION#v}"
+
+      - name: Commit supported-lines.json on main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cp supported-lines.json /tmp/supported-lines.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git checkout main
+          git pull origin main
+          cp /tmp/supported-lines.json supported-lines.json
+          git add supported-lines.json
+          if git diff --staged --quiet; then
+            echo "supported-lines.json unchanged"
+          else
+            git commit -m "chore: update supported-lines.json for ${GITHUB_REF#refs/tags/}"
+            git push origin main
+          fi

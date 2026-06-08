@@ -1,0 +1,10 @@
+= 1.1.0 — version pinning guide and rolling release lines
+:description: Changelog detail for antora-dark-theme 1.1.0
+:navtitle: 1.1.0 version pinning
+
+* Semver *minor* release: additive distribution and documentation; `site.keys.header_logo` was included in v1.0.12.
+* `.github/scripts/post-release.mjs` — after each `vX.Y.Z` release, update rolling tags `vX.Y` (latest patch in the minor line) and `vX` (latest in the major line when applicable). Bootstrap other minor lines (for example `v1.0` → v1.0.12 when v1.1.0 ships).
+* Rolling GitHub Releases are marked *prerelease* so `releases/latest` still tracks normal semver tags.
+* `supported-lines.json` at the repository root — machine-readable current patch per line; updated on each release and committed to `main`.
+* Docs: xref:version-pinning.adoc[Version Pinning] (float `latest`, exact pin, Renovate, rolling `v1.0`/`v1` URLs, maintainer semver contract).
+* `examples/renovate.json` — regex manager for `antora-playbook.yml` bundle URLs.

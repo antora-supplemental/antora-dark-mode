@@ -33,6 +33,7 @@ toc::[]
 * **VCS repo logo** - Replaces the default UI's nonfunctional "Download" button with a version-control provider logo (GitHub, GitLab, Bitbucket, Gitea, Codeberg, Forgejo, SourceHut) that links to the docs repository; provider is detected by domain
 * **Debranded “doc site” layout** - Full supplemental partials and `site-doc-layout.css` (load after `site-extra.css` in `head-meta`): sticky site chrome, doc mast (component/version pickers in the breadcrumb row), sidebar with component label + page tree, optional edit-in-repo link, Source Sans~3, and `adt-*` BEM-style hooks (not tied to a product name). A neutral `img/logo.svg` is used in the top bar; set playbook `site.keys.header_logo` (basename under `img/`) and drop your SVG in supplemental—no header partial fork required.
 * **Playbook `site.keys` (optional site identity):** `header_logo` (header image basename under `img/`; default: `logo.svg`), `site_home_url` (default: docs home `site.url`), `site_home_label` (a11y label for the logo link), `header_doc_title` (navbar text beside the logo; default: `site.title`), `github_profile_url` (fallback when the page has no `origin` URL), `footer_note` (HTML fragment after the base footer line), `title_bar_brand` / `title_bar_section` (see `partials/head-title.hbs`).
+* **Version pinning strategies** — exact semver pin (recommended for production), `releases/latest`, rolling line aliases (`v1.0`, `v1.1`, `v1`), `supported-lines.json`, and Renovate regex example; see the xref:version-pinning.adoc[Version Pinning guide] in the docs module.
 
 == Help Get Dark Mode into Antora
 
@@ -56,7 +57,7 @@ You do not need this project on npm.
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.11/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.1.0/ui-bundle.zip
     snapshot: true
   supplemental_files: ./supplemental-ui-overrides
 ----
@@ -71,6 +72,30 @@ WARNING: Antora accepts *one* supplemental directory *or* virtual files—not mu
 
 See link:examples/antora-playbook.yml[`examples/antora-playbook.yml`].
 
+=== Version pinning (production vs. rolling lines)
+
+GitHub Releases have no npm-style ranges in the URL.
+This theme documents three consumer strategies (float `latest`, exact pin, Renovate/`~1.0.0`) and publishes *rolling* prerelease aliases for line pins:
+
+[cols="2,3", options="header"]
+|===
+| Playbook URL | Meaning
+
+| `.../releases/download/v1.1.0/ui-bundle.zip`
+| Exact pin (recommended for CI)
+
+| `.../releases/download/v1.0/ui-bundle.zip`
+| Latest v1.0.x patch (moving tag)
+
+| `.../releases/download/v1/ui-bundle.zip`
+| Latest v1.x.x (moving tag)
+
+| `.../releases/latest/download/ui-bundle.zip`
+| Newest semver release (includes major bumps)
+|===
+
+Details: xref:version-pinning.adoc[Version Pinning guide], link:supported-lines.json[`supported-lines.json`], link:examples/renovate.json[`examples/renovate.json`].
+
 === Custom overrides (valid Antora options)
 
 Antora’s `ui.supplemental_files` accepts *either* a single filesystem directory *or* an array of https://docs.antora.org/antora/latest/playbook/ui-supplemental-files[virtual files] (`path` + `contents`).
@@ -82,7 +107,7 @@ A YAML list of multiple **directories** is not supported—the array form is onl
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.11/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.1.0/ui-bundle.zip
     snapshot: true
   supplemental_files: ./supplemental-ui-overrides
 ----
