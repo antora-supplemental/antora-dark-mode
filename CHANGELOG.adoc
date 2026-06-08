@@ -10,7 +10,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
-* *Distribution:* Release workflow runs only on semver tags (`vX.Y.Z`); rolling alias pushes no longer re-trigger full releases. Post-release resolves the tagged commit explicitly and bootstraps sibling minor lines within the same major only.
+* *Distribution:* Release workflow runs only on semver tags (`vX.Y.Z`); rolling alias pushes no longer re-trigger full releases. Post-release resolves the tagged commit explicitly, bootstraps sibling minor lines within the same major only, and updates rolling aliases via `gh release create --target` (no `git push` of moving tags).
 
 == [1.1.0] - 2026-06-08
 
