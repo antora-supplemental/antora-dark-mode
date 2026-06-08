@@ -72,14 +72,12 @@ function minorLinesFromTags(tags, majorOnly = null) {
 }
 
 function updateRollingRelease(tagName, commitSha, assetPath, title, notes) {
-  sh(`git tag -f ${tagName} ${commitSha}`);
-  sh(`git push -f origin refs/tags/${tagName}`);
-  shQuiet(`gh release delete ${tagName} --yes`);
+  shQuiet(`gh release delete ${tagName} --yes --cleanup-tag`);
   const notesFile = join(tmpdir(), `adt-release-notes-${tagName}.md`);
   writeFileSync(notesFile, notes);
   try {
     sh(
-      `gh release create ${tagName} "${assetPath}" --title "${title}" --notes-file "${notesFile}" --prerelease --latest=false`,
+      `gh release create ${tagName} "${assetPath}" --target ${commitSha} --title "${title}" --notes-file "${notesFile}" --prerelease --latest=false`,
     );
   } finally {
     unlinkSync(notesFile);
