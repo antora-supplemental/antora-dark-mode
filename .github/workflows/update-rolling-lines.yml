@@ -7,11 +7,12 @@ on:
         description: Released semver (X.Y.Z) to refresh rolling line aliases for
         required: true
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
