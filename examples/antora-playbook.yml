@@ -5,6 +5,10 @@ site:
   title: My Documentation Site
   # url: https://docs.example.com
   # start_page: component::index.adoc
+  # keys:
+  #   header_logo: mybrand.svg          # supplemental-ui-overrides/img/mybrand.svg
+  #   site_home_url: https://example.com
+  #   header_doc_title: My Docs
 
 content:
   sources:

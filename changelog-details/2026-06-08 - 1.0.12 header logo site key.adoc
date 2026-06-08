@@ -1,0 +1,7 @@
+= 1.0.12 — header logo via playbook site.keys
+:description: Changelog detail for antora-dark-theme 1.0.12
+:navtitle: 1.0.12 header logo key
+
+* `partials/header-content.hbs` resolves the header `<img>` from `site.keys.header_logo` (basename under `img/`, default `logo.svg`).
+* Consumers set one playbook key and supply the SVG in supplemental (or a virtual `supplemental_files` entry)—no `header-content.hbs` override needed for logo wiring alone.
+* Configuration guide documents all `site.keys` hooks (`header_logo`, `site_home_url`, `site_home_label`, `header_doc_title`, `github_profile_url`, `footer_note`, `title_bar_brand`, `title_bar_section`).

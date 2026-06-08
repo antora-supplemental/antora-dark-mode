@@ -26,6 +26,69 @@ Optional branding (one supplemental directory on top of the bundle):
 
 Former npm installs: xref:npm-deprecation.adoc[npm deprecation].
 
+[[site-keys]]
+== Playbook `site.keys`
+
+The supplemental header and footer read optional playbook keys so you can brand the site without forking partials.
+
+[cols="2,3,3", options="header"]
+|===
+| Key | Default | Purpose
+
+| `header_logo`
+| `logo.svg`
+| Basename of the header mark under `img/` (for example `mybrand.svg` → `img/mybrand.svg`). Drop the SVG in supplemental or use a virtual `supplemental_files` entry.
+
+| `site_home_url`
+| `site.url`
+| URL for the logo link (opens in a new tab).
+
+| `site_home_label`
+| `Project home`
+| Accessible name for the logo link.
+
+| `header_doc_title`
+| `site.title`
+| Navbar text beside the logo (links to the docs home).
+
+| `github_profile_url`
+| `https://github.com`
+| Fallback VCS host link when the page has no `origin.webUrl`.
+
+| `footer_note`
+| _(none)_
+| HTML fragment appended after the base footer line.
+
+| `title_bar_brand`
+| `site.title`
+| Browser tab suffix; see `partials/head-title.hbs`.
+
+| `title_bar_section`
+| component title
+| Browser tab middle segment; see `partials/head-title.hbs`.
+|===
+
+Example—custom logo without overriding `partials/header-content.hbs`:
+
+[source,yaml]
+----
+site:
+  title: My Docs
+  keys:
+    header_logo: mybrand.svg
+    site_home_url: https://example.com
+    site_home_label: Example project home
+    header_doc_title: Example Docs
+
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.11/ui-bundle.zip
+    snapshot: true
+  supplemental_files: ./supplemental-ui-overrides
+----
+
+Place `mybrand.svg` at `supplemental-ui-overrides/img/mybrand.svg`, or use xref:configuration.adoc#virtual-supplemental-files[virtual supplemental files] with `path: img/mybrand.svg`.
+
 [[virtual-supplemental-files]]
 == Virtual supplemental files
 
