@@ -57,10 +57,11 @@ function highestInLine(tags, major, minor = null) {
   return filtered.sort(compareSemver).at(-1) ?? "";
 }
 
-function minorLinesFromTags(tags) {
+function minorLinesFromTags(tags, majorOnly = null) {
   const lines = new Set();
   for (const tag of tags) {
     const [ma, mi] = parseVersion(tag).split(".").map(Number);
+    if (majorOnly !== null && ma !== majorOnly) continue;
     lines.add(`${ma}.${mi}`);
   }
   return [...lines].sort((a, b) => {
@@ -146,7 +147,7 @@ if (highestMajorVersion === version) {
   );
 }
 
-for (const line of minorLinesFromTags(tags)) {
+for (const line of minorLinesFromTags(tags, major)) {
   const [ma, mi] = line.split(".").map(Number);
   if (ma === major && mi === minor) continue;
 
@@ -175,7 +176,7 @@ for (const line of minorLinesFromTags(tags)) {
 }
 
 const lines = {};
-for (const line of minorLinesFromTags(tags)) {
+for (const line of minorLinesFromTags(tags, major)) {
   const [ma, mi] = line.split(".").map(Number);
   const highest = highestInLine(tags, ma, mi);
   const current = parseVersion(highest);
