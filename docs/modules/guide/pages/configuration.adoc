@@ -13,7 +13,7 @@ Sites use the *release UI bundle* only:
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.9/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.10/ui-bundle.zip
     snapshot: true
 ----
 
@@ -35,12 +35,28 @@ When you only need one or two files (not a full supplemental directory), use Ant
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.9/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.10/ui-bundle.zip
     snapshot: true
   supplemental_files:
     - path: img/logo.svg
       contents: ./branding/logo.svg
 ----
+
+== Search (demo site)
+
+This repository's demo playbooks register https://gitlab.com/antora/antora-lunr-extension[`@antora/lunr-extension`]—the usual choice for self-hosted Antora sites (offline-capable, no Algolia account).
+
+[source,yaml]
+----
+antora:
+  extensions:
+    - require: "@antora/lunr-extension"
+      index_latest_only: true
+      index_by_heading: true
+      snippet_length: 200
+----
+
+The supplemental `header-content.hbs` renders the search field when the extension sets `SITE_SEARCH_PROVIDER`; `footer-scripts.hbs` already includes `search-scripts` under the same condition.
 
 == Default Behavior
 

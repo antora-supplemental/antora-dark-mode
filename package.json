@@ -2,7 +2,7 @@
   "name": "antora-dark-theme",
   "version": "1.0.10",
   "description": "DEPRECATED on npm — use GitHub release ui-bundle.zip. See README.md.",
-  "deprecated": "Retired: do not install. Pin ui.bundle.url to https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.9/ui-bundle.zip — docs: https://antora-supplemental.github.io/antora-dark-theme/antora-dark-theme/guide/npm-deprecation.html",
+  "deprecated": "Retired: do not install. Pin ui.bundle.url to https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.10/ui-bundle.zip — docs: https://antora-supplemental.github.io/antora-dark-theme/antora-dark-theme/guide/npm-deprecation.html",
   "private": true,
   "keywords": [
     "antora",

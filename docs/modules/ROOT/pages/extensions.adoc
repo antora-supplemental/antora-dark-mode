@@ -8,6 +8,24 @@ This page explores various Asciidoctor extensions and third-party integrations.
 Some work seamlessly with the dark theme, others may need additional styling.
 Toggle between light and dark modes to see how each renders.
 
+Use the *Search* box in the top bar on this demo site (powered by `@antora/lunr-extension`).
+Try queries such as `installation`, `dark`, or `title:configuration`.
+
+'''
+
+[.float-group]
+--
+[.left]
+****
+.Lunr search (`@antora/lunr-extension`)
+The official Antora search extension indexes pages at build time and serves results in the browser—no external search service required.
+This demo playbook registers it under `antora.extensions`; the supplemental header exposes `#search-input` when `SITE_SEARCH_PROVIDER` is set.
+****
++
+The search dropdown, highlights, and input field inherit dark-mode colors from `site-extra.css`.
+Results can jump to section headings when `index_by_heading: true` is enabled in the playbook.
+--
+
 '''
 
 [.float-group]
@@ -265,6 +283,10 @@ Some extensions require additional dark mode CSS:
 | Tabs (`@asciidoctor/tabs`)
 | icon:check[role=green] Works
 | Inherits theme colors
+
+| Search (`@antora/lunr-extension`)
+| icon:check[role=green] Works
+| Input + dropdown styled in `site-extra.css`; enable via playbook `antora.extensions`
 
 | STEM / Math
 | icon:check[role=green] Works

@@ -10,11 +10,15 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+== [1.0.10] - 2026-06-08
+
+* *Theme:* `site-dark-mode.js` — user light/dark override expires when the OS color scheme changes (`antora-theme-system-snapshot`, `matchMedia` listener, tab focus/visibility recheck).
+* *Search:* Demo playbooks register `@antora/lunr-extension`; supplemental header exposes the search field; dark-mode styles for Lunr results dropdown.
 * *npm registry:* Formal deprecation notice in `README.md` (npmjs package page) and `deprecated` field in `package.json`; maintainer steps in `docs/maintainers/npm-registry-notice.md`.
 * *Distribution:* Remove npm publish from link:.github/workflows/release.yml[release workflow]; GitHub Releases ship `ui-bundle.zip` only. `package.json` marked `private` (repo tooling, not a registry package).
-* *Documentation:* All npm install/migration detail moved to `docs/modules/guide/pages/npm-deprecation.adoc` (lessons learned + archive); other pages link there instead of duplicating npm instructions.
+* *Documentation:* npm install/migration detail in `docs/modules/guide/pages/npm-deprecation.adoc`; Extensions and Configuration pages document Lunr search.
 
-link:changelog-details/2026-05-29%20-%20docs%20recommend%20release%20bundle%20over%20npm.adoc[Detailed notes — 2026-05-29]
+link:changelog-details/2026-06-08%20-%201.0.10%20system%20theme%20and%20lunr%20search.adoc[Detailed notes — 2026-06-08]
 
 == [1.0.9] - 2026-04-26
 

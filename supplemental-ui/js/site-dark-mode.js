@@ -1,8 +1,22 @@
 (function () {
   const MODE_KEY = "antora-theme-mode";
   const LEGACY_KEY = "antora-theme";
+  const SYSTEM_SNAPSHOT_KEY = "antora-theme-system-snapshot";
   const html = document.documentElement;
   const darkThemeClass = "dark-theme";
+  const systemMq = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function systemPreferenceLabel() {
+    return systemMq.matches ? "dark" : "light";
+  }
+
+  function captureSystemSnapshot() {
+    localStorage.setItem(SYSTEM_SNAPSHOT_KEY, systemPreferenceLabel());
+  }
+
+  function clearSystemSnapshot() {
+    localStorage.removeItem(SYSTEM_SNAPSHOT_KEY);
+  }
 
   function getMode() {
     const m = localStorage.getItem(MODE_KEY);
@@ -11,6 +25,7 @@
     if (leg === "dark" || leg === "light") {
       localStorage.setItem(MODE_KEY, leg);
       localStorage.removeItem(LEGACY_KEY);
+      captureSystemSnapshot();
       return leg;
     }
     return "system";
@@ -20,7 +35,7 @@
     const mode = getMode();
     let useDark;
     if (mode === "system") {
-      useDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      useDark = systemMq.matches;
     } else {
       useDark = mode === "dark";
     }
@@ -35,10 +50,50 @@
   function setMode(next) {
     if (next === "system") {
       localStorage.setItem(MODE_KEY, "system");
+      clearSystemSnapshot();
     } else {
       localStorage.setItem(MODE_KEY, next);
+      captureSystemSnapshot();
     }
     applyVisibleTheme();
+  }
+
+  function expireOverrideIfSystemChanged() {
+    const mode = getMode();
+    if (mode === "system") return;
+    const snapshot = localStorage.getItem(SYSTEM_SNAPSHOT_KEY);
+    if (!snapshot) {
+      captureSystemSnapshot();
+      return;
+    }
+    if (snapshot !== systemPreferenceLabel()) {
+      setMode("system");
+    }
+  }
+
+  function onSystemThemeChange() {
+    const mode = getMode();
+    if (mode === "system") {
+      applyVisibleTheme();
+      return;
+    }
+    expireOverrideIfSystemChanged();
+  }
+
+  function applyInitialTheme() {
+    expireOverrideIfSystemChanged();
+    applyVisibleTheme();
+    if (typeof systemMq.addEventListener === "function") {
+      systemMq.addEventListener("change", onSystemThemeChange);
+    } else {
+      systemMq.addListener(onSystemThemeChange);
+    }
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
+        expireOverrideIfSystemChanged();
+      }
+    });
+    window.addEventListener("focus", expireOverrideIfSystemChanged);
   }
 
   function isDark() {
@@ -65,30 +120,19 @@
     if (toggle) toggle.blur();
   }
 
-  function onSystemThemeChange() {
-    const mode = getMode();
-    if (mode === "system") {
-      applyVisibleTheme();
-    } else {
-      setMode("system");
-    }
-  }
-
-  function applyInitialTheme() {
-    applyVisibleTheme();
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    if (typeof mq.addEventListener === "function") {
-      mq.addEventListener("change", onSystemThemeChange);
-    } else {
-      mq.addListener(onSystemThemeChange);
-    }
-  }
-
   function ensureToggleButton() {
+    const selector = document.getElementById("theme-selector");
+    if (selector) {
+      selector.remove();
+    }
+
     const existingToggle = document.getElementById("theme-toggle");
     if (existingToggle) {
       existingToggle.classList.add("adt-header-icon-btn");
-      existingToggle.addEventListener("click", toggleTheme);
+      if (existingToggle.dataset.adtThemeBound !== "1") {
+        existingToggle.dataset.adtThemeBound = "1";
+        existingToggle.addEventListener("click", toggleTheme);
+      }
       updateToggleLabel();
       return;
     }
@@ -109,13 +153,14 @@
   /**
    * Icon basename under img/vcs/*.svg (white artwork; CSS may filter in header / mast).
    */
-  function vcsIconIdFromUrl(url) {
-    if (!url) return "code";
+  function vcsIconIdFromUrl(url, unknownId) {
+    const fallback = unknownId || "code";
+    if (!url) return fallback;
     let host;
     try {
       host = new URL(url).hostname.toLowerCase();
     } catch {
-      return "code";
+      return fallback;
     }
     if (host === "github.com" || host === "raw.githubusercontent.com" || host === "github.dev" || host.endsWith(".github.com")) {
       return "github";
@@ -131,9 +176,9 @@
       return "sourcehut";
     }
     if (host === "dev.azure.com" || host === "dev.azure" || host.endsWith("visualstudio.com") || host.includes("vssps.visualstudio.com")) {
-      return "code";
+      return fallback;
     }
-    return "code";
+    return fallback;
   }
 
   function vcsIconUrl(base, id) {
@@ -143,9 +188,9 @@
 
   function applyVcsIcons() {
     const base = getUiBase();
-    function setVcsImage(img, href) {
+    function setVcsImage(img, href, unknownId) {
       if (!img || !href) return;
-      const id = vcsIconIdFromUrl(href);
+      const id = vcsIconIdFromUrl(href, unknownId);
       const primary = vcsIconUrl(base, id);
       img.onerror = function adtVcsOerr() {
         img.onerror = null;
@@ -159,15 +204,15 @@
     }
     document.querySelectorAll("a.adt-edit-inline-link[href]").forEach((a) => {
       const img = a.querySelector("img.adt-vcs-icon-img, img.adt-edit-vcs-img");
-      setVcsImage(img, a.href);
+      setVcsImage(img, a.href, "code");
     });
     document.querySelectorAll("a.adt-header-vcs[href] img.adt-header-vcs-img").forEach((img) => {
       const a = img.closest("a");
-      if (a) setVcsImage(img, a.href);
+      if (a) setVcsImage(img, a.href, "repo");
     });
     document.querySelectorAll("a.vcs-repo-link[href] img.vcs-logo-img").forEach((img) => {
       const a = img.closest("a");
-      if (a) setVcsImage(img, a.href);
+      if (a) setVcsImage(img, a.href, "repo");
     });
   }
 
@@ -257,7 +302,7 @@
     const isDownload = /Download/i.test(downloadLink.textContent || "");
     if (!isDownload) return;
     const repoUrl = getRepoUrl();
-    const iconId = repoUrl ? vcsIconIdFromUrl(repoUrl) : "code";
+    const iconId = repoUrl ? vcsIconIdFromUrl(repoUrl, "repo") : "code";
     const navbarEnd = document.querySelector(".navbar .navbar-end");
     if (!navbarEnd) return;
     const base = getUiBase();

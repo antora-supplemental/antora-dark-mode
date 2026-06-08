@@ -1,0 +1,18 @@
+= 1.0.10 — system theme override expiry and Lunr search demo
+:description: Changelog detail for antora-dark-theme 1.0.10
+:navtitle: 1.0.10 theme and search
+
+== Summary
+
+* `site-dark-mode.js` stores `antora-theme-system-snapshot` when the reader picks an explicit light or dark mode. The override expires when `prefers-color-scheme` changes, with rechecks on `matchMedia` `change`, `visibilitychange`, and `window` `focus`.
+* Demo playbooks register `@antora/lunr-extension` (`index_latest_only`, `index_by_heading`, `snippet_length: 200`). The supplemental header renders `#search-input` when `SITE_SEARCH_PROVIDER` is set; `footer-scripts.hbs` already loads `search-scripts`.
+* Dark-mode CSS covers the Lunr search input and result dropdown (`.search-result-*`).
+* npm registry deprecation and release-workflow changes (bundle-only GitHub Releases) ship in this tag alongside prior docs commits on `main`.
+
+== Files
+
+* `supplemental-ui/js/site-dark-mode.js` — snapshot + override expiry; compact icon toggle
+* `supplemental-ui/partials/header-content.hbs` — conditional search field
+* `supplemental-ui/css/site-extra.css`, `site-doc-layout.css` — search + header layout
+* `antora-playbook.yml`, `antora-playbook-local.yml` — Lunr extension
+* `docs/modules/ROOT/pages/extensions.adoc`, `docs/modules/guide/pages/configuration.adoc` — search notes
