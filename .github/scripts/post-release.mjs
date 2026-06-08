@@ -111,7 +111,11 @@ function majorRollingNotes(major, currentVersion) {
 }
 
 const version = process.env.VERSION?.replace(/^v/, "") || process.argv[2];
-const sha = process.env.RELEASE_SHA || process.env.GITHUB_SHA || shQuiet("git rev-parse HEAD");
+const sha =
+  process.env.RELEASE_SHA ||
+  shQuiet(`git rev-list -n 1 "v${version}"`) ||
+  process.env.GITHUB_SHA ||
+  shQuiet("git rev-parse HEAD");
 const assetPath = process.argv[3] || "ui-bundle.zip";
 
 if (!version || !/^\d+\.\d+\.\d+$/.test(version)) {
@@ -149,7 +153,7 @@ if (highestMajorVersion === version) {
 
 for (const line of minorLinesFromTags(tags, major)) {
   const [ma, mi] = line.split(".").map(Number);
-  if (ma === major && mi === minor) continue;
+  if (ma !== major || (ma === major && mi === minor)) continue;
 
   const highest = highestInLine(tags, ma, mi);
   if (!highest) continue;

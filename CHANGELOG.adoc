@@ -10,6 +10,8 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+* *Distribution:* Release workflow runs only on semver tags (`vX.Y.Z`); rolling alias pushes no longer re-trigger full releases. Post-release resolves the tagged commit explicitly and bootstraps sibling minor lines within the same major only.
+
 == [1.1.0] - 2026-06-08
 
 * *Distribution:* Release workflow publishes rolling prerelease aliases (`v1`, `v1.0`, `v1.1`, …) that track the latest patch within each semver line; `supported-lines.json` records current pointers.

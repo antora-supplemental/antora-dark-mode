@@ -11,6 +11,8 @@ permissions:
 
 jobs:
   release:
+    # Rolling aliases (v1, v1.0, v1.1) are updated by post-release.mjs — not full releases.
+    if: github.ref_name =~ /^v\d+\.\d+\.\d+$/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -75,11 +77,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Resolve release commit
+        id: rel
+        run: echo "sha=$(git rev-list -n 1 "${GITHUB_REF}")" >> "$GITHUB_OUTPUT"
+
       - name: Update rolling release lines
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ github.ref_name }}
-          RELEASE_SHA: ${{ github.sha }}
+          RELEASE_SHA: ${{ steps.rel.outputs.sha }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: node .github/scripts/post-release.mjs "${VERSION#v}"
 
