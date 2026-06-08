@@ -56,7 +56,7 @@ You do not need this project on npm.
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.10/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.11/ui-bundle.zip
     snapshot: true
   supplemental_files: ./supplemental-ui-overrides
 ----
@@ -82,7 +82,7 @@ A YAML list of multiple **directories** is not supported—the array form is onl
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.10/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.0.11/ui-bundle.zip
     snapshot: true
   supplemental_files: ./supplemental-ui-overrides
 ----

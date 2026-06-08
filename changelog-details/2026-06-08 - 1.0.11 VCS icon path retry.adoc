@@ -1,0 +1,11 @@
+= 1.0.11 — VCS icon path retry on local preview
+:description: Changelog detail for antora-dark-theme 1.0.11
+:navtitle: 1.0.11 VCS icon fix
+
+== Summary
+
+`setVcsImageSrc()` in `site-dark-mode.js` retries VCS SVG loads once using `#site-script` `data-ui-root-path` when the first resolved asset base 404s (common in local `http-server` preview). Shared by `applyVcsIcons()` and `buildVcsLogoWidget()`.
+
+== Files
+
+* `supplemental-ui/js/site-dark-mode.js`

@@ -186,21 +186,25 @@
     return `${root}img/vcs/${id}.svg`;
   }
 
+  /** Retry once with #site-script data-ui-root-path when the first asset base 404s (local preview). */
+  function setVcsImageSrc(img, base, iconId) {
+    img.onerror = function adtVcsPathRetry() {
+      img.onerror = null;
+      if (img.getAttribute("data-adt-vcs-path-retry") === "1") return;
+      const altBase = document.querySelector("#site-script")?.dataset?.uiRootPath;
+      if (!altBase || altBase === base) return;
+      img.setAttribute("data-adt-vcs-path-retry", "1");
+      img.src = vcsIconUrl(altBase, iconId);
+    };
+    img.src = vcsIconUrl(base, iconId);
+  }
+
   function applyVcsIcons() {
     const base = getUiBase();
     function setVcsImage(img, href, unknownId) {
       if (!img || !href) return;
       const id = vcsIconIdFromUrl(href, unknownId);
-      const primary = vcsIconUrl(base, id);
-      img.onerror = function adtVcsOerr() {
-        img.onerror = null;
-        if (img.getAttribute("data-adt-vcs-tried") === "1") return;
-        img.setAttribute("data-adt-vcs-tried", "1");
-        if (!img.src || img.src.indexOf("code.svg") < 0) {
-          img.src = vcsIconUrl(base, "code");
-        }
-      };
-      img.src = primary;
+      setVcsImageSrc(img, base, id);
     }
     document.querySelectorAll("a.adt-edit-inline-link[href]").forEach((a) => {
       const img = a.querySelector("img.adt-vcs-icon-img, img.adt-edit-vcs-img");
@@ -260,7 +264,7 @@
   }
 
   function buildVcsLogoWidget(repoUrl, id, base) {
-    const logoUrl = vcsIconUrl(base, id || "code");
+    const iconId = id || "code";
     const wrapper = document.createElement("div");
     wrapper.className = "navbar-item vcs-repo-logo";
     const a = document.createElement("a");
@@ -276,18 +280,7 @@
     img.width = 24;
     img.height = 24;
     img.className = "vcs-logo-img";
-    img.src = logoUrl;
-    img.onerror = function () {
-      this.onerror = null;
-      const dataRoot = document.querySelector("#site-script")?.dataset?.uiRootPath;
-      const root = (dataRoot || ".").replace(/\/?$/, "/");
-      const tryCode = `${root}img/vcs/code.svg`;
-      if (this.src && !this.src.includes("code.svg")) {
-        this.src = tryCode;
-        return;
-      }
-      this.src = `${root}img/vcs/repo.svg`;
-    };
+    setVcsImageSrc(img, base, iconId);
     logo.appendChild(img);
     a.appendChild(logo);
     wrapper.appendChild(a);

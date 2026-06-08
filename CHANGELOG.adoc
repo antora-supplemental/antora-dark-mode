@@ -10,6 +10,12 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+== [1.0.11] - 2026-06-08
+
+* *Bugfix:* `site-dark-mode.js` — retry VCS icon loads with `#site-script` `data-ui-root-path` when the first asset base 404s (local preview).
+
+link:changelog-details/2026-06-08%20-%201.0.11%20VCS%20icon%20path%20retry.adoc[Detailed notes — 2026-06-08]
+
 == [1.0.10] - 2026-06-08
 
 * *Theme:* `site-dark-mode.js` — user light/dark override expires when the OS color scheme changes (`antora-theme-system-snapshot`, `matchMedia` listener, tab focus/visibility recheck).
