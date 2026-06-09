@@ -17,7 +17,7 @@ You cannot “double-deprecate.” Running `npm deprecate` again (CLI) or using 
 ### 1. Publish final patch (README fix)
 
 ```powershell
-cd Z:\code\github.com\antora-supplemental\antora-dark-theme
+cd Z:\code\github.com\antora-supplemental\antora-dark-mode
 # In package.json: remove "private": true (restore after)
 npm publish --access public
 # Restore "private": true in git
@@ -30,13 +30,13 @@ Version in git: **1.0.10** (includes `deprecated` in `package.json` + `README.md
 Use one line so the npm banner stays readable in dark mode:
 
 ```bash
-npm deprecate antora-dark-theme@* "RETIRED — Do not install. Open README tab or use GitHub ui-bundle.zip (see releases)."
+npm deprecate antora-dark-mode@* "RETIRED — Do not install. Open README tab or use GitHub ui-bundle.zip (see releases)."
 ```
 
 To target only old tarballs and leave the banner logic on latest:
 
 ```bash
-npm deprecate antora-dark-theme@"<1.0.10" "RETIRED — use ui-bundle.zip; see v1.0.10 README on npm or GitHub releases."
+npm deprecate antora-dark-mode@"<1.0.10" "RETIRED — use ui-bundle.zip; see v1.0.10 README on npm or GitHub releases."
 ```
 
 ### 3. Optional: undeprecate then re-deprecate
@@ -44,8 +44,8 @@ npm deprecate antora-dark-theme@"<1.0.10" "RETIRED — use ui-bundle.zip; see v1
 If the website left the package in a bad state, set message to empty then set again:
 
 ```bash
-npm deprecate antora-dark-theme@* ""
-npm deprecate antora-dark-theme@* "RETIRED — Do not install. See README on this package page."
+npm deprecate antora-dark-mode@* ""
+npm deprecate antora-dark-mode@* "RETIRED — Do not install. See README on this package page."
 ```
 
 ## `npm deprecate` alone (what you did on the web)

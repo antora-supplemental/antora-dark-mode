@@ -24,7 +24,7 @@ content:
 ui:
   bundle:
     # Correct habit: release bundle (Default UI + dark theme). Do not use npm. Pin vX.Y.Z in CI.
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.1.0/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-mode/releases/download/v1.2.0/ui-bundle.zip
     snapshot: true
   # Optional: one directory of your files only (logo, favicon, etc.)
   # supplemental_files: ./supplemental-ui-overrides

@@ -1,5 +1,5 @@
 = 1.0.6 — release tag correction and sticky footer scope
-:description: Changelog detail for antora-dark-theme 1.0.6
+:description: Changelog detail for antora-dark-mode 1.0.6
 :navtitle: 1.0.6 tag fix
 
 == Tag `v1.0.5` vs `package.json`

@@ -10,7 +10,13 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+== [1.2.0] - 2026-06-09
+
+* *Split:* Repository renamed to `antora-dark-mode`; doc chrome (mast, header, layout, VCS icons) moved to link:https://github.com/antora-supplemental/valentus-theme[valentus-theme]. This package is dark mode only (`site-extra.css`, FOUC script, theme toggle).
+* *Breaking:* `ui-modules/` removed; consumers that need composable chrome should use valentus-theme manifests. Replace `antora-dark-theme` release bundle URLs with `antora-dark-mode`.
 * *Distribution:* Release workflow runs only on semver tags (`vX.Y.Z`); rolling alias pushes no longer re-trigger full releases. Post-release resolves the tagged commit explicitly, bootstraps sibling minor lines within the same major only, and updates rolling aliases via `gh release create --target` (no `git push` of moving tags).
+
+link:changelog-details/2026-06-09%20-%201.2.0%20split%20valentus%20and%20rename.adoc[Detailed notes — 2026-06-09]
 
 == [1.1.0] - 2026-06-08
 
@@ -83,8 +89,8 @@ link:changelog-details/2026-04-26%20-%201.0.5%20debranded%20doc%20layout%20and%2
 == [1.0.3] - 2026-04-26
 
 * `site-extra.css`: doc home **project tiles** (AsciiDoc `+.openblock.cards+` and `+.exampleblock.tile+`) — grid layout, light/dark design tokens, hover elevation, `prefers-reduced-motion`, and print. Implemented in the supplemental layer so the merged `ui-bundle.zip` and npm `prebuild` sync (e.g. FoodTruckNerdz/docs) pick up the styles; stock Antora `doc.css` alone does not include them.
-* *Release and consume:* bump `version` in `package.json` to match the intended tag, commit, then push a Git `v*` tag (e.g. `v1.0.3`). The link:.github/workflows/release.yml[Release workflow] creates the GitHub Release, attaches the npm tarball and `ui-bundle.zip`, and (for non-prerelease tags) can publish to the npm registry — maintainers do not run `pnpm publish` or `npm publish` locally. Downstream, update the `antora-dark-theme` devDependency and run `pnpm run prebuild` (e.g. in https://github.com/FoodTruckNerdz/docs[FoodTruckNerdz/docs]) so the sync script copies `node_modules/.../supplemental-ui` into `site/supplemental-ui/`.
-* *Local test of an unpublished tree:* from the theme repo, `pnpm pack`, then in the consumer repo `pnpm add -D ./antora-dark-theme-1.0.3.tgz`, or `pnpm add -D "file:../../path/to/antora-dark-theme"`, then `pnpm run prebuild`.
+* *Release and consume:* bump `version` in `package.json` to match the intended tag, commit, then push a Git `v*` tag (e.g. `v1.0.3`). The link:.github/workflows/release.yml[Release workflow] creates the GitHub Release, attaches the npm tarball and `ui-bundle.zip`, and (for non-prerelease tags) can publish to the npm registry — maintainers do not run `pnpm publish` or `npm publish` locally. Downstream, update the `antora-dark-mode` devDependency and run `pnpm run prebuild` (e.g. in https://github.com/FoodTruckNerdz/docs[FoodTruckNerdz/docs]) so the sync script copies `node_modules/.../supplemental-ui` into `site/supplemental-ui/`.
+* *Local test of an unpublished tree:* from the theme repo, `pnpm pack`, then in the consumer repo `pnpm add -D ./antora-dark-mode-1.0.3.tgz`, or `pnpm add -D "file:../../path/to/antora-dark-mode"`, then `pnpm run prebuild`.
 
 link:changelog-details/2026-04-26%20-%201.0.3%20doc%20home%20tiles%20in%20supplemental.adoc[Detailed notes — 2026-04-26]
 

@@ -1,29 +1,15 @@
-= Getting Started
+= Antora Dark Mode
 :navtitle: Getting Started
-:description: Quick introduction to the Antora Dark Theme supplemental UI.
+:description: Dark mode supplemental UI for Antora documentation sites.
 
-Antora Dark Theme adds dark mode to https://antora.org[Antora] documentation sites.
+Dark mode toggle, FOUC prevention, and CSS overrides for the Antora Default UI.
 
-== Install habit
+For composed doc-site chrome (mast, header, layout), see link:https://github.com/antora-supplemental/valentus-theme[valentus-theme].
 
-Pin the GitHub release `ui-bundle.zip` in your playbook—see xref:installation.adoc[Installation].
+== Demo
 
-Catalog: link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs portal].
+https://antora-supplemental.github.io/antora-dark-mode[Live demo on GitHub Pages]
 
-If you previously used npm: xref:npm-deprecation.adoc[npm deprecation].
+== Install
 
-== Features
-
-* Dark mode toggle, system preference, `localStorage` persistence, no FOUC
-* Release bundle includes Default UI + theme (no UI fork)
-* Navbar, nav, content, code, tables, admonitions, footer styling
-
-== Next steps
-
-* xref:installation.adoc[Installation]
-* xref:npm-deprecation.adoc[npm deprecation]
-* xref:configuration.adoc[Configuration]
-
-== Help native dark mode in Antora
-
-https://gitlab.com/antora/antora-ui-default/-/issues/216[icon:thumbs-up[] Dark Mode #216]
+See xref:installation.adoc[Installation].

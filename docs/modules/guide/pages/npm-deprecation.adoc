@@ -7,7 +7,7 @@
 
 == Status
 
-The https://www.npmjs.com/package/antora-dark-theme[`antora-dark-theme` npm package] is *deprecated* and *no longer published*.
+The https://www.npmjs.com/package/antora-dark-mode[`antora-dark-mode` npm package] is *deprecated* and *no longer published*.
 CI no longer runs `npm publish`; GitHub Releases ship `ui-bundle.zip` only.
 
 Use the release bundle in your playbook—see xref:installation.adoc[Installation].
@@ -15,15 +15,15 @@ Discover this theme on link:https://antora-supplemental.github.io/docs/[Antora S
 
 == Migrate off npm
 
-. Remove `antora-dark-theme` from `package.json` and the lockfile (`pnpm remove -D antora-dark-theme`, etc.).
-. Delete scripts that copied `node_modules/antora-dark-theme/supplemental-ui` (`prebuild`, `sync:ui`, …).
+. Remove `antora-dark-mode` from `package.json` and the lockfile (`pnpm remove -D antora-dark-mode`, etc.).
+. Delete scripts that copied `node_modules/antora-dark-mode/supplemental-ui` (`prebuild`, `sync:ui`, …).
 . Point `ui.bundle` at a pinned release:
 +
 [source,yaml]
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.1.0/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-mode/releases/download/v1.2.0/ui-bundle.zip
     snapshot: true
 ----
 +
@@ -68,8 +68,8 @@ Versioning and “where do I get this?” belong next to other Antora extensions
 
 Early docs described:
 
-* `npm install --save-dev antora-dark-theme` plus `supplemental_files: ./node_modules/antora-dark-theme/supplemental-ui` on the Antora Default UI zip.
-* `github:antora-supplemental/antora-dark-theme` or release `.tgz` in `package.json` (same overlay model).
+* `npm install --save-dev antora-dark-mode` plus `supplemental_files: ./node_modules/antora-dark-mode/supplemental-ui` on the Antora Default UI zip.
+* `github:antora-supplemental/antora-dark-mode` or release `.tgz` in `package.json` (same overlay model).
 * Merged `supplemental-ui/` in git after copying from npm (valid, but vendoring—npm was only the transport).
 
 All of that is replaced by the release bundle. Forks may still vendor `supplemental-ui/` from this repository without any registry package.
@@ -79,7 +79,7 @@ All of that is replaced by the release bundle. Forks may still vendor `supplemen
 [source,bash]
 ----
 # REMOVED — do not run
-pnpm add -D antora-dark-theme
+pnpm add -D antora-dark-mode
 ----
 
 [source,yaml]
@@ -89,7 +89,7 @@ ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
-  supplemental_files: ./node_modules/antora-dark-theme/supplemental-ui
+  supplemental_files: ./node_modules/antora-dark-mode/supplemental-ui
 ----
 
 If you still have the above in a playbook, xref:installation.adoc[switch to Installation] and delete the dependency.

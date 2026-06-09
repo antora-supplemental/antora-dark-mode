@@ -8,7 +8,7 @@ import { mkdtempSync, unlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-const REPO = process.env.GITHUB_REPOSITORY || "antora-supplemental/antora-dark-theme";
+const REPO = process.env.GITHUB_REPOSITORY || "antora-supplemental/antora-dark-mode";
 const BASE = `https://github.com/${REPO}/releases/download`;
 
 function sh(cmd, opts = {}) {

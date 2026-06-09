@@ -1,0 +1,9 @@
+= 1.2.0 — split chrome to Valentus and rename to antora-dark-mode
+:description: Changelog detail for antora-dark-mode 1.2.0
+:navtitle: 1.2.0 split and rename
+
+* *Repository rename:* GitHub repository `antora-dark-theme` becomes `antora-dark-mode`. Update playbook `ui.bundle.url`, docs links, and any pinned release paths.
+* *Scope:* This package is *dark mode only* — `site-extra.css`, FOUC inline script, theme toggle (`site-dark-mode.js`), and minimal supplemental partials. Doc-site chrome (mast, header, layout, VCS icons, UI modules orchestrator) moved to link:https://github.com/antora-supplemental/valentus-theme[valentus-theme].
+* *Pairing:* Sites that used the old monolithic `ui-bundle.zip` for both dark styling and layout should pin `antora-dark-mode` for the base bundle and layer `valentus-theme` `supplemental-ui` (or the valentus release bundle) when chrome is required.
+* *Breaking:* `ui-modules/` removed from this repository; module manifests and recipes now live under valentus-theme.
+* *Migration:* Replace `…/antora-dark-theme/releases/…/ui-bundle.zip` with `…/antora-dark-mode/releases/…/ui-bundle.zip`. Remove npm `antora-dark-theme` / `antora-dark-mode` install paths; use the release bundle only.

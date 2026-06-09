@@ -25,7 +25,7 @@ Think of this as a stability vs. freshness tradeoff—the same as any dependency
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/latest/download/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-mode/releases/latest/download/ui-bundle.zip
     snapshot: true
 ----
 
@@ -39,7 +39,7 @@ ui:
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.1.0/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-mode/releases/download/v1.2.0/ui-bundle.zip
     snapshot: true
 ----
 
@@ -59,7 +59,7 @@ Implement the range yourself:
 ==== Option A — Renovate / Dependabot (recommended)
 
 Treat the version in `antora-playbook.yml` like a dependency.
-Configure Renovate with a regex manager on the bundle URL—see link:https://github.com/antora-supplemental/antora-dark-theme/blob/main/examples/renovate.json[`examples/renovate.json`] in this repository.
+Configure Renovate with a regex manager on the bundle URL—see link:https://github.com/antora-supplemental/antora-dark-mode/blob/main/examples/renovate.json[`examples/renovate.json`] in this repository.
 
 * `~1.0.0` — patches only within v1.0.x
 * `^1.0.0` — patches and minors within v1.x
@@ -92,7 +92,7 @@ This theme publishes **moving** Git tags and prerelease aliases (updated by the 
 
 Rolling releases are marked *prerelease* so `releases/latest` still tracks normal semver tags.
 
-Machine-readable current pointers: link:https://github.com/antora-supplemental/antora-dark-theme/blob/main/supported-lines.json[`supported-lines.json`] at the repository root.
+Machine-readable current pointers: link:https://github.com/antora-supplemental/antora-dark-mode/blob/main/supported-lines.json[`supported-lines.json`] at the repository root.
 
 WARNING: Moving tags trade reproducibility for convenience.
 Prefer exact pins or Renovate PRs when CI must be bitwise stable.
@@ -125,7 +125,7 @@ Sites with forked supplemental partials or vendored `site-dark-mode.js` should s
 
 For a site with deep supplemental overlays:
 
-. Pin exact in `antora-playbook.yml` today (`v1.1.0`).
+. Pin exact in `antora-playbook.yml` today (`v1.2.0`).
 . Add Renovate with `~1.0.0` or `~1.1.0` on the playbook URL (see `examples/renovate.json`).
 . On each Renovate PR: read the theme changelog, run `antora` locally, spot-check header, nav, and dark mode.
 . Bump minor/major only when you schedule it—treat like a small migration (port supplemental JS/CSS if needed).
@@ -134,4 +134,4 @@ For a site with deep supplemental overlays:
 
 * xref:installation.adoc[Installation] — exact-pin quick start
 * xref:configuration.adoc#site-keys[Configuration — `site.keys`] — branding without header forks
-* link:https://github.com/antora-supplemental/antora-dark-theme/releases[GitHub Releases]
+* link:https://github.com/antora-supplemental/antora-dark-mode/releases[GitHub Releases]

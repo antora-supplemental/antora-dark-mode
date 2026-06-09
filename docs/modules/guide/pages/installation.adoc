@@ -6,7 +6,7 @@
 
 **Use `ui-bundle.zip` from GitHub Releases.** One pinned `ui.bundle.url`; Default UI and this theme are already merged.
 
-* link:https://github.com/antora-supplemental/antora-dark-theme/releases[GitHub Releases]
+* link:https://github.com/antora-supplemental/antora-dark-mode/releases[GitHub Releases]
 * link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs portal] (extensions registry)
 
 The npm package is deprecated and unpublished—see xref:npm-deprecation.adoc[npm deprecation (lessons learned & migration)] if you still have it in a lockfile.
@@ -19,7 +19,7 @@ The npm package is deprecated and unpublished—see xref:npm-deprecation.adoc[np
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.1.0/ui-bundle.zip
+    url: https://github.com/antora-supplemental/antora-dark-mode/releases/download/v1.2.0/ui-bundle.zip
     snapshot: true
 ----
 

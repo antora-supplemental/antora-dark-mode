@@ -1,5 +1,5 @@
 = 1.0.9 — wider horizontal rail for mast and nav tree
-:description: Changelog detail for antora-dark-theme 1.0.9
+:description: Changelog detail for antora-dark-mode 1.0.9
 :navtitle: 1.0.9 nav rail padding
 
 `--adt-mast-pad-h` drives `--adt-global-rail-hpad`, which is used for the doc mast, breadcrumb home hit-area, and the left `nav-tree-only` / `adt-nav-tree-only` column. Increasing it from **0.5rem** to **1rem** doubles the horizontal breathing room so the tree no longer feels flush to the viewport edge.

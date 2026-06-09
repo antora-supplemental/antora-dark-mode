@@ -1,23 +1,22 @@
 {
-  "name": "antora-dark-theme",
-  "version": "1.1.0",
-  "description": "DEPRECATED on npm — use GitHub release ui-bundle.zip. See README.md.",
-  "deprecated": "Retired: do not install. Pin ui.bundle.url to https://github.com/antora-supplemental/antora-dark-theme/releases/download/v1.1.0/ui-bundle.zip — docs: https://antora-supplemental.github.io/antora-dark-theme/antora-dark-theme/guide/npm-deprecation.html",
+  "name": "antora-dark-mode",
+  "version": "1.2.0",
+  "description": "Dark mode supplemental UI for Antora Default UI — toggle, FOUC prevention, and CSS overrides.",
   "private": true,
   "keywords": [
     "antora",
+    "antora-extension",
     "dark-mode",
-    "theme",
     "documentation",
     "asciidoc"
   ],
-  "homepage": "https://antora-supplemental.github.io/antora-dark-theme",
+  "homepage": "https://antora-supplemental.github.io/antora-dark-mode",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antora-supplemental/antora-dark-theme.git"
+    "url": "git+https://github.com/antora-supplemental/antora-dark-mode.git"
   },
   "bugs": {
-    "url": "https://github.com/antora-supplemental/antora-dark-theme/issues"
+    "url": "https://github.com/antora-supplemental/antora-dark-mode/issues"
   },
   "license": "MIT",
   "author": "Ryan Johnson (https://github.com/AMDphreak)",

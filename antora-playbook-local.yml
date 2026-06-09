@@ -2,9 +2,9 @@
 # Uses locally cached remote assets when available.
 
 site:
-  title: Antora Dark Theme
-  url: https://antora-supplemental.github.io/antora-dark-theme
-  start_page: antora-dark-theme:guide:index.adoc
+  title: Antora Dark Mode
+  url: https://antora-supplemental.github.io/antora-dark-mode
+  start_page: antora-dark-mode:guide:index.adoc
 
 content:
   sources:

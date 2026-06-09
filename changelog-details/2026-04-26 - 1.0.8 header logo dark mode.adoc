@@ -1,5 +1,5 @@
 = 1.0.8 — header placeholder logo visible in dark mode
-:description: Changelog detail for antora-dark-theme 1.0.8
+:description: Changelog detail for antora-dark-mode 1.0.8
 :navtitle: 1.0.8 logo contrast
 
 The bundled `img/logo.svg` is a neutral “document” mark using SVG `currentColor`. Browsers do not resolve `currentColor` for SVG referenced via `<img src="…">`, so the artwork defaulted to a dark fill and disappeared on the dark navigation strip.

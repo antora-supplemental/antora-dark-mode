@@ -1,6 +1,6 @@
-name: antora-dark-theme
-title: Demo and Docs
-version: "0.1"
+name: antora-dark-mode
+title: Antora Dark Mode
+version: "1.2"
 start_page: guide:index.adoc
 nav:
   - modules/guide/nav.adoc

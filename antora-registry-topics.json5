@@ -1,0 +1,7 @@
+{
+  repository: "https://github.com/antora-supplemental/antora-dark-mode",
+  githubTopics: [
+    "antora-extension",
+    "antora-dark-mode",
+  ],
+}

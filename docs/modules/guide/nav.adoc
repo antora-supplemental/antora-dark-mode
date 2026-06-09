@@ -5,7 +5,6 @@
 * xref:configuration.adoc[Configuration]
 * xref:version-pinning.adoc[Version Pinning]
 * xref:customization.adoc[Customization]
-* xref:vcs-repo-logo.adoc[VCS Repo Logo]
 * xref:how-it-works.adoc[How It Works]
 * xref:version-control-and-fossil.adoc[Version Control & Fossil]
 * xref:troubleshooting.adoc[Troubleshooting]

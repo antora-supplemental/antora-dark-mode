@@ -43,7 +43,7 @@ Text can be formatted in various ways:
 
 Visit the https://antora.org[Antora website] for more information.
 
-Here's a link to https://github.com/antora-supplemental/antora-dark-theme[this project on GitHub].
+Here's a link to https://github.com/antora-supplemental/antora-dark-mode[this project on GitHub].
 
 === Internal Cross-References
 

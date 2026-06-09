@@ -159,13 +159,13 @@ echo "Done!"
 [source,json]
 ----
 {
-  "name": "antora-dark-theme",
+  "name": "antora-dark-mode",
   "version": "1.0.0",
   "description": "Dark mode theme for Antora",
   "keywords": ["antora", "dark-mode", "theme"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/antora-supplemental/antora-dark-theme.git"
+    "url": "https://github.com/antora-supplemental/antora-dark-mode.git"
   }
 }
 ----

@@ -17,8 +17,8 @@ This document provides guidelines and information for contributors.
 +
 [source,bash]
 ----
-git clone https://github.com/antora-supplemental/antora-dark-theme.git
-cd antora-dark-theme
+git clone https://github.com/antora-supplemental/antora-dark-mode.git
+cd antora-dark-mode
 ----
 
 . Install dependencies:

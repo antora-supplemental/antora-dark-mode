@@ -3,8 +3,8 @@
 The Antora hub home page uses an open block with class `cards` and example blocks with class `tile`.
 Styling for `+.openblock.cards+` and `+.exampleblock.tile+` is delivered from `supplemental-ui/css/site-extra.css` so that:
 
-* The https://github.com/antora-supplemental/antora-dark-theme/releases[GitHub release] `ui-bundle.zip` (default UI from GitLab + merged supplemental) includes the rules.
-* Playbooks that install the `antora-dark-theme` npm package and run a sync script (for example `prebuild` in https://github.com/FoodTruckNerdz/docs[FoodTruckNerdz/docs]) copy an up-to-date `site-extra.css` into `site/supplemental-ui/`.
+* The https://github.com/antora-supplemental/antora-dark-mode/releases[GitHub release] `ui-bundle.zip` (default UI from GitLab + merged supplemental) includes the rules.
+* Playbooks that install the `antora-dark-mode` npm package and run a sync script (for example `prebuild` in https://github.com/FoodTruckNerdz/docs[FoodTruckNerdz/docs]) copy an up-to-date `site-extra.css` into `site/supplemental-ui/`.
 
 Light-mode tokens use `:root` with `var(--panel-border-color)` and `var(--color-white)` from the default UI; `html.dark-theme` overrides the tile custom properties.
 The `exampleblock.tile` `> .content` rules use `!important` for background and border in dark mode so they override the generic `html.dark-theme .doc .exampleblock > .content` supplemental rules.

@@ -1,5 +1,5 @@
 = 1.0.12 — header logo via playbook site.keys
-:description: Changelog detail for antora-dark-theme 1.0.12
+:description: Changelog detail for antora-dark-mode 1.0.12
 :navtitle: 1.0.12 header logo key
 
 * `partials/header-content.hbs` resolves the header `<img>` from `site.keys.header_logo` (basename under `img/`, default `logo.svg`).

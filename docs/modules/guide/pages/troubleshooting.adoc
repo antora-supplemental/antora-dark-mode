@@ -15,7 +15,7 @@ This page covers common issues and their solutions.
 [source,yaml]
 ----
 ui:
-  supplemental_files: ./node_modules/antora-dark-theme/supplemental-ui
+  supplemental_files: ./node_modules/antora-dark-mode/supplemental-ui
 ----
 
 . *Different UI bundle structure* - The toggle button is injected into `.navbar-end`. If your UI bundle has a different navbar structure, modify the selector in `site-dark-mode.js`:
@@ -133,7 +133,7 @@ observer.observe(document.documentElement, { attributes: true });
 
 If your issue isn't covered here:
 
-. Check the https://github.com/antora-supplemental/antora-dark-theme/issues[GitHub Issues] for similar problems
+. Check the https://github.com/antora-supplemental/antora-dark-mode/issues[GitHub Issues] for similar problems
 . Open a new issue with:
 ** Browser and version
 ** Antora version

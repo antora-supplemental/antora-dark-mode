@@ -1,5 +1,5 @@
 = 1.0.5 — debranded doc layout and +adt+ hooks
-:description: Changelog detail for antora-dark-theme 1.0.5
+:description: Changelog detail for antora-dark-mode 1.0.5
 :navtitle: 1.0.5 debranded layout
 
 * The supplemental layout stylesheet is now `supplemental-ui/css/site-doc-layout.css` (load after `site-extra.css` in `head-meta`).

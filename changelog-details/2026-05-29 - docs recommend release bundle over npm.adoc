@@ -6,13 +6,13 @@ The release `ui-bundle.zip` is the only distribution channel. npm publish was re
 
 == CI
 
-* `.github/workflows/release.yml` — no `pnpm pack`, no `antora-dark-theme-*.tgz` on GitHub Releases, no `npm publish`, no `id-token` / `environment: npm`.
+* `.github/workflows/release.yml` — no `pnpm pack`, no `antora-dark-mode-*.tgz` on GitHub Releases, no `npm publish`, no `id-token` / `environment: npm`.
 
 == Documentation
 
 * `npm-deprecation.adoc` — status, migration, lessons learned, archived former install commands.
 * `README.md`, `README.adoc`, `installation.adoc`, `index.adoc`, `configuration.adoc` — bundle-only; link to deprecation page instead of inline npm sections.
-* `code-blocks.adoc` demo listing — `antora` CLI only, not `antora-dark-theme` npm install.
+* `code-blocks.adoc` demo listing — `antora` CLI only, not `antora-dark-mode` npm install.
 
 == package.json
 
@@ -20,4 +20,4 @@ The release `ui-bundle.zip` is the only distribution channel. npm publish was re
 
 == Registry
 
-Maintainers deprecate or unpublish `antora-dark-theme` on npmjs separately. Catalog entry belongs on Antora Supplemental docs / extensions registry with the bundle URL.
+Maintainers deprecate or unpublish `antora-dark-mode` on npmjs separately. Catalog entry belongs on Antora Supplemental docs / extensions registry with the bundle URL.

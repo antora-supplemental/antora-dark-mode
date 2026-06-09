@@ -1,5 +1,5 @@
 = 1.1.0 — version pinning guide and rolling release lines
-:description: Changelog detail for antora-dark-theme 1.1.0
+:description: Changelog detail for antora-dark-mode 1.1.0
 :navtitle: 1.1.0 version pinning
 
 * Semver *minor* release: additive distribution and documentation; `site.keys.header_logo` was included in v1.0.12.

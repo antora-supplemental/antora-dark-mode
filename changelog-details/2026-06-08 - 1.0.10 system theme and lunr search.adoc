@@ -1,5 +1,5 @@
 = 1.0.10 — system theme override expiry and Lunr search demo
-:description: Changelog detail for antora-dark-theme 1.0.10
+:description: Changelog detail for antora-dark-mode 1.0.10
 :navtitle: 1.0.10 theme and search
 
 == Summary
