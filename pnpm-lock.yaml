@@ -23,6 +23,9 @@ importers:
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
+      json5:
+        specifier: ^2.2.3
+        version: 2.2.3
       rimraf:
         specifier: ^6.0.1
         version: 6.1.2

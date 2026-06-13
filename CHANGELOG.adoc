@@ -10,6 +10,8 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+* *CI:* Fix Release workflow — replace invalid `=~ /regex/` job `if` with `matches()`, sync `pnpm-lock.yaml` for `json5`, add `workflow_dispatch` for re-publishing tags.
+
 == [1.3.1] - 2026-06-13
 
 * *Toggle icon:* Playbook `site.keys.dark_mode_navbar` (`dark` | `light`) selects light-mode navbar tone for the theme toggle — dark top bar (Antora default, white icon) vs. light top bar (dark icon). Sets `meta[name=dm-navbar]` and `html[data-dm-navbar]`.

@@ -4,20 +4,32 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Semver X.Y.Z to publish (tag vX.Y.Z must exist on the remote)
+        required: true
 
 permissions:
   contents: write
 
+env:
+  RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && format('v{0}', inputs.version) || github.ref_name }}
+  RELEASE_VERSION: ${{ github.event_name == 'workflow_dispatch' && inputs.version || github.ref_name }}
+
 jobs:
   release:
     # Rolling aliases (v1, v1.0, v1.1) are updated by post-release.mjs — not full releases.
-    if: github.ref_name =~ /^v\d+\.\d+\.\d+$/
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      matches(github.ref_name, '^v[0-9]+\.[0-9]+\.[0-9]+$')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ env.RELEASE_TAG }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -27,14 +39,15 @@ jobs:
         with:
           node-version: "24"
           cache: "pnpm"
+          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Verify package version matches tag
         run: |
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          TAG_VERSION="${RELEASE_VERSION#v}"
           if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
             echo "Error: package.json version ($PACKAGE_VERSION) does not match tag version ($TAG_VERSION)"
             exit 1
@@ -43,7 +56,7 @@ jobs:
       - name: Generate changelog for release
         id: changelog
         run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
+          VERSION="${RELEASE_VERSION#v}"
           if [ -f "CHANGELOG.adoc" ]; then
             NOTES=$(awk -v v="$VERSION" '
               $0 ~ "^== \\[" v "\\]" {flag=1; next}
@@ -70,14 +83,17 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: ${{ env.RELEASE_TAG }}
           body_path: release_notes.md
           files: ui-bundle.zip
-          generate_release_notes: true
+          overwrite_files: true
+          make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to npm
-        if: github.ref_name =~ /^v\d+\.\d+\.\d+$/ && !contains(github.ref_name, '-')
+        if: ${{ !contains(env.RELEASE_VERSION, '-') }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
@@ -89,12 +105,12 @@ jobs:
 
       - name: Resolve release commit
         id: rel
-        run: echo "sha=$(git rev-list -n 1 "${GITHUB_REF}")" >> "$GITHUB_OUTPUT"
+        run: echo "sha=$(git rev-list -n 1 "${RELEASE_TAG}")" >> "$GITHUB_OUTPUT"
 
       - name: Update rolling release lines
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ github.ref_name }}
+          VERSION: ${{ env.RELEASE_VERSION }}
           RELEASE_SHA: ${{ steps.rel.outputs.sha }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: node .github/scripts/post-release.mjs "${VERSION#v}"
@@ -114,6 +130,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "supported-lines.json unchanged"
           else
-            git commit -m "chore: update supported-lines.json for ${GITHUB_REF#refs/tags/}"
+            git commit -m "chore: update supported-lines.json for ${RELEASE_TAG}"
             git push origin main
           fi
