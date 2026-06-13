@@ -10,7 +10,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
-* *CI:* Fix Release workflow — replace invalid `=~ /regex/` job `if` with `matches()`, sync `pnpm-lock.yaml` for `json5`, add `workflow_dispatch` for re-publishing tags.
+* *CI:* Release workflow fixes (`v*.*.*` tag filter, `workflow_dispatch`, lockfile); npm publish via trusted publishing (OIDC) — no `NPM_TOKEN`.
 
 == [1.3.1] - 2026-06-13
 
