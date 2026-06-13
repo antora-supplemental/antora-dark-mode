@@ -90,7 +90,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to npm
-        if: ${{ !contains(env.RELEASE_VERSION, '-') }}
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
@@ -110,7 +110,7 @@ jobs:
           VERSION: ${{ env.RELEASE_VERSION }}
           RELEASE_SHA: ${{ steps.rel.outputs.sha }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: node .github/scripts/post-release.mjs "${VERSION#v}"
+        run: node .github/scripts/post-release.mjs "${VERSION#v}" ui-bundle.zip
 
       - name: Commit supported-lines.json on main
         env:
