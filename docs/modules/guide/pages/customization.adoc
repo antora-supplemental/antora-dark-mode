@@ -87,6 +87,41 @@ To change its position, modify the `ensureToggleButton()` function in `site-dark
 navbarEnd.appendChild(button);
 ----
 
+[[toggle-navbar-tone]]
+== Light-mode navbar tone (toggle icon color)
+
+The default Antora UI uses a *dark* top bar in light mode, so the toggle icon inherits a light (white) stroke via `currentColor`.
+If your light-mode header is a *light* strip (for example link:https://github.com/antora-supplemental/valentus-theme[valentus-theme]), set the playbook key so the moon/sun icon stays visible:
+
+[source,yaml]
+----
+site:
+  keys:
+    dark_mode_navbar: light
+----
+
+Values:
+
+* `dark` (default) — dark top bar in light mode; icon inherits navbar foreground (Antora default UI).
+* `light` — light top bar in light mode; icon uses dark stroke (`#1a1a1a`) and a subtle dark hover.
+
+This emits `meta[name=dm-navbar]` from `partials/head-meta.hbs` and sets `html[data-dm-navbar]` before paint.
+Ui-module installs without the head partial can add the same meta tag in supplemental UI:
+
+[source,html]
+----
+<meta name="dm-navbar" content="light">
+----
+
+Or override in CSS:
+
+[source,css]
+----
+html:not(.dark-theme) .theme-toggle {
+  color: #1a1a1a;
+}
+----
+
 == Custom Toggle Button
 
 If you want to use your own toggle button markup, add an element with `id="theme-toggle"` anywhere in your page:

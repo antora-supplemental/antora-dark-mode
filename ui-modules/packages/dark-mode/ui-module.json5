@@ -1,7 +1,7 @@
 {
   id: "dark-mode",
   name: "Antora dark mode",
-  version: "1.3.0",
+  version: "1.3.1",
   type: "ui-module",
   description: "Dark mode CSS, FOUC prevention, and navbar theme toggle. Slot-based overlay — does not replace theme partials.",
   repository: "https://github.com/antora-supplemental/antora-dark-mode",

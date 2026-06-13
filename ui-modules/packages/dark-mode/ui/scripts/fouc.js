@@ -1,4 +1,8 @@
 (function () {
+  const dmNavbar = document.querySelector('meta[name="dm-navbar"]')
+  if (dmNavbar && dmNavbar.content) {
+    document.documentElement.dataset.dmNavbar = dmNavbar.content
+  }
   const MODE = 'antora-theme-mode'
   const LEGACY = 'antora-theme'
   function mode() {
