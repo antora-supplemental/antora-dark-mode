@@ -71,9 +71,11 @@ Tarball ships overlay assets only:
 
 . Bump `package.json` version (semver aligned with git tag, e.g. `1.3.0`).
 . Temporarily remove `"private": true` for publish only.
-. `npm publish --access public` from repo root.
+. `npm publish --access public` from repo root (local) **or** push a semver tag / run the Release workflow (CI uses link:https://docs.npmjs.com/trusted-publishers/[npm trusted publishing] — OIDC, no `NPM_TOKEN`).
 . Restore `"private": true` in git.
 . `npm deprecate antora-dark-mode@* ""` to clear the retirement banner on all versions.
+
+CI trusted publisher (npmjs.com → package → Settings → Trusted publishing → GitHub Actions): org `antora-supplemental`, repo `antora-dark-mode`, workflow `release.yml`, environment blank.
 
 === 3. README and docs
 

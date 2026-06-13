@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write # npm trusted publishing (OIDC) — no NPM_TOKEN secret
 
 env:
   RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && format('v{0}', inputs.version) || github.ref_name }}
@@ -36,7 +37,6 @@ jobs:
         with:
           node-version: "24"
           cache: "pnpm"
-          registry-url: https://registry.npmjs.org
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
@@ -89,16 +89,28 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Setup Node.js for npm publish
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: https://registry.npmjs.org
+
       - name: Publish to npm
         continue-on-error: true
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           pnpm ui-modules:sync
           pnpm ui-modules:validate
           node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));delete p.private;fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
+          npm --version
           npm publish --access public
           npm deprecate antora-dark-theme@* "Renamed — use valentus-theme (bundled dark mode). See https://github.com/antora-supplemental/valentus-theme" || true
+        # Trusted publisher on npmjs.com (package → Settings → Trusted publishing):
+        #   Provider: GitHub Actions
+        #   Organization/user: antora-supplemental
+        #   Repository: antora-dark-mode
+        #   Workflow filename: release.yml
+        #   Environment: (leave blank unless this job sets `environment:`)
+        # Requires npm CLI ≥ 11.5.1 (Node 24 on ubuntu-latest). No NPM_TOKEN.
 
       - name: Resolve release commit
         id: rel

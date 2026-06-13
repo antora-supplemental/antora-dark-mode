@@ -42,7 +42,25 @@ cd Z:\code\github.com\antora-supplemental\antora-dark-mode
 pnpm publish:npm
 ```
 
-**CI:** `.github/workflows/release.yml` publishes on semver tags when `NPM_TOKEN` is configured.
+**CI:** `.github/workflows/release.yml` publishes on semver tags using [npm trusted publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC). No `NPM_TOKEN` — configure the trusted publisher on npmjs.com instead (see below).
+
+### npm trusted publisher (one-time, on npmjs.com)
+
+Package **antora-dark-mode** → **Settings** → **Trusted publishing** → **GitHub Actions**:
+
+| Field | Value |
+|-------|-------|
+| Organization or user | `antora-supplemental` |
+| Repository | `antora-dark-mode` |
+| Workflow filename | `release.yml` |
+| Environment | _(leave blank — workflow does not use a deployment environment)_ |
+| Allowed actions | `npm publish` |
+
+Requires npm CLI ≥ 11.5.1 (Node 24 on GitHub-hosted runners). Provenance is generated automatically.
+
+`workflow_dispatch` re-runs use the same `release.yml` filename — no separate npm entry needed.
+
+After trusted publishing works, consider **Settings → Publishing access → Require 2FA and disallow tokens** for maximum security.
 
 ```powershell
 # After publish — deprecate legacy package name (if you own antora-dark-theme)
@@ -60,7 +78,7 @@ npm deprecate antora-dark-theme@* "Renamed — use antora-dark-mode. See https:/
 
 ## CI
 
-`.github/workflows/release.yml` — no change required for npm; optional future job for `npm publish` with `NPM_TOKEN` and `environment: npm` if maintainers want automated registry publish again.
+`.github/workflows/release.yml` — npm publish via **trusted publishing** (OIDC, `id-token: write`). Configure the trusted publisher on npmjs.com for workflow `release.yml`; no `NPM_TOKEN` secret. See `docs/maintainers/npm-republish-plan.md`.
 
 ## Related docs
 
