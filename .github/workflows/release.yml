@@ -76,6 +76,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Publish to npm
+        if: github.ref_name =~ /^v\d+\.\d+\.\d+$/ && !contains(github.ref_name, '-')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          pnpm ui-modules:sync
+          pnpm ui-modules:validate
+          node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));delete p.private;fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
+          npm publish --access public
+          npm deprecate antora-dark-theme@* "Renamed — use valentus-theme (bundled dark mode). See https://github.com/antora-supplemental/valentus-theme" || true
+
       - name: Resolve release commit
         id: rel
         run: echo "sha=$(git rev-list -n 1 "${GITHUB_REF}")" >> "$GITHUB_OUTPUT"

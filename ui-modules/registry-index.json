@@ -1,0 +1,68 @@
+{
+  "schema": "1.0",
+  "generatedAt": "2026-06-13T17:34:28.167Z",
+  "repository": "https://github.com/antora-supplemental/antora-dark-mode",
+  "source": "ui-modules/registry.json5",
+  "modules": [
+    {
+      "id": "dark-mode",
+      "name": "Antora dark mode",
+      "version": "1.3.0",
+      "type": "ui-module",
+      "description": "Dark mode CSS, FOUC prevention, and navbar theme toggle. Slot-based overlay — does not replace theme partials.",
+      "repository": "https://github.com/antora-supplemental/antora-dark-mode",
+      "manifestPath": "packages/dark-mode/ui-module.json5",
+      "modulePath": "packages/dark-mode",
+      "requires": [],
+      "recommends": [],
+      "conflicts": [],
+      "partials": {
+        "provide": [],
+        "replace": []
+      },
+      "slots": {
+        "head": {
+          "stylesheets": [
+            "css/site-extra.css"
+          ],
+          "scripts": [
+            "scripts/fouc.js"
+          ]
+        },
+        "foot": {
+          "scripts": [
+            "js/site-dark-mode.js"
+          ]
+        }
+      },
+      "uiFileCount": 3,
+      "install": {
+        "orchestrator": {
+          "registry": "./ui-modules/registry.json5",
+          "modules": [
+            "dark-mode"
+          ]
+        }
+      }
+    }
+  ],
+  "recipes": [
+    {
+      "id": "dark-mode-only",
+      "name": "Dark mode only",
+      "version": "1.3.0",
+      "type": "ui-recipe",
+      "description": "Dark mode toggle and styles layered on any Antora UI bundle (Default UI or a theme release bundle).",
+      "modules": [
+        "dark-mode"
+      ],
+      "manifestPath": "recipes/dark-mode-only.json5",
+      "install": {
+        "orchestrator": {
+          "registry": "./ui-modules/registry.json5",
+          "recipe": "dark-mode-only"
+        }
+      }
+    }
+  ]
+}

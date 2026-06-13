@@ -1,0 +1,30 @@
+= Composable UI module — dark mode (slot-based)
+
+The `dark-mode` module injects dark styling via *slots* (`head` / `foot`) instead of replacing theme partials.
+Use it with the link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] `ui-orchestrator` extension so `ui.bundle.url` stays free for your theme.
+
+== Layout
+
+[source]
+----
+ui-modules/
+  registry.json5              # Catalog (dark-mode module)
+  registry-index.json         # Generated for registry crawlers
+  recipes/dark-mode-only.json5
+  packages/dark-mode/
+    ui-module.json5           # Slot manifest (no partial replace)
+    ui/
+      css/site-extra.css
+      js/site-dark-mode.js
+      scripts/fouc.js         # FOUC prevention (injected in <head>)
+----
+
+`supplemental-ui/` remains for direct overlay installs (Default UI + one supplemental directory).
+Run `pnpm ui-modules:sync` after editing supplemental CSS/JS to refresh the module `ui/` tree.
+
+== Validate
+
+[source,bash]
+----
+pnpm ui-modules:validate
+----

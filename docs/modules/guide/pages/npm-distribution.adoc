@@ -1,0 +1,103 @@
+= npm distribution
+:navtitle: npm distribution
+:page-pagination:
+:page-pagination-prev: installation.adoc
+:page-pagination-next: configuration.adoc
+:description: npm as overlay transport for antora-dark-mode — republish plan and registry constraints.
+
+== Status
+
+npm is being **restored** as optional *transport* for the supplemental overlay and `ui-modules/` catalog.
+
+**Registry note:** `antora-dark-mode` was not previously published on npm (404 as of 2026-06-13). Legacy installs used deprecated `antora-dark-theme`. The new package name is a **first publish**, not an npm rename.
+
+* *Overlay install:* `pnpm add -D antora-dark-mode` then merge `supplemental-ui/` or point the orchestrator at `ui-modules/registry.json5`.
+* *Not for:* occupying `ui.bundle` with a pre-merged theme (use GitHub `ui-bundle.zip` convenience artifact for Default UI quick starts only).
+
+Former retirement (May 2026) assumed every site could pin `ui-bundle.zip` as `ui.bundle`.
+That blocks mixing dark mode with another theme bundle — see xref:installation.adoc[Installation].
+
+== Install via npm (overlay)
+
+[source,bash]
+----
+pnpm add -D antora-dark-mode
+----
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    snapshot: true
+  supplemental_files: ./site/supplemental-ui   # merge node_modules/.../supplemental-ui here
+----
+
+For slot-based installs without partial collisions, see xref:ui-modules.adoc[UI Modules].
+
+== Can we rename the npm package?
+
+*No.* The npm registry does **not** support renaming a published package.
+
+[cols="2,3", options="header"]
+|===
+| Question | Answer
+
+| Reuse the existing `antora-dark-mode` package name?
+| **Yes.** Publish new versions to the same name. Remove the deprecation banner with `npm deprecate antora-dark-mode@* ""` after the first restored release.
+
+| Rename `antora-dark-mode` to a different name on npm?
+| **No.** Package names are immutable once published.
+
+| Merge `antora-dark-theme` into `antora-dark-mode` on npm?
+| **No rename path.** Deprecate the old package; consumers migrate to `antora-dark-mode`.
+
+| Keep npm login / publishing access?
+| **Yes**, if you already own the `antora-dark-mode` package — republish uses the same registry entry.
+|===
+
+== Republish plan (maintainers)
+
+=== 1. Package contents
+
+Tarball ships overlay assets only:
+
+* `supplemental-ui/**/*` — direct overlay install
+* `ui-modules/**/*` — slot-based `dark-mode` module + registry
+
+`package.json` `files` field lists both trees. `prepack` runs `ui-modules:sync` and `ui-modules:validate`.
+
+=== 2. Version and publish
+
+. Bump `package.json` version (semver aligned with git tag, e.g. `1.3.0`).
+. Temporarily remove `"private": true` for publish only.
+. `npm publish --access public` from repo root.
+. Restore `"private": true` in git.
+. `npm deprecate antora-dark-mode@* ""` to clear the retirement banner on all versions.
+
+=== 3. README and docs
+
+* Replace `README.md` retirement notice with overlay-first install (link to Installation).
+* Keep GitHub `ui-bundle.zip` releases as *convenience* artifacts — release workflow unchanged.
+
+=== 4. Consumer migration from bundle-only docs
+
+Sites that pinned `antora-dark-mode` `ui-bundle.zip` as `ui.bundle` *and* use valentus:
+
+. Move `ui.bundle` to the valentus (or other theme) release bundle.
+. Add dark mode via npm overlay or ui-module (xref:ui-modules.adoc[UI Modules]).
+. Remove conflicting `head-meta.hbs` / `footer-scripts.hbs` overrides unless merged.
+
+=== 5. Catalog
+
+List npm as optional transport on link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs] with primary install = overlay, not `ui-bundle`.
+
+== Archive: bundle-only retirement (May 2026)
+
+The short-lived bundle-only policy is documented in link:../../../../changelog-details/2026-05-29 - docs recommend release bundle over npm.adoc[2026-05-29 changelog detail].
+Lessons retained:
+
+* Antora accepts *one* supplemental directory — merge overlays, do not list multiple folders.
+* `ui-bundle.zip` remains valid for Default UI + dark mode quick starts.
+
+See link:../../../../docs/maintainers/npm-republish-plan.md[`docs/maintainers/npm-republish-plan.md`] for the step-by-step maintainer checklist.

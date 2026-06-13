@@ -1,0 +1,29 @@
+# Example: dark mode as supplemental overlay (recommended for theme mixing)
+# ui.bundle stays your theme or Default UI; dark mode does not occupy the bundle slot.
+
+site:
+  title: My Documentation Site
+  # url: https://docs.example.com
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+      start_path: docs
+
+ui:
+  bundle:
+    # Your theme release bundle, or Antora Default UI:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  # npm: supplemental_files: ./node_modules/antora-dark-mode/supplemental-ui
+  # git:  supplemental_files: ./vendor/antora-dark-mode/supplemental-ui
+  supplemental_files: ./supplemental-ui-overrides   # merged dir: dark mode + your branding
+
+output:
+  dir: ./build/site
+
+asciidoc:
+  attributes:
+    source-highlighter: highlight.js
+    icons: font

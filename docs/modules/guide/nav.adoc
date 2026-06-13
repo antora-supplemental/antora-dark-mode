@@ -1,7 +1,8 @@
 .Documentation
 * xref:index.adoc[Getting Started]
 * xref:installation.adoc[Installation]
-* xref:npm-deprecation.adoc[npm deprecation]
+* xref:ui-modules.adoc[UI Modules]
+* xref:npm-distribution.adoc[npm distribution]
 * xref:configuration.adoc[Configuration]
 * xref:version-pinning.adoc[Version Pinning]
 * xref:customization.adoc[Customization]

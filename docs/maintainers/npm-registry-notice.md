@@ -1,5 +1,7 @@
 # npm: web deprecate + final patch publish (use both)
 
+> **Update (2026-06-13):** npm is being **restored** as overlay transport. See `npm-republish-plan.md` for the republish checklist. npm package rename is **not** supported — reuse `antora-dark-mode`.
+
 ## Already deprecated on npmjs.com?
 
 You cannot “double-deprecate.” Running `npm deprecate` again (CLI) or using the website **replaces** the message on the versions you target—it does not stack.

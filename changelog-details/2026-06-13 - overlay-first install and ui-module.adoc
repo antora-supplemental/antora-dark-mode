@@ -1,0 +1,9 @@
+= 2026-06-13 — overlay-first install and slot-based dark-mode ui-module
+:description: Changelog detail for antora-dark-mode unreleased overlay restore
+:navtitle: Overlay-first install restore
+
+* *Problem:* Bundle-only install docs (May 2026) made `antora-dark-mode` occupy `ui.bundle`, blocking theme mixing (e.g. valentus `ui-bundle` + dark mode).
+* *Fix:* Installation is overlay-first — theme owns `ui.bundle`; dark mode via `supplemental-ui` merge or `ui-modules/packages/dark-mode` slots.
+* *UI module:* `dark-mode` manifest uses `slots.head` (CSS + FOUC) and `slots.foot` (toggle JS); does not `replace` theme partials. Works with valentus `ui-orchestrator`.
+* *Convenience artifact:* GitHub `ui-bundle.zip` remains for Default UI quick starts only.
+* *npm:* Republish plan restores `antora-dark-mode` on npm as transport (`supplemental-ui` + `ui-modules`). Package rename on npm is not possible — reuse the existing name.

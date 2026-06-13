@@ -1,0 +1,31 @@
+# Example: dark mode via ui-orchestrator slots (theme + dark mode without partial collisions)
+# Requires @antora-supplemental/ui-orchestrator from valentus-theme (git path or npm).
+
+site:
+  title: My Documentation Site
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+      start_path: docs
+
+ui:
+  bundle:
+    # Theme owns ui.bundle — not antora-dark-mode
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    snapshot: true
+
+antora:
+  extensions:
+    - require: ./node_modules/valentus-theme/ui-modules/packages/orchestrator/lib/index.js
+      registry: ./node_modules/antora-dark-mode/ui-modules/registry.json5
+      recipe: dark-mode-only
+
+output:
+  dir: ./build/site
+
+asciidoc:
+  attributes:
+    source-highlighter: highlight.js
+    icons: font

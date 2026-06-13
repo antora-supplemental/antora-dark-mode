@@ -1,0 +1,25 @@
+# Convenience only: Default UI + dark mode pre-merged (quick start, no theme mixing).
+# For valentus or other themes, use antora-playbook-overlay.yml or antora-playbook-ui-modules.yml.
+
+site:
+  title: My Documentation Site
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+      start_path: docs
+
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/antora-dark-mode/releases/download/v1.2.0/ui-bundle.zip
+    snapshot: true
+  supplemental_files: ./supplemental-ui-overrides
+
+output:
+  dir: ./build/site
+
+asciidoc:
+  attributes:
+    source-highlighter: highlight.js
+    icons: font

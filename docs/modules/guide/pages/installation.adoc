@@ -1,56 +1,117 @@
 = Installation
 :navtitle: Installation
-:description: Install Antora Dark Theme using the release UI bundle.
+:description: Install Antora dark mode as a supplemental overlay or composable UI module.
 
-== Release UI bundle
-
-**Use `ui-bundle.zip` from GitHub Releases.** One pinned `ui.bundle.url`; Default UI and this theme are already merged.
+Dark mode is a *slipstream overlay* — it must **not** occupy `ui.bundle.url` when you mix it with another theme.
+Reserve `ui.bundle` for your theme (Default UI, valentus-theme, architexture-theme, a custom bundle, etc.).
 
 * link:https://github.com/antora-supplemental/antora-dark-mode/releases[GitHub Releases]
 * link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs portal] (extensions registry)
 
-The npm package is deprecated and unpublished—see xref:npm-deprecation.adoc[npm deprecation (lessons learned & migration)] if you still have it in a lockfile.
+== Choose an install path
 
-== Steps
+[cols="2,3,3", options="header"]
+|===
+| Path | When to use | `ui.bundle` owner
 
-. Configure `antora-playbook.yml`:
-+
+| xref:#overlay[Supplemental overlay] (recommended)
+| Any theme; one merged `supplemental_files` directory
+| Your theme or Default UI
+
+| xref:ui-modules.adoc[UI module + orchestrator]
+| Theme chrome from valentus + dark mode without partial collisions
+| Your theme release bundle
+
+| xref:#convenience-bundle[Convenience `ui-bundle.zip`]
+| Quick start on Default UI only — no other theme
+| antora-dark-mode (pre-merged)
+|===
+
+[[overlay]]
+== Supplemental overlay (recommended)
+
+Point `ui.bundle` at *your* theme or the Default UI, then layer dark mode via `supplemental_files`.
+
+=== From npm (transport)
+
+[source,bash]
+----
+pnpm add -D antora-dark-mode
+----
+
+Copy or merge into *one* supplemental directory (Antora allows only one):
+
+[source,bash]
+----
+# Example: vendor into site/supplemental-ui (merge with your branding)
+cp -r node_modules/antora-dark-mode/supplemental-ui/* site/supplemental-ui/
+----
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    snapshot: true
+  supplemental_files: ./site/supplemental-ui
+----
+
+WARNING: If your theme also ships `supplemental-ui` partials (`head-meta.hbs`, `footer-scripts.hbs`), merge dark mode hooks into those files or use xref:ui-modules.adoc[UI modules] instead of wholesale replacement.
+
+=== From git (vendor)
+
+[source,bash]
+----
+cp -r /path/to/antora-dark-mode/supplemental-ui ./site/supplemental-ui
+----
+
+Same playbook shape as npm — one `supplemental_files` directory on your theme bundle.
+
+=== Default UI only (no separate theme)
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./node_modules/antora-dark-mode/supplemental-ui
+----
+
+See link:../../examples/antora-playbook-overlay.yml[`examples/antora-playbook-overlay.yml`].
+
+[[convenience-bundle]]
+== Convenience `ui-bundle.zip` (Default UI only)
+
+GitHub Releases also ship a pre-merged zip (Default UI + dark mode).
+Use it only when you do **not** need another theme in `ui.bundle`:
+
 [source,yaml]
 ----
 ui:
   bundle:
     url: https://github.com/antora-supplemental/antora-dark-mode/releases/download/v1.2.0/ui-bundle.zip
     snapshot: true
-----
-
-For floating, line-pin, or Renovate strategies see xref:version-pinning.adoc[Version Pinning].
-
-. Optional branding—*one* override directory:
-+
-[source,yaml]
-----
   supplemental_files: ./supplemental-ui-overrides
 ----
 
-. Build:
-+
+Pin `releases/download/vX.Y.Z/ui-bundle.zip` in CI.
+For floating or Renovate strategies see xref:version-pinning.adoc[Version Pinning].
+
+See link:../../examples/antora-playbook-convenience-bundle.yml[`examples/antora-playbook-convenience-bundle.yml`].
+
+== Build
+
 [source,bash]
 ----
 antora antora-playbook.yml
 ----
 
-Pin `releases/download/vX.Y.Z/ui-bundle.zip` in CI.
-
-[[overrides-on-bundle]]
-=== Overrides
-
-Logo, favicon, or a few partials in a single directory (for example `supplemental-ui-overrides/`).
-See xref:configuration.adoc#virtual-supplemental-files[virtual supplemental files] for single-file entries.
-
-== Vendor `supplemental-ui` (forks)
-
-Copy `supplemental-ui/` from this repository into git for a maintained fork; use the Default UI bundle plus `supplemental_files: ./supplemental-ui`.
-
 == Verify
 
 Open the built site and use the sun/moon navbar toggle; preference should persist across pages.
+
+== npm status
+
+npm distribution is being restored as *overlay transport* only — not as a replacement for `ui.bundle`.
+See xref:npm-distribution.adoc[npm distribution] for the republish plan and registry constraints.

@@ -12,8 +12,8 @@ content:
       branches: HEAD
       start_path: docs
 
-# This repo builds the demo site from ./supplemental-ui (theme sources).
-# Consumers should use the release ui-bundle.zip — see README and examples/.
+# This repo's demo uses overlay install (Default UI + ./supplemental-ui).
+# Consumers: overlay on your theme bundle, ui-module slots, or convenience ui-bundle.zip — see README.
 ui:
   bundle:
     url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable

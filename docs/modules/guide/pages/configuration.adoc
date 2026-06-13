@@ -7,7 +7,20 @@ This page covers the configuration options available.
 
 == Playbook Configuration
 
-Sites use the *release UI bundle* only:
+Sites use dark mode as a *supplemental overlay* or slot-based ui-module on top of the consumer's `ui.bundle`.
+
+=== Overlay (typical)
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    snapshot: true
+  supplemental_files: ./site/supplemental-ui
+----
+
+=== Convenience bundle (Default UI only)
 
 [source,yaml]
 ----
@@ -24,7 +37,7 @@ Optional branding (one supplemental directory on top of the bundle):
   supplemental_files: ./supplemental-ui-overrides
 ----
 
-Former npm installs: xref:npm-deprecation.adoc[npm deprecation].
+Former npm installs: xref:npm-distribution.adoc[npm distribution].
 
 Pin strategy (exact vs. `latest` vs. rolling `v1.0` / Renovate): xref:version-pinning.adoc[Version Pinning].
 

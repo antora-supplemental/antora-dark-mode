@@ -1,0 +1,87 @@
+= UI Modules (slot-based dark mode)
+:navtitle: UI Modules
+:description: Install dark mode via the slot-based ui-module and ui-orchestrator — without occupying ui.bundle.
+:page-tags: ui-modules, orchestrator, dark-mode, slots
+
+The `dark-mode` module injects CSS, FOUC prevention, and the toggle script through *slots* (`head` / `foot`).
+It does **not** replace theme partials such as `head-meta.hbs` or `footer-scripts.hbs`.
+
+Use this path when your theme already owns supplemental partials (for example link:https://github.com/antora-supplemental/valentus-theme[valentus-theme]).
+
+== Prerequisites
+
+* An Antora UI bundle for your theme in `ui.bundle.url`
+* The `ui-orchestrator` extension from link:https://github.com/antora-supplemental/valentus-theme/tree/main/ui-modules/packages/orchestrator[valentus-theme `ui-modules/packages/orchestrator`]
+* This repository's `ui-modules/registry.json5` (via git path or `pnpm add -D antora-dark-mode`)
+
+== Install
+
+[source,bash]
+----
+pnpm add -D antora-dark-mode valentus-theme
+----
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    snapshot: true
+
+antora:
+  extensions:
+    - require: ./node_modules/valentus-theme/ui-modules/packages/orchestrator/lib/index.js
+      registry: ./node_modules/antora-dark-mode/ui-modules/registry.json5
+      recipe: dark-mode-only
+----
+
+The orchestrator prepends FOUC/CSS to `head-meta` and appends `site-dark-mode.js` to `footer-scripts` at build time.
+
+== Theme chrome + dark mode
+
+When you need *both* valentus chrome modules and dark mode, merge registries into one local `registry-merged.json5` (or enable modules from both catalogs in a single registry). The orchestrator accepts one `registry` path per extension instance.
+
+Example merged recipe (local file):
+
+[source,yaml]
+----
+antora:
+  extensions:
+    - require: ./node_modules/valentus-theme/ui-modules/packages/orchestrator/lib/index.js
+      registry: ./ui-modules/registry-merged.json5
+      modules:
+        - dark-mode
+        - header-chrome
+        - doc-layout
+----
+
+Copy module entries from `antora-dark-mode/ui-modules/registry.json5` and `valentus-theme/ui-modules/registry.json5`, adjusting `path` to `node_modules/...` locations.
+
+== Module manifest
+
+[source,json5]
+----
+{
+  id: "dark-mode",
+  slots: {
+    head: {
+      stylesheets: ["css/site-extra.css"],
+      scripts: ["scripts/fouc.js"],
+    },
+    foot: {
+      scripts: ["js/site-dark-mode.js"],
+    },
+  },
+  ui: { partials: { provide: [], replace: [] } },
+}
+----
+
+See link:../../../../ui-modules/README.adoc[`ui-modules/README.adoc`] and link:../../../../examples/antora-playbook-ui-modules.yml[`examples/antora-playbook-ui-modules.yml`].
+
+== Validate (maintainers)
+
+[source,bash]
+----
+pnpm ui-modules:sync
+pnpm ui-modules:validate
+----

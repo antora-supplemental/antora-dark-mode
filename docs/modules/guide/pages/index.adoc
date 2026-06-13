@@ -12,4 +12,4 @@ https://antora-supplemental.github.io/antora-dark-mode[Live demo on GitHub Pages
 
 == Install
 
-See xref:installation.adoc[Installation].
+See xref:installation.adoc[Installation], xref:ui-modules.adoc[UI Modules], and xref:npm-distribution.adoc[npm distribution].

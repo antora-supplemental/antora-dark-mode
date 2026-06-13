@@ -1,0 +1,18 @@
+// antora-dark-mode UI module catalog — dark mode overlay only (slot-based).
+{
+  schema: "1.0",
+  repository: "https://github.com/antora-supplemental/antora-dark-mode",
+  modules: [
+    {
+      id: "dark-mode",
+      path: "packages/dark-mode",
+      manifest: "ui-module.json5",
+    },
+  ],
+  recipes: [
+    {
+      id: "dark-mode-only",
+      path: "recipes/dark-mode-only.json5",
+    },
+  ],
+}

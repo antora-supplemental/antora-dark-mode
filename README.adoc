@@ -10,9 +10,10 @@
 
 A dark mode UI for {url-antora}[Antora] documentation sites.
 
-IMPORTANT: Use the GitHub release `ui-bundle.zip` (Default UI + this theme, pre-merged)—the habit every site should adopt.
-The npm package is *deprecated and unpublished*; see xref:npm-deprecation.adoc[npm deprecation (archive & lessons learned)].
-Discover this theme via link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs] (extensions registry).
+IMPORTANT: Install dark mode as a *supplemental overlay* or slot-based ui-module — it must not occupy `ui.bundle` when you mix it with another theme.
+GitHub `ui-bundle.zip` is a *convenience* artifact (Default UI + dark mode pre-merged) for quick starts only.
+npm is optional overlay transport — see xref:npm-distribution.adoc[npm distribution].
+Discover this extension via link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs] (extensions registry).
 
 image:https://img.shields.io/badge/license-MIT-blue.svg[License: MIT]
 image:https://img.shields.io/badge/antora-3.x-purple.svg[Antora 3.x]
@@ -41,16 +42,30 @@ If you'd like to see native dark mode support in Antora, please upvote the featu
 
 Your support helps the Antora team prioritize this feature!
 
-**Doc-site chrome** (mast, header layout, VCS icons) lives in the separate link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] project. Pair valentus supplemental UI on top of this dark-mode release bundle when you want both.
+**Doc-site chrome** (mast, header layout, VCS icons) lives in link:https://github.com/antora-supplemental/valentus-theme[valentus-theme].
+Pair dark mode as overlay or ui-module on top of the *valentus* `ui.bundle` — not the other way around.
 
 == Quick Start
 
-Use the release bundle. That is the correct default—not a mild preference.
+=== Overlay on your theme bundle (recommended)
 
-=== The habit: release `ui-bundle.zip`
+Reserve `ui.bundle` for your theme. Layer dark mode via one `supplemental_files` directory:
 
-Point your playbook at a pinned GitHub Release asset.
-You do not need this project on npm.
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    snapshot: true
+  supplemental_files: ./site/supplemental-ui   # merge antora-dark-mode supplemental-ui here
+----
+
+npm transport: `pnpm add -D antora-dark-mode` then copy from `node_modules/antora-dark-mode/supplemental-ui`.
+See xref:installation.adoc[Installation] and xref:ui-modules.adoc[UI Modules] (slot-based, no partial collisions).
+
+=== Convenience `ui-bundle.zip` (Default UI only)
+
+Pre-merged Default UI + dark mode — use only when you do not need another theme in `ui.bundle`:
 
 [source,yaml]
 ----
@@ -61,15 +76,11 @@ ui:
   supplemental_files: ./supplemental-ui-overrides
 ----
 
-Optional `supplemental_files` is *one* directory of your files (logo, favicon)—not a second theme install.
-
-Catalog and org docs: link:https://antora-supplemental.github.io/docs/[antora-supplemental.github.io/docs^].
-
-Former npm consumers: xref:npm-deprecation.adoc[npm deprecation].
-
 WARNING: Antora accepts *one* supplemental directory *or* virtual files—not multiple directories in YAML.
 
-See link:examples/antora-playbook.yml[`examples/antora-playbook.yml`].
+Examples: link:examples/antora-playbook-overlay.yml[`antora-playbook-overlay.yml`] (overlay), link:examples/antora-playbook-ui-modules.yml[`antora-playbook-ui-modules.yml`] (slots), link:examples/antora-playbook-convenience-bundle.yml[`antora-playbook-convenience-bundle.yml`] (Default UI quick start).
+
+Catalog and org docs: link:https://antora-supplemental.github.io/docs/[antora-supplemental.github.io/docs^].
 
 === Version pinning (production vs. rolling lines)
 
@@ -165,22 +176,26 @@ See the dark theme in action: {url-demo}[Live Demo]
 [source]
 ----
 antora-dark-mode/
-├── supplemental-ui/
-│   ├── css/
-│   │   └── site-extra.css      # Dark mode CSS styles
-│   ├── js/
-│   │   └── site-dark-mode.js   # Toggle button logic and theme management
-│   └── partials/
-│       ├── footer-scripts.hbs  # Loads the dark mode script
-│       └── head-meta.hbs       # Loads CSS and prevents FOUC
-├── docs/                        # Demo documentation
+├── supplemental-ui/             # Direct overlay install (merge into one supplemental dir)
+│   ├── css/site-extra.css
+│   ├── js/site-dark-mode.js
+│   └── partials/                # head-meta, footer-scripts (full replace — use ui-module for themes)
+├── ui-modules/                  # Slot-based dark-mode module (recommended with valentus orchestrator)
+│   ├── registry.json5
+│   ├── recipes/dark-mode-only.json5
+│   └── packages/dark-mode/
+│       ├── ui-module.json5
+│       └── ui/
+├── docs/
 │   ├── antora.yml              # Component descriptor
 │   └── modules/ROOT/
 │       ├── nav.adoc            # Navigation
 │       └── pages/              # Sample pages
 ├── examples/
-│   ├── antora-playbook.yml     # Example playbook (release bundle; recommended)
-│   └── antora-playbook-local.yml # Example playbook (bundle + optional overrides)
+│   ├── antora-playbook-overlay.yml           # Overlay on theme bundle (recommended)
+│   ├── antora-playbook-ui-modules.yml        # Slot-based via orchestrator
+│   ├── antora-playbook-convenience-bundle.yml # Default UI quick start
+│   └── antora-playbook.yml                   # Alias for convenience bundle
 ├── .github/workflows/
 │   └── deploy.yml              # GitHub Pages deployment
 ├── antora-playbook.yml         # Playbook for demo site (online / CI)
