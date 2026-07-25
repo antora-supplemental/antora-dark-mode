@@ -15,7 +15,7 @@ Sites use dark mode as a *supplemental overlay* or slot-based ui-module on top o
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
     snapshot: true
   supplemental_files: ./site/supplemental-ui
 ----

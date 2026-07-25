@@ -16,7 +16,7 @@ The monolithic **`antora-dark-theme`** package was split and renamed:
 ```yaml
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
     snapshot: true
   supplemental_files: ./supplemental-ui-overrides   # optional branding
 ```

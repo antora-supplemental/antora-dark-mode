@@ -13,7 +13,7 @@ content:
 ui:
   bundle:
     # Theme owns ui.bundle — not antora-dark-mode
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
     snapshot: true
 
 antora:

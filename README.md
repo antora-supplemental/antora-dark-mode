@@ -15,7 +15,7 @@ pnpm add -D antora-dark-mode
 ```yaml
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v1/ui-bundle.zip
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
     snapshot: true
   supplemental_files: ./site/supplemental-ui   # merge node_modules/antora-dark-mode/supplemental-ui
 ```
