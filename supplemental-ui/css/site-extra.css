@@ -820,17 +820,18 @@ html.dark-theme .videoblock {
   background-color: transparent;
 }
 
-/* Left nav insets: match toolbar .home-link (margin = toolbar-height / 4) so tree lines up
-   with the breadcrumb row home control on wide layouts (stock default UI is 0.75rem).
-   Skip .nav-tree-only / .adt-nav-tree-only: horizontal inset is set in site-doc-layout.css
-   on .nav-panel-menu + vertical-only padding on the nav (avoids cascade conflicts). */
+/* Left nav padding: match the default Antora UI inset (0.75rem) so the tree
+   aligns with the breadcrumb home control on wide layouts.
+   Skip .nav-tree-only / .adt-nav-tree-only: horizontal inset is set in
+   site-doc-layout.css on .nav-panel-menu + vertical-only padding on the
+   nav (avoids cascade conflicts). */
 .nav-menu:not(.nav-tree-only):not(.adt-nav-tree-only) {
-  padding-left: calc(var(--toolbar-height) / 4);
+  padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
 
 .nav-panel-explore .components {
-  padding-left: calc(var(--toolbar-height) / 4);
+  padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
 
@@ -850,55 +851,6 @@ html.dark-theme .videoblock {
   word-wrap: break-word;
   overflow-wrap: break-word;
   padding-left: calc(var(--nav-line-height) * 1em + 0.15em);
-}
-
-/* Sticky left nav: keep viewport-height column so the project switcher stays at the
-   bottom of the visible nav tree (in-flow stretch pushed it to the document bottom). */
-@media screen and (min-width: 1024px) {
-  .nav-container {
-    align-self: flex-start !important;
-    min-height: 0 !important;
-  }
-
-  .nav {
-    position: sticky !important;
-    top: var(--navbar-height) !important;
-    height: var(--nav-height--desktop) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: 0 !important;
-  }
-
-  .nav .panels {
-    display: flex !important;
-    flex-direction: column !important;
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
-    height: 100% !important;
-    position: relative !important;
-  }
-
-  .nav-panel-menu {
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
-    height: auto !important;
-    overflow-y: auto !important;
-  }
-
-  /* Project switcher drawer: flex footer within the sticky nav column. */
-  .nav-panel-explore {
-    position: static !important;
-    flex: 0 0 auto !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    width: 100% !important;
-  }
-
-  .nav-panel-explore:not(:first-child) {
-    max-height: var(--nav-panel-explore-height) !important;
-  }
 }
 
 /* Bundle default uses overflow-y: scroll on nav panels; prefer scrollbar only when needed. */
