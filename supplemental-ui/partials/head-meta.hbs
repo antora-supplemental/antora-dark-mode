@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{{uiRootPath}}}/css/site-extra.css">
+<link rel="stylesheet" href="{{{uiRootPath}}}/css/site-dark-mode-properties.css">
 <meta name="dm-navbar" content="{{or (lookup site.keys 'dark_mode_navbar') 'dark'}}">
 <script>
 (function () {
@@ -6,6 +7,7 @@
   if (dmNavbar && dmNavbar.content) {
     document.documentElement.dataset.dmNavbar = dmNavbar.content
   }
+  const html = document.documentElement
   const MODE = 'antora-theme-mode'
   const LEGACY = 'antora-theme'
   function mode() {
@@ -15,12 +17,18 @@
     if (o === 'dark' || o === 'light') return o
     return 'system'
   }
-  function isDark() {
-    const m = mode()
-    if (m === 'dark') return true
-    if (m === 'light') return false
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
+  const m = mode()
+  if (m === 'dark') {
+    html.style.colorScheme = 'dark'
+    html.dataset.dm = 'dark'
+  } else if (m === 'light') {
+    html.style.colorScheme = 'light'
+    html.dataset.dm = 'light'
+  } else {
+    /* system — let the CSS default (color-scheme: light dark) handle it */
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.dataset.dm = 'dark'
+    }
   }
-  if (isDark()) document.documentElement.classList.add('dark-theme')
 })()
 </script>

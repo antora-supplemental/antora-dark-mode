@@ -10,7 +10,7 @@
   conflicts: [],
   slots: {
     head: {
-      stylesheets: ["css/site-extra.css"],
+      stylesheets: ["css/site-dark-mode-properties.css", "css/site-extra.css"],
       scripts: ["scripts/fouc.js"],
     },
     foot: {

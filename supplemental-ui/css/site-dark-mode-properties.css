@@ -1,0 +1,495 @@
+/* ==========================================================================
+   Dark Mode CSS Custom Properties
+   Uses light-dark() with fallbacks for older browsers.
+   ========================================================================== */
+
+/* ── Layer 1: Light defaults ───────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+
+  /* Page / body */
+  --dm-bg-page:           #ffffff;
+  --dm-text-primary:      #555555;
+  --dm-text-heading:      #333333;
+  --dm-text-code-inline:  #c7254e;
+  --dm-text-code-inline-bg: #f9f2f4;
+
+  /* Links */
+  --dm-link:              #228be6;
+  --dm-link-hover:        #1971c2;
+
+  /* Navbar */
+  --dm-bg-navbar:         #2c3e50;
+  --dm-text-navbar:       #ffffff;
+  --dm-bg-navbar-hover:   #1a252f;
+  --dm-bg-navbar-dropdown:#ffffff;
+  --dm-bg-button:         rgba(0,0,0,0.1);
+  --dm-bg-button-hover:   rgba(0,0,0,0.2);
+  --dm-text-button:       #ffffff;
+
+  /* Navigation panels */
+  --dm-bg-elevated:       #f5f5f5;
+  --dm-text-elevated:     #555555;
+
+  /* TOC */
+  --dm-toc-text:          #555555;
+  --dm-toc-text-heading:  #333333;
+
+  /* Blocks */
+  --dm-bg-block:          #f5f5f5;
+  --dm-bg-block-alt:      #f5f5f5;
+  --dm-bg-codeblock:      #f5f5f5;
+  --dm-text-codeblock:    #333333;
+
+  /* Code blocks */
+  --dm-bg-codeblock-alt:  #f5f5f5;
+  --dm-bg-codeblock-inner:#f5f5f5;
+
+  /* Admonitions */
+  --dm-bg-admonition:     #f5f5f5;
+  --dm-bg-admonition-tip: #ebfbee;
+  --dm-bg-admonition-note:#e7f5ff;
+  --dm-bg-admonition-warning: #fff9db;
+  --dm-bg-admonition-caution: #fff5f5;
+  --dm-bg-admonition-important: #f8f0fc;
+
+  /* Quotes */
+  --dm-text-quote:        #6c757d;
+  --dm-border-quote:      #228be6;
+
+  /* Tables */
+  --dm-bg-table-stripe:   #f8f9fa;
+
+  /* Footer */
+  --dm-bg-footer:         #f5f5f5;
+  --dm-text-footer:       #6c757d;
+  --dm-text-footer-link:  #333333;
+
+  /* Form / search */
+  --dm-bg-input:          #ffffff;
+  --dm-text-input:        #333333;
+  --dm-outline-focus:     #228be6;
+
+  /* Search results */
+  --dm-bg-search-dataset: #ffffff;
+  --dm-text-search-header:#333333;
+  --dm-text-search-title: #555555;
+  --dm-text-search-hit:   #6c757d;
+  --dm-bg-search-hover:   rgba(34,139,230,0.1);
+  --dm-text-search-highlight: #228be6;
+  --dm-bg-search-highlight: rgba(34,139,230,0.15);
+  --dm-text-search-section:#333333;
+
+  /* Borders */
+  --dm-border:            #dee2e6;
+  --dm-border-light:      #e0e0e0;
+
+  /* Nav icons (mask color) */
+  --dm-icon-color:        #555555;
+
+  /* Component / version selector */
+  --dm-bg-version:        #e9ecef;
+  --dm-text-version:      #333333;
+  --dm-bg-version-hover:  #dee2e6;
+  --dm-text-version-hover:#000000;
+  --dm-bg-current:        #ffffff;
+  --dm-text-current:      #228be6;
+
+  /* Tabs */
+  --dm-bg-tabs-header:    #f5f5f5;
+  --dm-bg-tab:            #ffffff;
+  --dm-bg-tab-active:     #ffffff;
+  --dm-text-tab-active:   #333333;
+  --dm-bg-tab-hover:      #f5f5f5;
+  --dm-bg-tab-content:    #ffffff;
+
+  /* kbd / button macros */
+  --dm-bg-kbd:            #f8f9fa;
+  --dm-text-kbd:          #333333;
+  --dm-border-kbd:        #dee2e6;
+  --dm-bg-btn:            #f8f9fa;
+  --dm-border-btn:        #dee2e6;
+
+  /* Icon roles */
+  --dm-icon-red:          #e03131;
+  --dm-icon-green:        #2f9e44;
+  --dm-icon-yellow:       #f08c00;
+  --dm-icon-blue:         #1971c2;
+
+  /* Toggle / VCS */
+  --dm-bg-toggle-hover:   rgba(0,0,0,0.07);
+  --dm-bg-vcs-hover:      rgba(0,0,0,0.1);
+
+  /* Doc tiles */
+  --dm-tile-border:       #dee2e6;
+  --dm-tile-bg:           #ffffff;
+  --dm-tile-shadow:       0 1px 2px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.08);
+  --dm-tile-shadow-hover: 0 4px 8px -2px rgba(0,0,0,0.1), 0 12px 24px -4px rgba(0,0,0,0.12);
+
+  --dm-hljs-keyword:      #d63384;
+  --dm-hljs-string:       #2f9e44;
+  --dm-hljs-comment:      #868e96;
+  --dm-hljs-number:       #e67700;
+  --dm-hljs-builtin:      #e67700;
+  --dm-hljs-function:     #1971c2;
+
+  /* Menus */
+  --dm-text-menuseq:      #555555;
+  --dm-text-menuseq-caret:#6c757d;
+
+  /* Math / STEM */
+  --dm-text-stem:         #333333;
+
+  /* Videoblock */
+  --dm-bg-video:          transparent;
+}
+
+/* ── Layer 2a: Dark fallback via OS preference (older browsers) ──────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dm-bg-page:           #1a1b1e;
+    --dm-text-primary:      #c1c2c5;
+    --dm-text-heading:      #ffffff;
+    --dm-text-code-inline:  #ff6b6b;
+    --dm-text-code-inline-bg: #2c2e33;
+
+    --dm-link:              #4dabf7;
+    --dm-link-hover:        #74c0fc;
+
+    --dm-bg-navbar:         #141517;
+    --dm-text-navbar:       #f1f3f5;
+    --dm-bg-navbar-hover:   #1f2125;
+    --dm-bg-navbar-dropdown:#25262b;
+    --dm-bg-button:         #2c2e33;
+    --dm-bg-button-hover:   #3b3d42;
+    --dm-text-button:       #f1f3f5;
+
+    --dm-bg-elevated:       #25262b;
+    --dm-text-elevated:     #c1c2c5;
+
+    --dm-toc-text:          #c1c2c5;
+    --dm-toc-text-heading:  #ffffff;
+
+    --dm-bg-block:          #25262b;
+    --dm-bg-block-alt:      #1f2125;
+    --dm-bg-codeblock:      #141517;
+    --dm-text-codeblock:    #e9ecef;
+
+    --dm-bg-codeblock-alt:  #141517;
+    --dm-bg-codeblock-inner:#141517;
+
+    --dm-bg-admonition:     #25262b;
+    --dm-bg-admonition-tip: #1a2a1a;
+    --dm-bg-admonition-note:#1a1a2a;
+    --dm-bg-admonition-warning: #2a2a1a;
+    --dm-bg-admonition-caution: #2a1a1a;
+    --dm-bg-admonition-important: #2a1a2a;
+
+    --dm-text-quote:        #adb5bd;
+    --dm-border-quote:      #4dabf7;
+
+    --dm-bg-table-stripe:   #1f2125;
+
+    --dm-bg-footer:         #141517;
+    --dm-text-footer:       #909296;
+    --dm-text-footer-link:  #f1f3f5;
+
+    --dm-bg-input:          #2c2e33;
+    --dm-text-input:        #ffffff;
+    --dm-outline-focus:     #339af0;
+
+    --dm-bg-search-dataset: #25262b;
+    --dm-text-search-header:#f1f3f5;
+    --dm-text-search-title: #c1c2c5;
+    --dm-text-search-hit:   #909296;
+    --dm-bg-search-hover:   rgba(77,171,247,0.1);
+    --dm-text-search-highlight: #74c0fc;
+    --dm-bg-search-highlight: rgba(77,171,247,0.15);
+    --dm-text-search-section:#f1f3f5;
+
+    --dm-border:            #373a40;
+    --dm-border-light:      #373a40;
+
+    --dm-icon-color:        #c1c2c5;
+
+    --dm-bg-version:        #2c2e33;
+    --dm-text-version:      #e9ecef;
+    --dm-bg-version-hover:  #3b3d42;
+    --dm-text-version-hover:#ffffff;
+    --dm-bg-current:        #141517;
+    --dm-text-current:      #4dabf7;
+
+    --dm-bg-tabs-header:    #1f2125;
+    --dm-bg-tab:            #25262b;
+    --dm-bg-tab-active:     #141517;
+    --dm-text-tab-active:   #ffffff;
+    --dm-bg-tab-hover:      #2c2e33;
+    --dm-bg-tab-content:    #141517;
+
+    --dm-bg-kbd:            #2c2e33;
+    --dm-text-kbd:          #e9ecef;
+    --dm-border-kbd:        #495057;
+    --dm-bg-btn:            #2c2e33;
+    --dm-border-btn:        #495057;
+
+    --dm-icon-red:          #ff6b6b;
+    --dm-icon-green:        #51cf66;
+    --dm-icon-yellow:       #fcc419;
+    --dm-icon-blue:         #4dabf7;
+
+    --dm-bg-toggle-hover:   #2c2e33;
+    --dm-bg-vcs-hover:      #1f2125;
+
+    --dm-tile-border:       #3d4048;
+    --dm-tile-bg:           #1f2125;
+    --dm-tile-shadow:       0 1px 2px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.45);
+    --dm-tile-shadow-hover: 0 6px 12px rgba(0,0,0,0.4), 0 14px 32px rgba(0,0,0,0.5);
+
+    --dm-hljs-keyword:      #c678dd;
+    --dm-hljs-string:       #98c379;
+    --dm-hljs-comment:      #5c6370;
+    --dm-hljs-number:       #d19a66;
+    --dm-hljs-builtin:      #e6c07b;
+    --dm-hljs-function:     #61afef;
+
+    --dm-text-menuseq:      #c1c2c5;
+    --dm-text-menuseq-caret:#909296;
+
+    --dm-text-stem:         #e9ecef;
+
+    --dm-bg-video:          transparent;
+  }
+}
+
+/* ── Layer 2b: Dark fallback via explicit toggle (older browsers) ────── */
+html[data-dm="dark"] {
+  --dm-bg-page:           #1a1b1e;
+  --dm-text-primary:      #c1c2c5;
+  --dm-text-heading:      #ffffff;
+  --dm-text-code-inline:  #ff6b6b;
+  --dm-text-code-inline-bg: #2c2e33;
+
+  --dm-link:              #4dabf7;
+  --dm-link-hover:        #74c0fc;
+
+  --dm-bg-navbar:         #141517;
+  --dm-text-navbar:       #f1f3f5;
+  --dm-bg-navbar-hover:   #1f2125;
+  --dm-bg-navbar-dropdown:#25262b;
+  --dm-bg-button:         #2c2e33;
+  --dm-bg-button-hover:   #3b3d42;
+  --dm-text-button:       #f1f3f5;
+
+  --dm-bg-elevated:       #25262b;
+  --dm-text-elevated:     #c1c2c5;
+
+  --dm-toc-text:          #c1c2c5;
+  --dm-toc-text-heading:  #ffffff;
+
+  --dm-bg-block:          #25262b;
+  --dm-bg-block-alt:      #1f2125;
+  --dm-bg-codeblock:      #141517;
+  --dm-text-codeblock:    #e9ecef;
+
+  --dm-bg-codeblock-alt:  #141517;
+  --dm-bg-codeblock-inner:#141517;
+
+  --dm-bg-admonition:     #25262b;
+  --dm-bg-admonition-tip: #1a2a1a;
+  --dm-bg-admonition-note:#1a1a2a;
+  --dm-bg-admonition-warning: #2a2a1a;
+  --dm-bg-admonition-caution: #2a1a1a;
+  --dm-bg-admonition-important: #2a1a2a;
+
+  --dm-text-quote:        #adb5bd;
+  --dm-border-quote:      #4dabf7;
+
+  --dm-bg-table-stripe:   #1f2125;
+
+  --dm-bg-footer:         #141517;
+  --dm-text-footer:       #909296;
+  --dm-text-footer-link:  #f1f3f5;
+
+  --dm-bg-input:          #2c2e33;
+  --dm-text-input:        #ffffff;
+  --dm-outline-focus:     #339af0;
+
+  --dm-bg-search-dataset: #25262b;
+  --dm-text-search-header:#f1f3f5;
+  --dm-text-search-title: #c1c2c5;
+  --dm-text-search-hit:   #909296;
+  --dm-bg-search-hover:   rgba(77,171,247,0.1);
+  --dm-text-search-highlight: #74c0fc;
+  --dm-bg-search-highlight: rgba(77,171,247,0.15);
+  --dm-text-search-section:#f1f3f5;
+
+  --dm-border:            #373a40;
+  --dm-border-light:      #373a40;
+
+  --dm-icon-color:        #c1c2c5;
+
+  --dm-bg-version:        #2c2e33;
+  --dm-text-version:      #e9ecef;
+  --dm-bg-version-hover:  #3b3d42;
+  --dm-text-version-hover:#ffffff;
+  --dm-bg-current:        #141517;
+  --dm-text-current:      #4dabf7;
+
+  --dm-bg-tabs-header:    #1f2125;
+  --dm-bg-tab:            #25262b;
+  --dm-bg-tab-active:     #141517;
+  --dm-text-tab-active:   #ffffff;
+  --dm-bg-tab-hover:      #2c2e33;
+  --dm-bg-tab-content:    #141517;
+
+  --dm-bg-kbd:            #2c2e33;
+  --dm-text-kbd:          #e9ecef;
+  --dm-border-kbd:        #495057;
+  --dm-bg-btn:            #2c2e33;
+  --dm-border-btn:        #495057;
+
+  --dm-icon-red:          #ff6b6b;
+  --dm-icon-green:        #51cf66;
+  --dm-icon-yellow:       #fcc419;
+  --dm-icon-blue:         #4dabf7;
+
+  --dm-bg-toggle-hover:   #2c2e33;
+  --dm-bg-vcs-hover:      #1f2125;
+
+  --dm-tile-border:       #3d4048;
+  --dm-tile-bg:           #1f2125;
+  --dm-tile-shadow:       0 1px 2px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.45);
+  --dm-tile-shadow-hover: 0 6px 12px rgba(0,0,0,0.4), 0 14px 32px rgba(0,0,0,0.5);
+
+  --dm-hljs-keyword:      #c678dd;
+  --dm-hljs-string:       #98c379;
+  --dm-hljs-comment:      #5c6370;
+  --dm-hljs-number:       #d19a66;
+  --dm-hljs-builtin:      #e6c07b;
+  --dm-hljs-function:     #61afef;
+
+  --dm-text-menuseq:      #c1c2c5;
+  --dm-text-menuseq-caret:#909296;
+
+  --dm-text-stem:         #e9ecef;
+
+  --dm-bg-video:          transparent;
+}
+
+/* ── Layer 3: Modern browsers with light-dark() support ──────────────── */
+@supports (color: light-dark(#000, #fff)) {
+  :root {
+    color-scheme: light dark;
+
+    --dm-bg-page:           light-dark(#ffffff, #1a1b1e);
+    --dm-text-primary:      light-dark(#555555, #c1c2c5);
+    --dm-text-heading:      light-dark(#333333, #ffffff);
+    --dm-text-code-inline:  light-dark(#c7254e, #ff6b6b);
+    --dm-text-code-inline-bg: light-dark(#f9f2f4, #2c2e33);
+
+    --dm-link:              light-dark(#228be6, #4dabf7);
+    --dm-link-hover:        light-dark(#1971c2, #74c0fc);
+
+    --dm-bg-navbar:         light-dark(#2c3e50, #141517);
+    --dm-text-navbar:       light-dark(#ffffff, #f1f3f5);
+    --dm-bg-navbar-hover:   light-dark(#1a252f, #1f2125);
+    --dm-bg-navbar-dropdown:light-dark(#ffffff, #25262b);
+    --dm-bg-button:         light-dark(rgba(0,0,0,0.1), #2c2e33);
+    --dm-bg-button-hover:   light-dark(rgba(0,0,0,0.2), #3b3d42);
+    --dm-text-button:       light-dark(#ffffff, #f1f3f5);
+
+    --dm-bg-elevated:       light-dark(#f5f5f5, #25262b);
+    --dm-text-elevated:     light-dark(#555555, #c1c2c5);
+
+    --dm-toc-text:          light-dark(#555555, #c1c2c5);
+    --dm-toc-text-heading:  light-dark(#333333, #ffffff);
+
+    --dm-bg-block:          light-dark(#f5f5f5, #25262b);
+    --dm-bg-block-alt:      light-dark(#f5f5f5, #1f2125);
+    --dm-bg-codeblock:      light-dark(#f5f5f5, #141517);
+    --dm-text-codeblock:    light-dark(#333333, #e9ecef);
+
+    --dm-bg-codeblock-alt:  light-dark(#f5f5f5, #141517);
+    --dm-bg-codeblock-inner:light-dark(#f5f5f5, #141517);
+
+    --dm-bg-admonition:     light-dark(#f5f5f5, #25262b);
+    --dm-bg-admonition-tip: light-dark(#ebfbee, #1a2a1a);
+    --dm-bg-admonition-note:light-dark(#e7f5ff, #1a1a2a);
+    --dm-bg-admonition-warning: light-dark(#fff9db, #2a2a1a);
+    --dm-bg-admonition-caution: light-dark(#fff5f5, #2a1a1a);
+    --dm-bg-admonition-important: light-dark(#f8f0fc, #2a1a2a);
+
+    --dm-text-quote:        light-dark(#6c757d, #adb5bd);
+    --dm-border-quote:      light-dark(#228be6, #4dabf7);
+
+    --dm-bg-table-stripe:   light-dark(#f8f9fa, #1f2125);
+
+    --dm-bg-footer:         light-dark(#f5f5f5, #141517);
+    --dm-text-footer:       light-dark(#6c757d, #909296);
+    --dm-text-footer-link:  light-dark(#333333, #f1f3f5);
+
+    --dm-bg-input:          light-dark(#ffffff, #2c2e33);
+    --dm-text-input:        light-dark(#333333, #ffffff);
+    --dm-outline-focus:     light-dark(#228be6, #339af0);
+
+    --dm-bg-search-dataset: light-dark(#ffffff, #25262b);
+    --dm-text-search-header:light-dark(#333333, #f1f3f5);
+    --dm-text-search-title: light-dark(#555555, #c1c2c5);
+    --dm-text-search-hit:   light-dark(#6c757d, #909296);
+    --dm-bg-search-hover:   light-dark(rgba(34,139,230,0.1), rgba(77,171,247,0.1));
+    --dm-text-search-highlight: light-dark(#228be6, #74c0fc);
+    --dm-bg-search-highlight: light-dark(rgba(34,139,230,0.15), rgba(77,171,247,0.15));
+    --dm-text-search-section: light-dark(#333333, #f1f3f5);
+
+    --dm-border:            light-dark(#dee2e6, #373a40);
+    --dm-border-light:      light-dark(#e0e0e0, #373a40);
+
+    --dm-icon-color:        light-dark(#555555, #c1c2c5);
+
+    --dm-bg-version:        light-dark(#e9ecef, #2c2e33);
+    --dm-text-version:      light-dark(#333333, #e9ecef);
+    --dm-bg-version-hover:  light-dark(#dee2e6, #3b3d42);
+    --dm-text-version-hover:light-dark(#000000, #ffffff);
+    --dm-bg-current:        light-dark(#ffffff, #141517);
+    --dm-text-current:      light-dark(#228be6, #4dabf7);
+
+    --dm-bg-tabs-header:    light-dark(#f5f5f5, #1f2125);
+    --dm-bg-tab:            light-dark(#ffffff, #25262b);
+    --dm-bg-tab-active:     light-dark(#ffffff, #141517);
+    --dm-text-tab-active:   light-dark(#333333, #ffffff);
+    --dm-bg-tab-hover:      light-dark(#f5f5f5, #2c2e33);
+    --dm-bg-tab-content:    light-dark(#ffffff, #141517);
+
+    --dm-bg-kbd:            light-dark(#f8f9fa, #2c2e33);
+    --dm-text-kbd:          light-dark(#333333, #e9ecef);
+    --dm-border-kbd:        light-dark(#dee2e6, #495057);
+    --dm-bg-btn:            light-dark(#f8f9fa, #2c2e33);
+    --dm-border-btn:        light-dark(#dee2e6, #495057);
+
+    --dm-icon-red:          light-dark(#e03131, #ff6b6b);
+    --dm-icon-green:        light-dark(#2f9e44, #51cf66);
+    --dm-icon-yellow:       light-dark(#f08c00, #fcc419);
+    --dm-icon-blue:         light-dark(#1971c2, #4dabf7);
+
+    --dm-bg-toggle-hover:   light-dark(rgba(0,0,0,0.07), #2c2e33);
+    --dm-bg-vcs-hover:      light-dark(rgba(0,0,0,0.1), #1f2125);
+
+    --dm-tile-border:       light-dark(#dee2e6, #3d4048);
+    --dm-tile-bg:           light-dark(#ffffff, #1f2125);
+    /* Note: box-shadows with commas cannot use light-dark(); handled by fallback layers above */
+
+    --dm-hljs-keyword:      light-dark(#d63384, #c678dd);
+    --dm-hljs-string:       light-dark(#2f9e44, #98c379);
+    --dm-hljs-comment:      light-dark(#868e96, #5c6370);
+    --dm-hljs-number:       light-dark(#e67700, #d19a66);
+    --dm-hljs-builtin:      light-dark(#e67700, #e6c07b);
+    --dm-hljs-function:     light-dark(#1971c2, #61afef);
+
+    --dm-text-menuseq:      light-dark(#555555, #c1c2c5);
+    --dm-text-menuseq-caret:light-dark(#6c757d, #909296);
+
+    --dm-text-stem:         light-dark(#333333, #e9ecef);
+
+    --dm-bg-video:          light-dark(transparent, transparent);
+  }
+}
