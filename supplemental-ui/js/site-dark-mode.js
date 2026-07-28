@@ -3,7 +3,6 @@
   const LEGACY_KEY = "antora-theme";
   const SYSTEM_SNAPSHOT_KEY = "antora-theme-system-snapshot";
   const html = document.documentElement;
-  const darkThemeClass = "dark-theme";
   const systemMq = window.matchMedia("(prefers-color-scheme: dark)");
 
   function systemPreferenceLabel() {
@@ -31,18 +30,36 @@
     return "system";
   }
 
+  function applyColorScheme(useDark) {
+    if (useDark) {
+      html.style.colorScheme = "dark";
+      html.dataset.dm = "dark";
+    } else {
+      html.style.colorScheme = "light";
+      html.dataset.dm = "light";
+    }
+  }
+
+  function clearColorScheme() {
+    html.style.colorScheme = "";
+    html.removeAttribute("data-dm");
+  }
+
   function applyVisibleTheme() {
     const mode = getMode();
     let useDark;
     if (mode === "system") {
       useDark = systemMq.matches;
+      if (useDark) {
+        html.dataset.dm = "dark";
+      } else {
+        html.removeAttribute("data-dm");
+      }
+      /* system mode: don't set explicit colorScheme — let CSS color-scheme: light dark handle it */
+      html.style.colorScheme = "";
     } else {
       useDark = mode === "dark";
-    }
-    if (useDark) {
-      html.classList.add(darkThemeClass);
-    } else {
-      html.classList.remove(darkThemeClass);
+      applyColorScheme(useDark);
     }
     updateToggleLabel();
   }
@@ -97,7 +114,11 @@
   }
 
   function isDark() {
-    return html.classList.contains(darkThemeClass);
+    const cs = html.style.colorScheme;
+    if (cs === "dark") return true;
+    if (cs === "light") return false;
+    /* system mode — rely on computed color scheme */
+    return html.dataset.dm === "dark";
   }
 
   function updateToggleLabel() {

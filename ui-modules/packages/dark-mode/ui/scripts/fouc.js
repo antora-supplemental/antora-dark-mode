@@ -1,22 +1,29 @@
 (function () {
-  const dmNavbar = document.querySelector('meta[name="dm-navbar"]')
+  var dmNavbar = document.querySelector('meta[name="dm-navbar"]')
   if (dmNavbar && dmNavbar.content) {
     document.documentElement.dataset.dmNavbar = dmNavbar.content
   }
-  const MODE = 'antora-theme-mode'
-  const LEGACY = 'antora-theme'
+  var html = document.documentElement
+  var MODE = 'antora-theme-mode'
+  var LEGACY = 'antora-theme'
   function mode() {
-    const m = localStorage.getItem(MODE)
+    var m = localStorage.getItem(MODE)
     if (m === 'system' || m === 'dark' || m === 'light') return m
-    const o = localStorage.getItem(LEGACY)
+    var o = localStorage.getItem(LEGACY)
     if (o === 'dark' || o === 'light') return o
     return 'system'
   }
-  function isDark() {
-    const m = mode()
-    if (m === 'dark') return true
-    if (m === 'light') return false
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
+  var m = mode()
+  if (m === 'dark') {
+    html.style.colorScheme = 'dark'
+    html.dataset.dm = 'dark'
+  } else if (m === 'light') {
+    html.style.colorScheme = 'light'
+    html.dataset.dm = 'light'
+  } else {
+    /* system — let the CSS default (color-scheme: light dark) handle it */
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.dataset.dm = 'dark'
+    }
   }
-  if (isDark()) document.documentElement.classList.add('dark-theme')
 })()

@@ -1,395 +1,402 @@
-/* Dark mode styles for Antora default UI */
-html.dark-theme,
-html.dark-theme body {
-  background-color: #1a1b1e;
-  color: #c1c2c5;
+/* Dark mode styles for Antora default UI — uses CSS variables from site-dark-mode-properties.css */
+
+/* Page body */
+body {
+  background-color: var(--dm-bg-page);
+  color: var(--dm-text-primary);
 }
 
-html.dark-theme a {
-  color: #4dabf7;
+a {
+  color: var(--dm-link);
 }
 
-html.dark-theme a:hover,
-html.dark-theme a:focus {
-  color: #74c0fc;
+a:hover,
+a:focus {
+  color: var(--dm-link-hover);
 }
 
-html.dark-theme .navbar {
-  background-color: #141517;
-  color: #f1f3f5;
+/* Navbar */
+.navbar {
+  background-color: var(--dm-bg-navbar);
+  color: var(--dm-text-navbar);
 }
 
-html.dark-theme .navbar a,
-html.dark-theme .navbar .navbar-item,
-html.dark-theme .navbar .navbar-link {
-  color: #f1f3f5;
+.navbar a,
+.navbar .navbar-item,
+.navbar .navbar-link {
+  color: var(--dm-text-navbar);
 }
 
-html.dark-theme .navbar .navbar-item:hover,
-html.dark-theme .navbar .navbar-link:hover {
-  background-color: #1f2125;
+.navbar .navbar-item:hover,
+.navbar .navbar-link:hover {
+  background-color: var(--dm-bg-navbar-hover);
 }
 
 /* Topbar nav area matches navbar for consistent strip (like light theme) */
-html.dark-theme .navbar .navbar-menu {
-  background-color: #141517;
-  border-color: #373a40;
+.navbar .navbar-menu {
+  background-color: var(--dm-bg-navbar);
+  border-color: var(--dm-border);
 }
 
 /* Dropdown panel distinct from navbar so it reads as a menu */
-html.dark-theme .navbar .navbar-dropdown {
-  background-color: #25262b;
-  border-color: #373a40;
+.navbar .navbar-dropdown {
+  background-color: var(--dm-bg-navbar-dropdown);
+  border-color: var(--dm-border);
 }
 
 /* Dropdown item hover same as regular navbar item hover */
-html.dark-theme .navbar .navbar-dropdown .navbar-item:hover {
-  background-color: #1f2125;
+.navbar .navbar-dropdown .navbar-item:hover {
+  background-color: var(--dm-bg-navbar-hover);
 }
 
-html.dark-theme .navbar .button,
-html.dark-theme .navbar .button.is-primary {
-  background-color: #2c2e33;
-  border-color: #373a40;
-  color: #f1f3f5;
+.navbar .button,
+.navbar .button.is-primary {
+  background-color: var(--dm-bg-button);
+  border-color: var(--dm-border);
+  color: var(--dm-text-button);
 }
 
-html.dark-theme .navbar .button:hover,
-html.dark-theme .navbar .button.is-primary:hover {
-  background-color: #3b3d42;
+.navbar .button:hover,
+.navbar .button.is-primary:hover {
+  background-color: var(--dm-bg-button-hover);
 }
 
-html.dark-theme .nav,
-html.dark-theme .nav-panel-menu,
-html.dark-theme .nav-panel-explore,
-html.dark-theme .toolbar {
-  background-color: #25262b;
-  border-color: #373a40;
-  color: #c1c2c5;
+/* Navigation panels */
+.nav,
+.nav-panel-menu,
+.nav-panel-explore,
+.toolbar {
+  background-color: var(--dm-bg-elevated);
+  border-color: var(--dm-border);
+  color: var(--dm-text-elevated);
 }
 
 /* TOC sidebar transparent so it inherits page background (easier to theme) */
-html.dark-theme .toc.sidebar {
+.toc.sidebar {
   background-color: transparent;
-  border-color: #373a40;
-  color: #c1c2c5;
+  border-color: var(--dm-border);
+  color: var(--dm-toc-text);
 }
 
-html.dark-theme .nav .title,
-html.dark-theme .nav .title a,
-html.dark-theme .nav .nav-link,
-html.dark-theme .nav .nav-text,
-html.dark-theme .toc.sidebar,
-html.dark-theme .toc.sidebar a {
-  color: #c1c2c5;
+.nav .title,
+.nav .title a,
+.nav .nav-link,
+.nav .nav-text,
+.toc.sidebar,
+.toc.sidebar a {
+  color: var(--dm-toc-text);
 }
 
-html.dark-theme .toc .title,
-html.dark-theme .toc .title a,
-html.dark-theme .toc .toc-menu h3 {
-  color: #ffffff;
+.toc .title,
+.toc .title a,
+.toc .toc-menu h3 {
+  color: var(--dm-toc-text-heading);
 }
 
-html.dark-theme .nav .nav-item.is-current-page>.nav-link {
-  color: #ffffff;
+.nav .nav-item.is-current-page > .nav-link {
+  color: var(--dm-text-heading);
 }
 
-html.dark-theme .content,
-html.dark-theme .doc {
-  color: #c1c2c5;
+/* Content / doc */
+.content,
+.doc {
+  color: var(--dm-text-primary);
 }
 
-html.dark-theme .doc h1,
-html.dark-theme .doc h2,
-html.dark-theme .doc h3,
-html.dark-theme .doc h4,
-html.dark-theme .doc h5,
-html.dark-theme .doc h6,
-html.dark-theme .doc .title,
-html.dark-theme .doc .heading {
-  color: #ffffff;
+.doc h1,
+.doc h2,
+.doc h3,
+.doc h4,
+.doc h5,
+.doc h6,
+.doc .title,
+.doc .heading {
+  color: var(--dm-text-heading);
 }
 
-html.dark-theme .doc .sect1,
-html.dark-theme .doc .sect2,
-html.dark-theme .doc .sect3,
-html.dark-theme .doc .sect4 {
-  border-color: #373a40;
+.doc .sect1,
+.doc .sect2,
+.doc .sect3,
+.doc .sect4 {
+  border-color: var(--dm-border);
 }
 
-html.dark-theme .admonitionblock,
-html.dark-theme .exampleblock:not(.tile),
-html.dark-theme .sidebarblock,
-html.dark-theme .quoteblock,
-html.dark-theme .literalblock,
-html.dark-theme .listingblock,
-html.dark-theme .openblock:not(.cards),
-html.dark-theme .tableblock {
-  background-color: #25262b;
-  border-color: #373a40;
+/* General blocks */
+.admonitionblock,
+.exampleblock:not(.tile),
+.sidebarblock,
+.quoteblock,
+.literalblock,
+.listingblock,
+.openblock:not(.cards),
+.tableblock {
+  background-color: var(--dm-bg-block);
+  border-color: var(--dm-border);
 }
 
 /* All block types - more specific selectors for Antora */
-html.dark-theme .doc .sidebarblock,
-html.dark-theme .doc .sidebarblock>.content {
-  background-color: #25262b !important;
-  background: #25262b !important;
-  border-color: #373a40;
+.doc .sidebarblock,
+.doc .sidebarblock > .content {
+  background-color: var(--dm-bg-block) !important;
+  background: var(--dm-bg-block) !important;
+  border-color: var(--dm-border);
 }
 
-html.dark-theme .doc .exampleblock:not(.tile),
-html.dark-theme .doc .exampleblock:not(.tile) > .content {
-  background-color: #1f2125 !important;
-  background: #1f2125 !important;
-  border-color: #373a40;
+.doc .exampleblock:not(.tile),
+.doc .exampleblock:not(.tile) > .content {
+  background-color: var(--dm-bg-block-alt) !important;
+  background: var(--dm-bg-block-alt) !important;
+  border-color: var(--dm-border);
 }
 
-html.dark-theme .doc .quoteblock,
-html.dark-theme .doc .quoteblock blockquote,
-html.dark-theme .doc .quoteblock>blockquote {
-  background-color: #1f2125 !important;
-  background: #1f2125 !important;
-  border-color: #4dabf7;
+.doc .quoteblock,
+.doc .quoteblock blockquote,
+.doc .quoteblock > blockquote {
+  background-color: var(--dm-bg-block-alt) !important;
+  background: var(--dm-bg-block-alt) !important;
+  border-color: var(--dm-border-quote);
 }
 
-html.dark-theme .doc .quoteblock .attribution,
-html.dark-theme .doc .quoteblock cite {
-  color: #909296;
+.doc .quoteblock .attribution,
+.doc .quoteblock cite {
+  color: var(--dm-text-muted, #909296);
 }
 
-html.dark-theme .doc .verseblock,
-html.dark-theme .doc .verseblock pre,
-html.dark-theme .doc .verseblock>pre {
-  background-color: #1f2125 !important;
-  background: #1f2125 !important;
-  border-color: #373a40;
-  color: #c1c2c5;
+.doc .verseblock,
+.doc .verseblock pre,
+.doc .verseblock > pre {
+  background-color: var(--dm-bg-block-alt) !important;
+  background: var(--dm-bg-block-alt) !important;
+  border-color: var(--dm-border);
+  color: var(--dm-text-primary);
 }
 
-html.dark-theme .doc .literalblock,
-html.dark-theme .doc .literalblock>.content,
-html.dark-theme .doc .literalblock pre {
-  background-color: #141517 !important;
-  background: #141517 !important;
-  border-color: #373a40;
+.doc .literalblock,
+.doc .literalblock > .content,
+.doc .literalblock pre {
+  background-color: var(--dm-bg-codeblock) !important;
+  background: var(--dm-bg-codeblock) !important;
+  border-color: var(--dm-border);
 }
 
-html.dark-theme .doc .listingblock,
-html.dark-theme .doc .listingblock>.content {
-  background-color: #141517 !important;
-  background: #141517 !important;
-  border-color: #373a40;
+.doc .listingblock,
+.doc .listingblock > .content {
+  background-color: var(--dm-bg-codeblock) !important;
+  background: var(--dm-bg-codeblock) !important;
+  border-color: var(--dm-border);
 }
 
-html.dark-theme .doc .openblock:not(.cards),
-html.dark-theme .doc .openblock:not(.cards) > .content {
+.doc .openblock:not(.cards),
+.doc .openblock:not(.cards) > .content {
   background-color: transparent !important;
   background: transparent !important;
-  border-color: #373a40;
+  border-color: var(--dm-border);
 }
 
 /* Collapsible blocks (details/summary) */
-html.dark-theme .doc details,
-html.dark-theme .doc details[open],
-html.dark-theme .doc .exampleblock.is-collapsible,
-html.dark-theme .doc details>summary {
-  background-color: #1f2125 !important;
-  background: #1f2125 !important;
-  border-color: #373a40;
-  color: #c1c2c5;
+.doc details,
+.doc details[open],
+.doc .exampleblock.is-collapsible,
+.doc details > summary {
+  background-color: var(--dm-bg-block-alt) !important;
+  background: var(--dm-bg-block-alt) !important;
+  border-color: var(--dm-border);
+  color: var(--dm-text-primary);
 }
 
-html.dark-theme .doc details>summary {
+.doc details > summary {
   cursor: pointer;
 }
 
-html.dark-theme .doc details>.content {
-  background-color: #1f2125 !important;
-  background: #1f2125 !important;
+.doc details > .content {
+  background-color: var(--dm-bg-block-alt) !important;
+  background: var(--dm-bg-block-alt) !important;
 }
 
 /* Block titles */
-html.dark-theme .doc .sidebarblock>.content>.title,
-html.dark-theme .doc .exampleblock>.content>.title,
-html.dark-theme .doc .quoteblock>.title,
-html.dark-theme .doc .verseblock>.title,
-html.dark-theme .doc .literalblock>.title,
-html.dark-theme .doc .listingblock>.title,
-html.dark-theme .doc .openblock>.title {
-  color: #ffffff;
+.doc .sidebarblock > .content > .title,
+.doc .exampleblock > .content > .title,
+.doc .quoteblock > .title,
+.doc .verseblock > .title,
+.doc .literalblock > .title,
+.doc .listingblock > .title,
+.doc .openblock > .title {
+  color: var(--dm-text-heading);
 }
 
-/* Admonition blocks - more specific selectors */
-html.dark-theme .doc .admonitionblock,
-html.dark-theme .doc .admonitionblock>table,
-html.dark-theme .doc .admonitionblock>table>tbody>tr,
-html.dark-theme .doc .admonitionblock>table>tbody>tr>td,
-html.dark-theme .doc .admonitionblock>table>tbody>tr>td.content,
-html.dark-theme .doc .admonitionblock>table>tbody>tr>td.icon {
-  background-color: #25262b !important;
-  background: #25262b !important;
+/* Admonition blocks */
+.doc .admonitionblock,
+.doc .admonitionblock > table,
+.doc .admonitionblock > table > tbody > tr,
+.doc .admonitionblock > table > tbody > tr > td,
+.doc .admonitionblock > table > tbody > tr > td.content,
+.doc .admonitionblock > table > tbody > tr > td.icon {
+  background-color: var(--dm-bg-admonition) !important;
+  background: var(--dm-bg-admonition) !important;
 }
 
-html.dark-theme .doc .admonitionblock td.content {
-  color: #c1c2c5;
+.doc .admonitionblock td.content {
+  color: var(--dm-text-primary);
 }
 
-html.dark-theme .doc .admonitionblock .title {
-  color: #ffffff;
+.doc .admonitionblock .title {
+  color: var(--dm-text-heading);
 }
 
 /* Specific admonition types with subtle accent colors */
-html.dark-theme .doc .admonitionblock.tip>table,
-html.dark-theme .doc .admonitionblock.tip>table>tbody>tr,
-html.dark-theme .doc .admonitionblock.tip>table>tbody>tr>td {
-  background-color: #1a2a1a !important;
-  background: #1a2a1a !important;
+.doc .admonitionblock.tip > table,
+.doc .admonitionblock.tip > table > tbody > tr,
+.doc .admonitionblock.tip > table > tbody > tr > td {
+  background-color: var(--dm-bg-admonition-tip) !important;
+  background: var(--dm-bg-admonition-tip) !important;
 }
 
-html.dark-theme .doc .admonitionblock.note>table,
-html.dark-theme .doc .admonitionblock.note>table>tbody>tr,
-html.dark-theme .doc .admonitionblock.note>table>tbody>tr>td {
-  background-color: #1a1a2a !important;
-  background: #1a1a2a !important;
+.doc .admonitionblock.note > table,
+.doc .admonitionblock.note > table > tbody > tr,
+.doc .admonitionblock.note > table > tbody > tr > td {
+  background-color: var(--dm-bg-admonition-note) !important;
+  background: var(--dm-bg-admonition-note) !important;
 }
 
-html.dark-theme .doc .admonitionblock.warning>table,
-html.dark-theme .doc .admonitionblock.warning>table>tbody>tr,
-html.dark-theme .doc .admonitionblock.warning>table>tbody>tr>td {
-  background-color: #2a2a1a !important;
-  background: #2a2a1a !important;
+.doc .admonitionblock.warning > table,
+.doc .admonitionblock.warning > table > tbody > tr,
+.doc .admonitionblock.warning > table > tbody > tr > td {
+  background-color: var(--dm-bg-admonition-warning) !important;
+  background: var(--dm-bg-admonition-warning) !important;
 }
 
-html.dark-theme .doc .admonitionblock.caution>table,
-html.dark-theme .doc .admonitionblock.caution>table>tbody>tr,
-html.dark-theme .doc .admonitionblock.caution>table>tbody>tr>td {
-  background-color: #2a1a1a !important;
-  background: #2a1a1a !important;
+.doc .admonitionblock.caution > table,
+.doc .admonitionblock.caution > table > tbody > tr,
+.doc .admonitionblock.caution > table > tbody > tr > td {
+  background-color: var(--dm-bg-admonition-caution) !important;
+  background: var(--dm-bg-admonition-caution) !important;
 }
 
-html.dark-theme .doc .admonitionblock.important>table,
-html.dark-theme .doc .admonitionblock.important>table>tbody>tr,
-html.dark-theme .doc .admonitionblock.important>table>tbody>tr>td {
-  background-color: #2a1a2a !important;
-  background: #2a1a2a !important;
+.doc .admonitionblock.important > table,
+.doc .admonitionblock.important > table > tbody > tr,
+.doc .admonitionblock.important > table > tbody > tr > td {
+  background-color: var(--dm-bg-admonition-important) !important;
+  background: var(--dm-bg-admonition-important) !important;
 }
 
-html.dark-theme .quoteblock blockquote,
-html.dark-theme .quoteblock p {
-  color: #adb5bd;
+.quoteblock blockquote,
+.quoteblock p {
+  color: var(--dm-text-quote);
 }
 
-html.dark-theme code,
-html.dark-theme pre,
-html.dark-theme pre code {
-  background-color: #141517;
-  color: #e9ecef;
-  border-color: #373a40;
+/* Code blocks */
+code,
+pre,
+pre code {
+  background-color: var(--dm-bg-codeblock);
+  color: var(--dm-text-codeblock);
+  border-color: var(--dm-border);
 }
 
-/* Code blocks - more specific selectors for Antora */
-html.dark-theme .doc code,
-html.dark-theme .doc pre,
-html.dark-theme .doc .listingblock pre,
-html.dark-theme .doc .listingblock pre.highlight,
-html.dark-theme .doc .listingblock pre.highlight code,
-html.dark-theme .doc .literalblock pre,
-html.dark-theme .doc pre.content,
-html.dark-theme .doc pre.pygments,
-html.dark-theme .doc pre.rouge,
-html.dark-theme .doc pre.CodeMirror,
-html.dark-theme .doc .highlight pre,
-html.dark-theme .doc .highlight code {
-  background-color: #141517 !important;
-  color: #e9ecef;
-  border-color: #373a40;
+.doc code,
+.doc pre,
+.doc .listingblock pre,
+.doc .listingblock pre.highlight,
+.doc .listingblock pre.highlight code,
+.doc .literalblock pre,
+.doc pre.content,
+.doc pre.pygments,
+.doc pre.rouge,
+.doc pre.CodeMirror,
+.doc .highlight pre,
+.doc .highlight code {
+  background-color: var(--dm-bg-codeblock) !important;
+  color: var(--dm-text-codeblock);
+  border-color: var(--dm-border);
 }
 
-html.dark-theme .doc .listingblock .content,
-html.dark-theme .doc .literalblock .content {
-  background-color: #141517;
+.doc .listingblock .content,
+.doc .literalblock .content {
+  background-color: var(--dm-bg-codeblock);
 }
 
 /* Inline code */
-html.dark-theme .doc p code,
-html.dark-theme .doc td code,
-html.dark-theme .doc li code {
-  background-color: #2c2e33;
-  color: #ff6b6b;
-  border-color: #373a40;
+.doc p code,
+.doc td code,
+.doc li code {
+  background-color: var(--dm-text-code-inline-bg);
+  color: var(--dm-text-code-inline);
+  border-color: var(--dm-border);
 }
 
-/* Syntax highlighting colors for dark mode */
-html.dark-theme .doc .hljs,
-html.dark-theme .doc .highlight {
-  background-color: #141517 !important;
+/* Syntax highlighting colors */
+.doc .hljs,
+.doc .highlight {
+  background-color: var(--dm-bg-codeblock) !important;
 }
 
-html.dark-theme .doc .hljs-keyword,
-html.dark-theme .doc .hljs-selector-tag,
-html.dark-theme .doc .hljs-literal,
-html.dark-theme .doc .hljs-section,
-html.dark-theme .doc .hljs-link {
-  color: #c678dd;
+.doc .hljs-keyword,
+.doc .hljs-selector-tag,
+.doc .hljs-literal,
+.doc .hljs-section,
+.doc .hljs-link {
+  color: var(--dm-hljs-keyword);
 }
 
-html.dark-theme .doc .hljs-string,
-html.dark-theme .doc .hljs-title,
-html.dark-theme .doc .hljs-name,
-html.dark-theme .doc .hljs-type,
-html.dark-theme .doc .hljs-attribute,
-html.dark-theme .doc .hljs-symbol,
-html.dark-theme .doc .hljs-bullet,
-html.dark-theme .doc .hljs-addition,
-html.dark-theme .doc .hljs-variable,
-html.dark-theme .doc .hljs-template-tag,
-html.dark-theme .doc .hljs-template-variable {
-  color: #98c379;
+.doc .hljs-string,
+.doc .hljs-title,
+.doc .hljs-name,
+.doc .hljs-type,
+.doc .hljs-attribute,
+.doc .hljs-symbol,
+.doc .hljs-bullet,
+.doc .hljs-addition,
+.doc .hljs-variable,
+.doc .hljs-template-tag,
+.doc .hljs-template-variable {
+  color: var(--dm-hljs-string);
 }
 
-html.dark-theme .doc .hljs-comment,
-html.dark-theme .doc .hljs-quote,
-html.dark-theme .doc .hljs-deletion,
-html.dark-theme .doc .hljs-meta {
-  color: #5c6370;
+.doc .hljs-comment,
+.doc .hljs-quote,
+.doc .hljs-deletion,
+.doc .hljs-meta {
+  color: var(--dm-hljs-comment);
 }
 
-html.dark-theme .doc .hljs-number,
-html.dark-theme .doc .hljs-regexp,
-html.dark-theme .doc .hljs-literal,
-html.dark-theme .doc .hljs-link {
-  color: #d19a66;
+.doc .hljs-number,
+.doc .hljs-regexp,
+.doc .hljs-literal,
+.doc .hljs-link {
+  color: var(--dm-hljs-number);
 }
 
-html.dark-theme .doc .hljs-built_in,
-html.dark-theme .doc .hljs-builtin-name {
-  color: #e6c07b;
+.doc .hljs-built_in,
+.doc .hljs-builtin-name {
+  color: var(--dm-hljs-builtin);
 }
 
-html.dark-theme .doc .hljs-function {
-  color: #61afef;
+.doc .hljs-function {
+  color: var(--dm-hljs-function);
 }
 
-html.dark-theme table {
-  border-color: #373a40;
+/* Tables */
+table {
+  border-color: var(--dm-border);
 }
 
-html.dark-theme table thead,
-html.dark-theme table tfoot {
-  background-color: #1f2125;
+table thead,
+table tfoot {
+  background-color: var(--dm-bg-table-stripe);
 }
 
-html.dark-theme table tbody tr:nth-child(even) {
-  background-color: #1f2125;
+table tbody tr:nth-child(even) {
+  background-color: var(--dm-bg-table-stripe);
 }
 
-html.dark-theme .footer {
-  background-color: #141517;
-  color: #909296;
+/* Footer */
+.footer {
+  background-color: var(--dm-bg-footer);
+  color: var(--dm-text-footer);
 }
 
-html.dark-theme .footer a {
-  color: #f1f3f5;
+.footer a {
+  color: var(--dm-text-footer-link);
 }
 
 /* Lunr search (@antora/lunr-extension) */
@@ -405,72 +412,72 @@ html.dark-theme .footer a {
 #search-input {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  background: #fff;
-  color: inherit;
+  background: var(--dm-bg-input);
+  color: var(--dm-text-input);
   font-size: 0.875rem;
   min-height: 1.75rem;
   padding: 0.2rem 0.5rem;
 }
 
 #search-input:focus {
-  outline: 2px solid #228be6;
+  outline: 2px solid var(--dm-link);
   outline-offset: 1px;
 }
 
-html.dark-theme #search-input {
-  background-color: #2c2e33;
-  color: #ffffff;
-  border-color: #373a40;
+#search-input {
+  background-color: var(--dm-bg-input);
+  color: var(--dm-text-input);
+  border-color: var(--dm-border);
 }
 
-html.dark-theme #search-input:focus {
-  outline-color: #339af0;
+#search-input:focus {
+  outline-color: var(--dm-outline-focus);
 }
 
-html.dark-theme .search-result-dataset {
-  background: #25262b;
-  border-color: #373a40;
+.search-result-dataset {
+  background: var(--dm-bg-search-dataset);
+  border-color: var(--dm-border);
 }
 
-html.dark-theme .search-result-component-header {
-  color: #f1f3f5;
-  border-bottom-color: #373a40;
+.search-result-component-header {
+  color: var(--dm-text-search-header);
+  border-bottom-color: var(--dm-border);
 }
 
-html.dark-theme .search-result-document-title {
-  color: #c1c2c5;
-  border-right-color: #373a40;
+.search-result-document-title {
+  color: var(--dm-text-search-title);
+  border-right-color: var(--dm-border);
 }
 
-html.dark-theme .search-result-document-hit {
-  color: #909296;
+.search-result-document-hit {
+  color: var(--dm-text-search-hit);
 }
 
-html.dark-theme .search-result-document-hit > a {
+.search-result-document-hit > a {
   color: inherit;
 }
 
-html.dark-theme .search-result-document-hit > a:hover {
-  background-color: rgba(77, 171, 247, 0.1);
+.search-result-document-hit > a:hover {
+  background-color: var(--dm-bg-search-hover);
 }
 
-html.dark-theme .search-result-document-hit .search-result-highlight {
-  color: #74c0fc;
-  background: rgba(77, 171, 247, 0.15);
+.search-result-document-hit .search-result-highlight {
+  color: var(--dm-text-search-highlight);
+  background: var(--dm-bg-search-highlight);
 }
 
-html.dark-theme .search-result-document-hit .search-result-section-title {
-  color: #f1f3f5;
+.search-result-document-hit .search-result-section-title {
+  color: var(--dm-text-search-section);
 }
 
-html.dark-theme #search-field .filter {
-  background-color: #2c2e33;
-  border-color: #373a40;
-  color: #c1c2c5;
+#search-field .filter {
+  background-color: var(--dm-bg-input);
+  border-color: var(--dm-border);
+  color: var(--dm-text-input);
 }
 
-html.dark-theme .home-link {
-  color: #ffffff;
+.home-link {
+  color: var(--dm-text-heading);
 }
 
 /* Toggle button styles
@@ -494,15 +501,15 @@ html.dark-theme .home-link {
   text-transform: none;
 }
 
-html:not(.dark-theme):not([data-dm-navbar="light"]) .theme-toggle:hover {
-  background-color: #1f2125;
+html:not([data-dm="dark"]):not([data-dm-navbar="light"]) .theme-toggle:hover {
+  background-color: var(--dm-bg-toggle-hover);
 }
 
-html[data-dm-navbar="light"]:not(.dark-theme) .theme-toggle {
+html[data-dm-navbar="light"]:not([data-dm="dark"]) .theme-toggle {
   color: #1a1a1a;
 }
 
-html[data-dm-navbar="light"]:not(.dark-theme) .theme-toggle:hover {
+html[data-dm-navbar="light"]:not([data-dm="dark"]) .theme-toggle:hover {
   background-color: rgba(0, 0, 0, 0.07);
 }
 
@@ -522,8 +529,8 @@ html[data-dm-navbar="light"]:not(.dark-theme) .theme-toggle:hover {
   fill: none;
 }
 
-html.dark-theme .theme-toggle:hover {
-  background-color: #2c2e33;
+html[data-dm="dark"] .theme-toggle:hover {
+  background-color: var(--dm-bg-toggle-hover);
 }
 
 /* VCS repo logo (valentus-theme replaces Download) — true 1:1 square, compact */
@@ -550,11 +557,11 @@ html.dark-theme .theme-toggle:hover {
 
 .navbar .vcs-repo-link:hover {
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--dm-bg-vcs-hover);
 }
 
-html.dark-theme .navbar .vcs-repo-link:hover {
-  background-color: #1f2125;
+html[data-dm="dark"] .navbar .vcs-repo-link:hover {
+  background-color: var(--dm-bg-vcs-hover);
 }
 
 /* Logo: strict 1:1 placeholder; img loads SVG (white icons for dark navbar) */
@@ -580,18 +587,18 @@ html.dark-theme .navbar .vcs-repo-link:hover {
 }
 
 /* Light theme: if you change the navbar to a light top bar, uncomment below so the (white) logo stays visible. */
-html:not(.dark-theme) .navbar .vcs-logo-img {
+html:not([data-dm="dark"]) .navbar .vcs-logo-img {
   /* filter: invert(1); */
 }
 
 /* Dark mode icon fixes for navigation panels */
 /* Use masks to force icons to absolute colors so they don't break if base SVG colors change */
-html.dark-theme .nav-toggle,
-html.dark-theme .home-link,
-html.dark-theme .nav-item-toggle,
-html.dark-theme .nav-menu-toggle {
+html[data-dm="dark"] .nav-toggle,
+html[data-dm="dark"] .home-link,
+html[data-dm="dark"] .nav-item-toggle,
+html[data-dm="dark"] .nav-menu-toggle {
   background-image: none !important;
-  background-color: #c1c2c5; /* Hardcoded light grey to match theme text */
+  background-color: var(--dm-icon-color);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
@@ -599,21 +606,21 @@ html.dark-theme .nav-menu-toggle {
   filter: none !important;
 }
 
-html.dark-theme .nav-toggle {
+html[data-dm="dark"] .nav-toggle {
   -webkit-mask-image: url(../img/menu.svg);
   mask-image: url(../img/menu.svg);
   -webkit-mask-size: 49%;
   mask-size: 49%;
 }
 
-html.dark-theme .home-link {
+html[data-dm="dark"] .home-link {
   -webkit-mask-image: url(../img/home-o.svg);
   mask-image: url(../img/home-o.svg);
   -webkit-mask-size: normal;
   mask-size: normal;
 }
 
-html.dark-theme .nav-item-toggle {
+html[data-dm="dark"] .nav-item-toggle {
   -webkit-mask-image: url(../img/caret.svg);
   mask-image: url(../img/caret.svg);
   -webkit-mask-size: 50%;
@@ -621,7 +628,7 @@ html.dark-theme .nav-item-toggle {
   opacity: 0.8;
 }
 
-html.dark-theme .nav-menu-toggle {
+html[data-dm="dark"] .nav-menu-toggle {
   -webkit-mask-image: url(../img/octicons-16.svg#view-unfold);
   mask-image: url(../img/octicons-16.svg#view-unfold);
   -webkit-mask-size: 100%;
@@ -629,82 +636,82 @@ html.dark-theme .nav-menu-toggle {
 }
 
 /* Component/version selector in navigation */
-html.dark-theme .nav-panel-explore .context .version {
-  color: #e9ecef;
-  background-color: #2c2e33;
+.nav-panel-explore .context .version {
+  color: var(--dm-text-version);
+  background-color: var(--dm-bg-version);
   padding: 0.1rem 0.5rem;
   border-radius: 0.25rem;
-  border: 1px solid #373a40;
+  border: 1px solid var(--dm-border);
 }
 
-html.dark-theme .nav-panel-explore .context .version:hover {
-  color: #ffffff;
-  background-color: #3b3d42;
-  border-color: #4dabf7;
+.nav-panel-explore .context .version:hover {
+  color: var(--dm-text-version-hover);
+  background-color: var(--dm-bg-version-hover);
+  border-color: var(--dm-link);
 }
 
 /* Chevron icon in component/version selector */
-html.dark-theme .nav-panel-explore .context .version::after {
+.nav-panel-explore .context .version::after {
   background-image: none !important;
-  background-color: #ffffff; /* Brighter white for the context selector */
+  background-color: var(--dm-text-heading);
   -webkit-mask: url(../img/chevron.svg) no-repeat 100%/auto 100%;
   mask: url(../img/chevron.svg) no-repeat 100%/auto 100%;
   filter: none !important;
 }
 
 /* Component/version dropdown menu and parent containers */
-html.dark-theme .nav-panel-explore .components,
-html.dark-theme .nav-panel-explore .component,
-html.dark-theme .nav-panel-explore .component-menu,
-html.dark-theme .nav-panel-explore .versions,
-html.dark-theme .nav-panel-explore .component-menu ul,
-html.dark-theme .nav-panel-explore .versions ul,
-html.dark-theme .nav-panel-explore .context div {
-  background-color: #25262b;
-  color: #c1c2c5;
+.nav-panel-explore .components,
+.nav-panel-explore .component,
+.nav-panel-explore .component-menu,
+.nav-panel-explore .versions,
+.nav-panel-explore .component-menu ul,
+.nav-panel-explore .versions ul,
+.nav-panel-explore .context div {
+  background-color: var(--dm-bg-elevated);
+  color: var(--dm-text-elevated);
 }
 
-html.dark-theme .nav-panel-explore .component-menu a,
-html.dark-theme .nav-panel-explore .versions a {
-  color: #e9ecef;
-  background-color: #2c2e33;
+.nav-panel-explore .component-menu a,
+.nav-panel-explore .versions a {
+  color: var(--dm-text-version);
+  background-color: var(--dm-bg-version);
   padding: 0.25rem 0.6rem;
   margin: 0.15rem 0;
   display: block;
   border-radius: 0.25rem;
-  border: 1px solid #373a40;
+  border: 1px solid var(--dm-border);
   transition: all 0.2s ease;
 }
 
-html.dark-theme .nav-panel-explore .component-menu a:hover,
-html.dark-theme .nav-panel-explore .versions a:hover,
-html.dark-theme .nav-panel-explore .component-menu li:hover,
-html.dark-theme .nav-panel-explore .versions li:hover {
-  background-color: #3b3d42;
-  color: #ffffff;
-  border-color: #4dabf7;
+.nav-panel-explore .component-menu a:hover,
+.nav-panel-explore .versions a:hover,
+.nav-panel-explore .component-menu li:hover,
+.nav-panel-explore .versions li:hover {
+  background-color: var(--dm-bg-version-hover);
+  color: var(--dm-text-version-hover);
+  border-color: var(--dm-link);
 }
 
-html.dark-theme .nav-panel-explore .component-menu .is-current,
-html.dark-theme .nav-panel-explore .versions .is-current {
-  background-color: #141517;
-  color: #4dabf7;
+.nav-panel-explore .component-menu .is-current,
+.nav-panel-explore .versions .is-current {
+  background-color: var(--dm-bg-current);
+  color: var(--dm-text-current);
   font-weight: 600;
-  border-color: #4dabf7;
+  border-color: var(--dm-link);
 }
 
 /* Reduce strong inner shadow on component/version dropdown */
-html.dark-theme .nav-panel-explore .components,
-html.dark-theme .nav-panel-explore .component,
-html.dark-theme .nav-panel-explore .versions {
+.nav-panel-explore .components,
+.nav-panel-explore .component,
+.nav-panel-explore .versions {
   box-shadow: none;
 }
 
-html.dark-theme .nav-panel-explore .context .selector {
+.nav-panel-explore .context .selector {
   box-shadow: none;
 }
 
-html.dark-theme .nav-panel-explore .context .selector .components {
+.nav-panel-explore .context .selector .components {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -734,103 +741,104 @@ html.dark-theme .nav-panel-explore .context .selector .components {
 }
 
 /* Keyboard, button, and menu macros */
-html.dark-theme kbd {
-  background-color: #2c2e33;
-  color: #e9ecef;
-  border-color: #495057;
-  box-shadow: 0 1px 0 #495057;
+kbd {
+  background-color: var(--dm-bg-kbd);
+  color: var(--dm-text-kbd);
+  border-color: var(--dm-border-kbd);
+  box-shadow: 0 1px 0 var(--dm-border-kbd);
 }
 
-html.dark-theme .button,
-html.dark-theme .btn {
-  background-color: #2c2e33;
-  color: #e9ecef;
-  border-color: #495057;
+.button,
+.btn {
+  background-color: var(--dm-bg-btn);
+  color: var(--dm-text-kbd);
+  border-color: var(--dm-border-btn);
 }
 
-html.dark-theme .menuseq,
-html.dark-theme .menu {
-  color: #c1c2c5;
+.menuseq,
+.menu {
+  color: var(--dm-text-menuseq);
 }
 
-html.dark-theme .menuseq .caret,
-html.dark-theme .menuseq .submenu::before {
-  color: #909296;
+.menuseq .caret,
+.menuseq .submenu::before {
+  color: var(--dm-text-menuseq-caret);
 }
 
 /* Tabs extension support */
-html.dark-theme .tabs ul {
-  background-color: #1f2125;
-  border-color: #373a40;
+.tabs ul {
+  background-color: var(--dm-bg-tabs-header);
+  border-color: var(--dm-border);
 }
 
-html.dark-theme .tabs ul li {
-  background-color: #25262b;
-  border-color: #373a40;
-  color: #c1c2c5;
+.tabs ul li {
+  background-color: var(--dm-bg-tab);
+  border-color: var(--dm-border);
+  color: var(--dm-text-elevated);
 }
 
-html.dark-theme .tabs ul li.is-active,
-html.dark-theme .tabs ul li[aria-selected="true"] {
-  background-color: #141517;
-  color: #ffffff;
-  border-bottom-color: #141517;
+.tabs ul li.is-active,
+.tabs ul li[aria-selected="true"] {
+  background-color: var(--dm-bg-tab-active);
+  color: var(--dm-text-tab-active);
+  border-bottom-color: var(--dm-bg-tab-active);
 }
 
-html.dark-theme .tabs ul li:hover {
-  background-color: #2c2e33;
-  color: #ffffff;
+.tabs ul li:hover {
+  background-color: var(--dm-bg-tab-hover);
+  color: var(--dm-text-tab-active);
 }
 
-html.dark-theme .tabpanel,
-html.dark-theme .tabs-content {
-  background-color: #141517;
-  border-color: #373a40;
+.tabpanel,
+.tabs-content {
+  background-color: var(--dm-bg-tab-content);
+  border-color: var(--dm-border);
 }
 
 /* STEM / Math rendering */
-html.dark-theme .stemblock,
-html.dark-theme .mathblock {
-  color: #e9ecef;
+.stemblock,
+.mathblock {
+  color: var(--dm-text-stem);
 }
 
 /* Icon roles */
-html.dark-theme .icon.red,
-html.dark-theme [role="red"] {
-  color: #ff6b6b;
+.icon.red,
+[role="red"] {
+  color: var(--dm-icon-red);
 }
 
-html.dark-theme .icon.green,
-html.dark-theme [role="green"] {
-  color: #51cf66;
+.icon.green,
+[role="green"] {
+  color: var(--dm-icon-green);
 }
 
-html.dark-theme .icon.yellow,
-html.dark-theme [role="yellow"] {
-  color: #fcc419;
+.icon.yellow,
+[role="yellow"] {
+  color: var(--dm-icon-yellow);
 }
 
-html.dark-theme .icon.blue,
-html.dark-theme [role="blue"] {
-  color: #4dabf7;
+.icon.blue,
+[role="blue"] {
+  color: var(--dm-icon-blue);
 }
 
 /* Video embeds wrapper */
-html.dark-theme .videoblock {
-  background-color: transparent;
+.videoblock {
+  background-color: var(--dm-bg-video);
 }
 
-/* Left nav insets: match toolbar .home-link (margin = toolbar-height / 4) so tree lines up
-   with the breadcrumb row home control on wide layouts (stock default UI is 0.75rem).
-   Skip .nav-tree-only / .adt-nav-tree-only: horizontal inset is set in site-doc-layout.css
-   on .nav-panel-menu + vertical-only padding on the nav (avoids cascade conflicts). */
+/* Left nav padding: match the default Antora UI inset (0.75rem) so the tree
+   aligns with the breadcrumb home control on wide layouts.
+   Skip .nav-tree-only / .adt-nav-tree-only: horizontal inset is set in
+   site-doc-layout.css on .nav-panel-menu + vertical-only padding on the
+   nav (avoids cascade conflicts). */
 .nav-menu:not(.nav-tree-only):not(.adt-nav-tree-only) {
-  padding-left: calc(var(--toolbar-height) / 4);
+  padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
 
 .nav-panel-explore .components {
-  padding-left: calc(var(--toolbar-height) / 4);
+  padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
 
@@ -852,55 +860,6 @@ html.dark-theme .videoblock {
   padding-left: calc(var(--nav-line-height) * 1em + 0.15em);
 }
 
-/* Sticky left nav: keep viewport-height column so the project switcher stays at the
-   bottom of the visible nav tree (in-flow stretch pushed it to the document bottom). */
-@media screen and (min-width: 1024px) {
-  .nav-container {
-    align-self: flex-start !important;
-    min-height: 0 !important;
-  }
-
-  .nav {
-    position: sticky !important;
-    top: var(--navbar-height) !important;
-    height: var(--nav-height--desktop) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: 0 !important;
-  }
-
-  .nav .panels {
-    display: flex !important;
-    flex-direction: column !important;
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
-    height: 100% !important;
-    position: relative !important;
-  }
-
-  .nav-panel-menu {
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
-    height: auto !important;
-    overflow-y: auto !important;
-  }
-
-  /* Project switcher drawer: flex footer within the sticky nav column. */
-  .nav-panel-explore {
-    position: static !important;
-    flex: 0 0 auto !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    width: 100% !important;
-  }
-
-  .nav-panel-explore:not(:first-child) {
-    max-height: var(--nav-panel-explore-height) !important;
-  }
-}
-
 /* Bundle default uses overflow-y: scroll on nav panels; prefer scrollbar only when needed. */
 .nav-panel-menu,
 .nav-panel-explore .components {
@@ -911,10 +870,10 @@ html.dark-theme .videoblock {
    Bundled in supplemental site-extra.css so Antora prebuilds pick it up. */
 :root {
   --doc-tile-radius: 0.5rem;
-  --doc-tile-border-color: var(--panel-border-color);
-  --doc-tile-background: var(--color-white);
-  --doc-tile-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.08);
-  --doc-tile-shadow-hover: 0 4px 8px -2px rgba(0, 0, 0, 0.1), 0 12px 24px -4px rgba(0, 0, 0, 0.12);
+  --doc-tile-border-color: var(--dm-tile-border);
+  --doc-tile-background: var(--dm-tile-bg);
+  --doc-tile-shadow: var(--dm-tile-shadow);
+  --doc-tile-shadow-hover: var(--dm-tile-shadow-hover);
   --doc-tile-transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
 }
 
@@ -930,15 +889,6 @@ html.dark-theme .videoblock {
   background: none;
   border: none;
   box-shadow: none;
-}
-
-/* Win over any later dark rules that set display/background on .openblock > .content */
-html.dark-theme .doc .openblock.cards > .content {
-  display: grid !important;
-  background: none !important;
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
 }
 
 .doc .openblock.cards .exampleblock.tile {
@@ -984,20 +934,6 @@ html.dark-theme .doc .openblock.cards > .content {
     box-shadow: var(--doc-tile-shadow);
     transform: none;
   }
-}
-
-html.dark-theme {
-  --doc-tile-border-color: #3d4048;
-  --doc-tile-background: #1f2125;
-  --doc-tile-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.45);
-  --doc-tile-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.4), 0 14px 32px rgba(0, 0, 0, 0.5);
-}
-
-/* Beat generic `html.dark-theme .doc .exampleblock > .content` !important for project tiles */
-html.dark-theme .doc .openblock.cards .exampleblock.tile > .content {
-  background: var(--doc-tile-background) !important;
-  background-color: var(--doc-tile-background) !important;
-  border-color: var(--doc-tile-border-color) !important;
 }
 
 @media print {
