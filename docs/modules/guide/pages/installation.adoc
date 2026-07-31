@@ -3,7 +3,11 @@
 :description: Install Antora dark mode as a supplemental overlay or composable UI module.
 
 Dark mode is a *slipstream overlay* — it must **not** occupy `ui.bundle.url` when you mix it with another theme.
-Reserve `ui.bundle` for your theme (Default UI, valentus-theme, architexture-theme, a custom bundle, etc.).
+Reserve `ui.bundle` for your theme (Default UI, architexture-theme, a custom bundle, etc.).
+
+IMPORTANT: link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] already ships *bundled* dark mode in its release `ui-bundle.zip`.
+Do **not** layer this overlay on Valentus unless you are composing modules from scratch — use Valentus alone for the full chrome + dark stack.
+Coming from the retired **`antora-dark-theme`** package? See xref:legacy-names.adoc[Legacy names & migration].
 
 * link:https://github.com/antora-supplemental/antora-dark-mode/releases[GitHub Releases]
 * link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs portal] (extensions registry)
@@ -15,12 +19,12 @@ Reserve `ui.bundle` for your theme (Default UI, valentus-theme, architexture-the
 | Path | When to use | `ui.bundle` owner
 
 | xref:#overlay[Supplemental overlay] (recommended)
-| Any theme; one merged `supplemental_files` directory
-| Your theme or Default UI
+| Dark mode on Default UI or a theme that does *not* already include it
+| Your theme or Default UI (**not** Valentus release bundle)
 
 | xref:ui-modules.adoc[UI module + orchestrator]
-| Theme chrome from valentus + dark mode without partial collisions
-| Your theme release bundle
+| Slot-based inject when the theme owns `head-meta` / `footer-scripts` partials
+| Your theme release bundle (compose; skip if using Valentus pre-merged zip)
 
 | xref:#convenience-bundle[Convenience `ui-bundle.zip`]
 | Quick start on Default UI only — no other theme
@@ -51,7 +55,7 @@ cp -r node_modules/antora-dark-mode/supplemental-ui/* site/supplemental-ui/
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files: ./site/supplemental-ui
 ----

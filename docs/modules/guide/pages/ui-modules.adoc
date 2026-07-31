@@ -6,11 +6,15 @@
 The `dark-mode` module injects CSS, FOUC prevention, and the toggle script through *slots* (`head` / `foot`).
 It does **not** replace theme partials such as `head-meta.hbs` or `footer-scripts.hbs`.
 
-Use this path when your theme already owns supplemental partials (for example link:https://github.com/antora-supplemental/valentus-theme[valentus-theme]).
+Use this path when your theme already owns supplemental partials and you need to inject dark mode without colliding with them.
+
+IMPORTANT: The link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] *release* `ui-bundle.zip` already includes dark mode.
+You do **not** need this module on top of that zip.
+Use the orchestrator path when composing from Default UI (or another base bundle) plus selected Valentus chrome modules.
 
 == Prerequisites
 
-* An Antora UI bundle for your theme in `ui.bundle.url`
+* An Antora UI bundle for your theme in `ui.bundle.url` (usually Default UI or a custom theme — not the Valentus pre-merged release zip)
 * The `ui-orchestrator` extension from link:https://github.com/antora-supplemental/valentus-theme/tree/main/ui-modules/packages/orchestrator[valentus-theme `ui-modules/packages/orchestrator`]
 * This repository's `ui-modules/registry.json5` (via git path or `pnpm add -D antora-dark-mode`)
 
@@ -25,7 +29,8 @@ pnpm add -D antora-dark-mode valentus-theme
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
+    # Base theme without bundled dark mode (Default UI example)
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
 
 antora:
@@ -39,7 +44,7 @@ The orchestrator prepends FOUC/CSS to `head-meta` and appends `site-dark-mode.js
 
 == Theme chrome + dark mode
 
-When you need *both* valentus chrome modules and dark mode, merge registries into one local `registry-merged.json5` (or enable modules from both catalogs in a single registry). The orchestrator accepts one `registry` path per extension instance.
+When you need *both* Valentus chrome modules and dark mode *as separate modules* (not the Valentus release zip), merge registries into one local `registry-merged.json5` (or enable modules from both catalogs in a single registry). The orchestrator accepts one `registry` path per extension instance.
 
 Example merged recipe (local file):
 

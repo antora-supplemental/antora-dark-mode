@@ -1,6 +1,7 @@
 .Documentation
 * xref:index.adoc[Getting Started]
 * xref:installation.adoc[Installation]
+* xref:legacy-names.adoc[Legacy names & migration]
 * xref:ui-modules.adoc[UI Modules]
 * xref:npm-distribution.adoc[npm distribution]
 * xref:configuration.adoc[Configuration]

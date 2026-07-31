@@ -64,7 +64,7 @@ After trusted publishing works, consider **Settings → Publishing access → Re
 
 ```powershell
 # After publish — deprecate legacy package name (if you own antora-dark-theme)
-npm deprecate antora-dark-theme@* "Renamed — use antora-dark-mode. See https://github.com/antora-supplemental/antora-dark-mode"
+npm deprecate antora-dark-theme@* "Split: use valentus-theme (chrome + dark) or antora-dark-mode (overlay only). See https://antora-supplemental.github.io/antora-dark-mode/antora-dark-mode/guide/legacy-names.html"
 ```
 
 `prepack` script runs sync + validate automatically.

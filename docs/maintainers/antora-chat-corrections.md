@@ -2,6 +2,8 @@
 
 Post these in [Antora Zulip](https://antora.zulipchat.com/) where older threads still reference `antora-dark-theme`.
 
+Published guide (preferred link for readers): [Legacy names & migration](https://antora-supplemental.github.io/antora-dark-mode/antora-dark-mode/guide/legacy-names.html) (`docs/modules/guide/pages/legacy-names.adoc`).
+
 ---
 
 ## Short correction (reply to outdated install advice)

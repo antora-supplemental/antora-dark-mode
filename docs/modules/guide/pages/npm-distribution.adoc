@@ -13,6 +13,7 @@ npm is being **restored** as optional *transport* for the supplemental overlay a
 
 * *Overlay install:* `pnpm add -D antora-dark-mode` then merge `supplemental-ui/` or point the orchestrator at `ui-modules/registry.json5`.
 * *Not for:* occupying `ui.bundle` with a pre-merged theme (use GitHub `ui-bundle.zip` convenience artifact for Default UI quick starts only).
+* *Full chrome + dark mode:* use link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] — not this npm package stacked on Valentus. See xref:legacy-names.adoc[Legacy names & migration].
 
 Former retirement (May 2026) assumed every site could pin `ui-bundle.zip` as `ui.bundle`.
 That blocks mixing dark mode with another theme bundle — see xref:installation.adoc[Installation].
@@ -28,7 +29,7 @@ pnpm add -D antora-dark-mode
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files: ./site/supplemental-ui   # merge node_modules/.../supplemental-ui here
 ----
@@ -50,7 +51,7 @@ For slot-based installs without partial collisions, see xref:ui-modules.adoc[UI 
 | **No.** Package names are immutable once published.
 
 | Merge `antora-dark-theme` into `antora-dark-mode` on npm?
-| **No rename path.** Deprecate the old package; consumers migrate to `antora-dark-mode`.
+| **No rename path.** Deprecate the old package. Full-stack sites migrate to **valentus-theme**; overlay-only sites migrate to **`antora-dark-mode`**.
 
 | Keep npm login / publishing access?
 | **Yes**, if you already own the `antora-dark-mode` package — republish uses the same registry entry.

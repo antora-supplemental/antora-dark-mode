@@ -6,6 +6,8 @@ Dark mode toggle, FOUC prevention, and CSS overrides for the Antora Default UI.
 
 For composed doc-site chrome (mast, header, layout), see link:https://github.com/antora-supplemental/valentus-theme[valentus-theme].
 
+Coming from the former **`antora-dark-theme`** package (or a personal fork of that name)? See xref:legacy-names.adoc[Legacy names & migration].
+
 == Install
 
 See xref:installation.adoc[Installation], xref:ui-modules.adoc[UI Modules], and xref:npm-distribution.adoc[npm distribution].

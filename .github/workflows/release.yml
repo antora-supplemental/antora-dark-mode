@@ -103,7 +103,7 @@ jobs:
           node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));delete p.private;fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
           npm --version
           npm publish --access public
-          npm deprecate antora-dark-theme@* "Renamed — use valentus-theme (bundled dark mode). See https://github.com/antora-supplemental/valentus-theme" || true
+          npm deprecate antora-dark-theme@* "Split: use valentus-theme (chrome + dark) or antora-dark-mode (overlay only). See https://antora-supplemental.github.io/antora-dark-mode/antora-dark-mode/guide/legacy-names.html" || true
         # Trusted publisher on npmjs.com (package → Settings → Trusted publishing):
         #   Provider: GitHub Actions
         #   Organization/user: antora-supplemental

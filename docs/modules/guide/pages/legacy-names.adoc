@@ -1,0 +1,88 @@
+= Legacy names & migration
+:navtitle: Legacy names
+:description: Migrate from antora-dark-theme (and personal forks) to antora-dark-mode and valentus-theme.
+
+[[migrate-from-antora-dark-theme]]
+== From `antora-dark-theme`
+
+The monolithic **`antora-dark-theme`** package was split and renamed under the `antora-supplemental` organization.
+
+[cols="2,3", options="header"]
+|===
+| Former | Use instead
+
+| `antora-dark-theme` (npm / GitHub release bundle) as full site UI
+| link:https://github.com/antora-supplemental/valentus-theme[`valentus-theme`^] release `ui-bundle.zip` (chrome + **bundled dark mode**)
+
+| Dark mode only on another theme / Default UI
+| **`antora-dark-mode`** — slipstream overlay (must **not** occupy `ui.bundle` when mixed with another theme)
+|===
+
+=== Playbook: full stack
+
+Replace:
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/antora-dark-theme/releases/.../ui-bundle.zip
+----
+
+With:
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
+    snapshot: true
+----
+
+Remove `antora-dark-theme` from `package.json` if present.
+Valentus install details: link:https://antora-supplemental.github.io/valentus-theme/[valentus-theme docs^].
+
+=== Playbook: dark mode overlay only
+
+Keep your theme (or Default UI) in `ui.bundle`, then layer dark mode via `supplemental_files` — see xref:installation.adoc[Installation].
+
+[source,bash]
+----
+pnpm add -D antora-dark-mode
+----
+
+== Canonical repositories (not personal forks)
+
+| Role | Canonical home |
+|---|---|
+| Dark mode overlay | https://github.com/antora-supplemental/antora-dark-mode[`antora-supplemental/antora-dark-mode`^] |
+| Composed chrome + dark mode | https://github.com/antora-supplemental/valentus-theme[`antora-supplemental/valentus-theme`^] |
+| Org public GitHub config | https://github.com/antora-supplemental/.github[`antora-supplemental/.github`^] |
+| Org private GitHub config | https://github.com/antora-supplemental/.github-private[`antora-supplemental/.github-private`^] |
+
+Personal forks of the old `antora-dark-theme` name (for example under a member account) are obsolete once history is contained in the org repos above.
+Do not publish or pin those forks as the install source.
+
+Default UI dark-mode experiments that lived on a GitLab fork of `antora-ui-default` are **upstream proposals** (see open MRs on https://gitlab.com/antora/antora-ui-default[`antora/antora-ui-default`^]).
+Sites that need dark mode today should use this overlay or Valentus rather than waiting on Default UI merge.
+
+== Zulip / community corrections
+
+Short copy for threads that still say `antora-dark-theme`:
+
+[source,text]
+----
+The monolithic antora-dark-theme package was split:
+- Full chrome + dark mode → valentus-theme (release ui-bundle.zip)
+- Dark mode overlay only → antora-dark-mode
+Docs: https://antora-supplemental.github.io/valentus-theme/
+----
+
+Maintainer paste templates also live in `docs/maintainers/antora-chat-corrections.md`.
+
+== See also
+
+* xref:installation.adoc[Installation]
+* xref:npm-distribution.adoc[npm distribution]
+* link:https://antora-supplemental.github.io/docs/docs/theme-products.html[Theme products (org docs hub)^]
+* link:https://antora-supplemental.github.io/docs/docs/org-github-config.html[Org GitHub config (docs hub)^]

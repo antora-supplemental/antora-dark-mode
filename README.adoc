@@ -42,20 +42,22 @@ If you'd like to see native dark mode support in Antora, please upvote the featu
 
 Your support helps the Antora team prioritize this feature!
 
-**Doc-site chrome** (mast, header layout, VCS icons) lives in link:https://github.com/antora-supplemental/valentus-theme[valentus-theme].
-Pair dark mode as overlay or ui-module on top of the *valentus* `ui.bundle` — not the other way around.
+**Full chrome + dark mode** (mast, header, layout, VCS icons, toggle) lives in link:https://github.com/antora-supplemental/valentus-theme[valentus-theme] — use that release `ui-bundle.zip` when you want the whole stack.
+This package is the *dark-mode-only* overlay for Default UI or other themes that do not already ship dark mode.
+Coming from the retired **`antora-dark-theme`** name? See xref:legacy-names.adoc[Legacy names & migration].
 
 == Quick Start
 
 === Overlay on your theme bundle (recommended)
 
-Reserve `ui.bundle` for your theme. Layer dark mode via one `supplemental_files` directory:
+Reserve `ui.bundle` for a theme that does *not* already include dark mode (Default UI, custom themes, etc.).
+Do **not** layer this overlay on the Valentus release bundle — Valentus already bundles dark mode.
 
 [source,yaml]
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
   supplemental_files: ./site/supplemental-ui   # merge antora-dark-mode supplemental-ui here
 ----

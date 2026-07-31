@@ -1,5 +1,7 @@
-# Example: dark mode via ui-orchestrator slots (theme + dark mode without partial collisions)
-# Requires @antora-supplemental/ui-orchestrator from valentus-theme (git path or npm).
+# Example: dark mode via ui-orchestrator slots (no partial collisions)
+# Requires ui-orchestrator from valentus-theme (git path or npm) as the extension host.
+# Do NOT point ui.bundle at the Valentus release zip here — that zip already includes dark mode.
+# Use Default UI (or another base) when composing the dark-mode-only recipe.
 
 site:
   title: My Documentation Site
@@ -12,8 +14,8 @@ content:
 
 ui:
   bundle:
-    # Theme owns ui.bundle — not antora-dark-mode
-    url: https://github.com/antora-supplemental/valentus-theme/releases/download/v2/ui-bundle.zip
+    # Base theme without bundled dark mode — not antora-dark-mode, not Valentus release zip
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
     snapshot: true
 
 antora:
