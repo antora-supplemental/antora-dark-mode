@@ -1,0 +1,8 @@
+= 2026-08-01 — Root theme transition
+
+* *Problem:* Per-component `transition:` rules do not scale. Extensions paint their own backgrounds; when CSS variables / `html.dark-theme` flip, only elements that declared their own transitions animate.
+* *Platform fix (`site-dark-mode.js` + `site-extra.css`):*
+** Preferred: `document.startViewTransition` around the theme class flip (skipped when `prefers-reduced-motion: reduce`).
+** Fallback: add `html.adt-theme-animating` for ~300ms with a universal transition on paint properties (`background-color`, `color`, `border-color`, `fill`, `stroke`, `box-shadow`, `filter`, `opacity`).
+* *Contract:* Extensions style via tokens / `html.dark-theme`; they should not invent their own toggle animation.
+* *Consumers:* Valentus vendors this via `pnpm dark-mode:sync`; demo at the GitHub Pages site for this repo.

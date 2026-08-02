@@ -75,6 +75,18 @@ html.dark-theme .my-custom-element {
 }
 ----
 
+[[theme-transition-contract]]
+== Theme transition contract (extensions)
+
+Light↔dark is animated at the *platform* root — not per widget.
+
+* Preferred: View Transitions API (`document.startViewTransition`) in `site-dark-mode.js` when the browser supports it and the user has not requested reduced motion.
+* Fallback: temporary `html.adt-theme-animating` for ~300ms with a universal paint transition (`background-color`, `color`, `border-color`, `fill`, `stroke`, `box-shadow`, `filter`, `opacity`).
+* Accessibility: both paths are skipped when `prefers-reduced-motion: reduce`.
+
+*Extension authors:* style chrome with CSS custom properties and/or `html.dark-theme` selectors so surfaces pick up the root animation.
+Do *not* invent a separate toggle animation for your widget — per-component `transition:` rules do not scale when other extensions paint their own backgrounds.
+
 == Toggle Button Position
 
 By default, the toggle button is inserted at the beginning of `.navbar-end`.

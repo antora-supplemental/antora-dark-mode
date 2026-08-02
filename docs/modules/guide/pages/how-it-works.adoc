@@ -52,28 +52,33 @@ This JavaScript module handles:
 * *Click handling* - Switches between light and dark themes
 * *Persistence* - Saves preference to `localStorage`
 * *Icon updates* - Shows sun icon in dark mode, moon icon in light mode
+* *Root theme transition* - View Transitions when available; otherwise a short `html.adt-theme-animating` class so paint properties crossfade site-wide (skipped under `prefers-reduced-motion: reduce`)
 
 Key functions:
 
 [source,javascript]
 ----
-// Apply theme and update button icon
-function applyTheme(theme) {
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark-theme');
-  } else {
-    document.documentElement.classList.remove('dark-theme');
+// Paint theme with platform transition (VT or animating-class fallback)
+function runThemePaint(updateFn, animate) {
+  if (!animate || prefersReducedMotion()) {
+    updateFn()
+    return
   }
-  updateButtonIcon(theme);
-  localStorage.setItem('antora-theme', theme);
+  if (typeof document.startViewTransition === 'function') {
+    document.startViewTransition(updateFn)
+    return
+  }
+  html.classList.add('adt-theme-animating')
+  updateFn()
+  setTimeout(() => html.classList.remove('adt-theme-animating'), 300)
 }
 
-// Toggle between themes
 function toggleTheme() {
-  const isDark = document.documentElement.classList.contains('dark-theme');
-  applyTheme(isDark ? 'light' : 'dark');
+  setMode(isDark() ? 'light' : 'dark', true)
 }
 ----
+
+See xref:guide:customization.adoc#theme-transition-contract[Theme transition contract] for extension guidance.
 
 === 4. site-extra.css (Dark Styles)
 

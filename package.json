@@ -1,6 +1,6 @@
 {
   "name": "antora-dark-mode",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Dark mode supplemental UI for Antora — slot-based overlay, toggle, FOUC prevention, and CSS overrides.",
   "keywords": [
     "antora",
