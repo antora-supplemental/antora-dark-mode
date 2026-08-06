@@ -1,12 +1,42 @@
-= Antora Dark Mode
+ifndef::env-github[:icons: font]
 :toc: macro
 :toc-title: Contents
 :toclevels: 3
+:sectanchors:
 :icons: font
 :source-highlighter: highlight.js
 :url-antora: https://antora.org
 :url-antora-ui: https://gitlab.com/antora/antora-ui-default
 :url-demo: https://antora-supplemental.github.io/antora-dark-mode
+endif::[]
+
+ifndef::env-github[]
+image:https://img.shields.io/github/contributors/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Contributors,link=https://github.com/antora-supplemental/antora-dark-mode/graphs/contributors]
+image:https://img.shields.io/github/forks/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Forks,link=https://github.com/antora-supplemental/antora-dark-mode/network/members]
+image:https://img.shields.io/github/stars/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Stars,link=https://github.com/antora-supplemental/antora-dark-mode/stargazers]
+image:https://img.shields.io/github/issues/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Issues,link=https://github.com/antora-supplemental/antora-dark-mode/issues]
+image:https://img.shields.io/github/license/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[License,link=https://github.com/antora-supplemental/antora-dark-mode/blob/main/LICENSE]
+image:https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml/badge.svg[Build Status,link=https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml]
+endif::[]
+
+ifdef::env-github[]
+image:https://img.shields.io/github/contributors/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Contributors]
+image:https://img.shields.io/github/forks/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Forks]
+image:https://img.shields.io/github/stars/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Stars]
+image:https://img.shields.io/github/issues/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Issues]
+image:https://img.shields.io/github/license/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[License]
+image:https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml/badge.svg[Build Status]
+endif::[]
+
+= Antora Dark Mode
+
+Dark mode supplemental UI for Antora Default UI — toggle, FOUC prevention, and CSS overrides.
+
+link:{url-demo}[View demo] ·
+link:https://antora-supplemental.github.io/docs/[Explore the docs] ·
+link:https://github.com/antora-supplemental/antora-dark-mode/issues[Report Bug]
+
+== About The Project
 
 A dark mode UI for {url-antora}[Antora] documentation sites.
 
@@ -14,10 +44,6 @@ IMPORTANT: Install dark mode as a *supplemental overlay* or slot-based ui-module
 GitHub `ui-bundle.zip` is a *convenience* artifact (Default UI + dark mode pre-merged) for quick starts only.
 npm is optional overlay transport — see xref:npm-distribution.adoc[npm distribution].
 Discover this extension via link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs] (extensions registry).
-
-image:https://img.shields.io/badge/license-MIT-blue.svg[License: MIT]
-image:https://img.shields.io/badge/antora-3.x-purple.svg[Antora 3.x]
-image:https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml/badge.svg[Build Status,link=https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml]
 
 **Changelog:** link:CHANGELOG.adoc[CHANGELOG.adoc] (summaries) and link:changelog-details/[`changelog-details/`] (dated detail files).
 
@@ -396,6 +422,13 @@ Please feel free to submit issues and pull requests.
 
 This project is licensed under the MIT License.
 See the link:LICENSE[LICENSE] file for details.
+
+== Contact
+
+Antora Supplemental — support@antora-supplemental.org
+
+* Project: https://github.com/antora-supplemental/antora-dark-mode
+* Site: https://antora-supplemental.org
 
 == Acknowledgments
 
