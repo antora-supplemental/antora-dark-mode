@@ -10,7 +10,57 @@ ifndef::env-github[:icons: font]
 :url-demo: https://antora-supplemental.github.io/antora-dark-mode
 endif::[]
 
-[[readme-top]]
+ifdef::env-github[]
+++++
+<a id="readme-top"></a>
+<div align="center">
+<a href="https://github.com/antora-supplemental/antora-dark-mode/graphs/contributors"><img src="https://img.shields.io/github/contributors/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="Contributors"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/network/members"><img src="https://img.shields.io/github/forks/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="Forks"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/stargazers"><img src="https://img.shields.io/github/stars/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="Stars"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/issues"><img src="https://img.shields.io/github/issues/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="Issues"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/blob/main/LICENSE"><img src="https://img.shields.io/github/license/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="License"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml"><img src="https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml/badge.svg" alt="Build Status"></a>
+<br />
+<h3 align="center">Antora Dark Mode</h3>
+<p align="center">
+Dark mode supplemental UI for Antora Default UI — toggle, FOUC prevention, and CSS overrides.<br />
+<a href="https://antora-supplemental.github.io/docs/"><strong>Explore the docs ·</strong></a>
+<br /><br />
+<a href="https://antora-supplemental.github.io/antora-dark-mode">View demo</a>
+&middot;
+<a href="https://github.com/antora-supplemental/antora-dark-mode/issues">Report Bug</a>
+</p>
+</div>
+++++
+endif::[]
+
+ifndef::env-github[]
+
+ifdef::env-github[]
+++++
+<a id="readme-top"></a>
+<div align="center">
+<a href="https://github.com/antora-supplemental/antora-dark-mode/graphs/contributors"><img src="https://img.shields.io/github/contributors/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="Contributors"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/network/members"><img src="https://img.shields.io/github/forks/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="Forks"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/stargazers"><img src="https://img.shields.io/github/stars/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="Stars"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/issues"><img src="https://img.shields.io/github/issues/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="Issues"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/blob/main/LICENSE"><img src="https://img.shields.io/github/license/antora-supplemental/antora-dark-mode.svg?style=for-the-badge" alt="License"></a>
+<a href="https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml"><img src="https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/deploy.yml/badge.svg" alt="Build Status"></a>
+<br />
+<h3 align="center">Antora Dark Mode</h3>
+<p align="center">
+Dark mode supplemental UI for Antora Default UI — toggle, FOUC prevention, and CSS overrides.<br />
+<a href="https://antora-supplemental.github.io/docs/"><strong>Explore the docs ·</strong></a>
+<br /><br />
+<a href="https://antora-supplemental.github.io/antora-dark-mode">View demo</a>
+&middot;
+<a href="https://github.com/antora-supplemental/antora-dark-mode/issues">Report Bug</a>
+</p>
+</div>
+++++
+endif::[]
+
+ifndef::env-github[]
 image:https://img.shields.io/github/contributors/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Contributors,link=https://github.com/antora-supplemental/antora-dark-mode/graphs/contributors]
 image:https://img.shields.io/github/forks/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Forks,link=https://github.com/antora-supplemental/antora-dark-mode/network/members]
 image:https://img.shields.io/github/stars/antora-supplemental/antora-dark-mode.svg?style=for-the-badge[Stars,link=https://github.com/antora-supplemental/antora-dark-mode/stargazers]
@@ -22,9 +72,10 @@ image:https://github.com/antora-supplemental/antora-dark-mode/actions/workflows/
 
 Dark mode supplemental UI for Antora Default UI — toggle, FOUC prevention, and CSS overrides.
 
-link:{url-demo}[View demo] ·
+link:https://antora-supplemental.github.io/antora-dark-mode[View demo] ·
 link:https://antora-supplemental.github.io/docs/[Explore the docs] ·
 link:https://github.com/antora-supplemental/antora-dark-mode/issues[Report Bug]
+endif::[]
 
 == About The Project
 
@@ -39,8 +90,9 @@ Discover this extension via link:https://antora-supplemental.github.io/docs/[Ant
 
 toc::[]
 
-link:#readme-top[back to top]
-
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 == Features
 
 * **Dark mode toggle** - A sun/moon icon button in the navbar that switches between light and dark themes
@@ -51,8 +103,9 @@ link:#readme-top[back to top]
 * **Comprehensive styling** - Covers navbar, navigation panels, content area, code blocks, tables, admonition blocks, footer, and more
 * **Version pinning strategies** — exact semver pin (recommended for production), `releases/latest`, rolling line aliases (`v1.0`, `v1.1`, `v1`), `supported-lines.json`, and Renovate regex example; see the xref:version-pinning.adoc[Version Pinning guide] in the docs module.
 
-link:#readme-top[back to top]
-
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 == Help Get Dark Mode into Antora
 
 We've submitted this theme for inclusion in the official Antora Default UI.
@@ -412,15 +465,17 @@ Please feel free to submit issues and pull requests.
 . Push to the branch: `git push origin feature/my-feature`
 . Open a pull request
 
-link:#readme-top[back to top]
-
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 == License
 
 This project is licensed under the MIT License.
 See the link:LICENSE[LICENSE] file for details.
 
-link:#readme-top[back to top]
-
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 == Contact
 
 Antora Supplemental — support@antora-supplemental.org
@@ -428,8 +483,9 @@ Antora Supplemental — support@antora-supplemental.org
 * Project: https://github.com/antora-supplemental/antora-dark-mode
 * Site: https://antora-supplemental.org
 
-link:#readme-top[back to top]
-
+++++
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+++++
 == Acknowledgments
 
 * The {url-antora}[Antora] team for creating an excellent documentation site generator
