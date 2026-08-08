@@ -1,0 +1,8 @@
+= 2026-08-08 — Theme transition VT suppress
+
+* *Problem:* On Chromium (View Transitions path), platform root crossfade is 0.28s, but Valentus / search chrome keep permanent paint `transition:` rules at 0.2s (`--adt-transition`, search inputs, etc.). Those surfaces finish early while the rest of the page is still mid-snapshot fade — the light↔dark toggle looks uneven.
+* *Fix:*
+** `site-dark-mode.js` adds `html.adt-theme-vt` around `document.startViewTransition`, cleared on `transition.finished` (timeout fallback if needed).
+** `site-extra.css` sets `transition: none !important` under `html.adt-theme-vt` and `html:active-view-transition` for the element tree so only the root VT animation paints the theme change.
+* *Unchanged:* Non-VT fallback still uses `html.adt-theme-animating` with the universal 0.28s paint transition (`!important`), which already overrides per-widget durations.
+* *Contract:* Extensions should not invent toggle animations; hover transitions are fine and are suppressed only while VT is active.

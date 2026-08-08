@@ -52,7 +52,7 @@ This JavaScript module handles:
 * *Click handling* - Switches between light and dark themes
 * *Persistence* - Saves preference to `localStorage`
 * *Icon updates* - Shows sun icon in dark mode, moon icon in light mode
-* *Root theme transition* - View Transitions when available; otherwise a short `html.adt-theme-animating` class so paint properties crossfade site-wide (skipped under `prefers-reduced-motion: reduce`)
+* *Root theme transition* - View Transitions when available (`html.adt-theme-vt` suppresses competing CSS paint transitions); otherwise a short `html.adt-theme-animating` class so paint properties crossfade site-wide (skipped under `prefers-reduced-motion: reduce`)
 
 Key functions:
 
@@ -65,7 +65,10 @@ function runThemePaint(updateFn, animate) {
     return
   }
   if (typeof document.startViewTransition === 'function') {
-    document.startViewTransition(updateFn)
+    html.classList.add('adt-theme-vt')
+    document.startViewTransition(updateFn).finished.finally(() => {
+      html.classList.remove('adt-theme-vt')
+    })
     return
   }
   html.classList.add('adt-theme-animating')
