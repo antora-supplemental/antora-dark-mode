@@ -14,6 +14,10 @@ Entries below are in **chronological order** by date: prior release, then the **
 * *Docs:* Clarify product roles — Valentus release bundle already includes dark mode; overlay / ui-module examples use Default UI (do not stack this package on Valentus `ui-bundle.zip`).
 * *CI:* Release workflow fixes (`v*.*.*` tag filter, `workflow_dispatch`, lockfile); npm publish via trusted publishing (OIDC) — no `NPM_TOKEN`.
 
+== [1.4.1] - 2026-08-08
+
+* *Fix:* Dark-mode admonitions — stop painting `td.icon` / table chrome with type tints; TIP/NOTE labels sit above the bordered content card without a green (etc.) wash. See link:changelog-details/2026-08-08%20-%20admonition%20dark-mode%20label%20wash.adoc[Detailed notes].
+
 == [1.4.0] - 2026-08-01
 
 * *Feature:* Root light↔dark theme transition — View Transitions API on toggle when supported; fallback temporary `html.adt-theme-animating` with a universal paint transition so extension chrome following tokens / `html.dark-theme` animates without per-widget rules. Honors `prefers-reduced-motion: reduce`. Documented as the extension contract in Customization / How It Works.

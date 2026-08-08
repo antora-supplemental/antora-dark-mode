@@ -1,0 +1,13 @@
+= 2026-08-08 — Admonition dark-mode label wash
+
+== Fixed
+
+Dark-mode CSS painted *every* admonition `td` (including `td.icon`) with a type tint
+(e.g. tip green `#1a2a1a`). Valentus / Default UI place the TIP/NOTE label in `td.icon`
+*above* the bordered `td.content` card, so the wash made the label look outside the
+border (or under a green overlay). Light mode was fine because it never used those rules.
+
+== Change
+
+* Tint / elevated fill apply only to `td.content`.
+* `td.icon`, table, and row backgrounds stay transparent.
