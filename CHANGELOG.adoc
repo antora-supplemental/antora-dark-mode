@@ -14,6 +14,10 @@ Entries below are in **chronological order** by date: prior release, then the **
 * *Docs:* Clarify product roles — Valentus release bundle already includes dark mode; overlay / ui-module examples use Default UI (do not stack this package on Valentus `ui-bundle.zip`).
 * *CI:* Release workflow fixes (`v*.*.*` tag filter, `workflow_dispatch`, lockfile); npm publish via trusted publishing (OIDC) — no `NPM_TOKEN`.
 
+== [1.4.5] - 2026-08-08
+
+* *Fix:* Admonition card tints set only `background` (drop solid `background-color` fallbacks that could two-tone the TIP card against `color-mix`).
+
 == [1.4.4] - 2026-08-08
 
 * *Fix:* Admonition card tints/borders use `var(--adt-admonition-*, …)` so TIP (etc.) match site tokens / Valentus pills instead of a second hardcoded green. See link:changelog-details/2026-08-08%20-%20admonition%20tint%20uses%20tokens.adoc[Detailed notes].
@@ -176,3 +180,4 @@ The https://github.com/antora-supplemental[antora-supplemental] GitHub organizat
 VCS navbar logo (Simple Icons–style assets, local build and missing-Download fallbacks), npm `author` for the next registry publish, expanded VCS guide, and README line-ending cleanup.
 
 * link:changelog-details/2026-03-26%20-%200.1.5%20VCS%20repo%20logo%20and%20npm%20metadata.adoc[Detailed changelog — 2026-03-26]
+
