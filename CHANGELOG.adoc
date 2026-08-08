@@ -14,6 +14,10 @@ Entries below are in **chronological order** by date: prior release, then the **
 * *Docs:* Clarify product roles — Valentus release bundle already includes dark mode; overlay / ui-module examples use Default UI (do not stack this package on Valentus `ui-bundle.zip`).
 * *CI:* Release workflow fixes (`v*.*.*` tag filter, `workflow_dispatch`, lockfile); npm publish via trusted publishing (OIDC) — no `NPM_TOKEN`.
 
+== [1.4.4] - 2026-08-08
+
+* *Fix:* Admonition card tints/borders use `var(--adt-admonition-*, …)` so TIP (etc.) match site tokens / Valentus pills instead of a second hardcoded green. See link:changelog-details/2026-08-08%20-%20admonition%20tint%20uses%20tokens.adoc[Detailed notes].
+
 == [1.4.3] - 2026-08-08
 
 * *Fix:* Admonitions — bordered card wraps TIP/NOTE label + body (`table` chrome; cells transparent). Corrects 1.4.1 which only cleared the label wash while leaving TIP outside the border. See link:changelog-details/2026-08-08%20-%20admonition%20card%20wraps%20tip%20label.adoc[Detailed notes].

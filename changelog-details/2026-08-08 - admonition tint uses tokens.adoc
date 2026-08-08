@@ -1,0 +1,6 @@
+= 2026-08-08 — Admonition card tint uses tokens
+
+Dark-mode tip/note/… table tints and left borders read
+`var(--adt-admonition-*, <Antora fallback>)` so they track the same tokens
+Valentus uses for TIP pills and card chrome. Sites override once; do not hardcode
+a second tip green in overlay CSS.
