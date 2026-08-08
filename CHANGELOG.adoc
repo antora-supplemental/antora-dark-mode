@@ -10,6 +10,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+* *Fix:* Admonitions — bordered card wraps TIP/NOTE label + body (`table` chrome; cells transparent). Corrects 1.4.1 which only cleared the label wash while leaving TIP outside the border. See link:changelog-details/2026-08-08%20-%20admonition%20card%20wraps%20tip%20label.adoc[Detailed notes].
 * *Docs:* Guide page xref:guide:legacy-names.adoc[Legacy names & migration] — `antora-dark-theme` → `valentus-theme` / `antora-dark-mode`, canonical org repos vs personal forks, Zulip correction blurb. Linked from Getting Started and Installation.
 * *Docs:* Clarify product roles — Valentus release bundle already includes dark mode; overlay / ui-module examples use Default UI (do not stack this package on Valentus `ui-bundle.zip`).
 * *CI:* Release workflow fixes (`v*.*.*` tag filter, `workflow_dispatch`, lockfile); npm publish via trusted publishing (OIDC) — no `NPM_TOKEN`.

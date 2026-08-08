@@ -1,0 +1,15 @@
+= 2026-08-08 — Admonition card wraps TIP label
+
+== Problem
+
+The 1.4.1 / Valentus 2.0.6 “label wash” fix tinted only `td.content` and cleared
+`td.icon`. That removed the green overlay from the TIP pill, but left the
+**border on the body only**, so TIP still sat *above* the card — the original
+complaint that the label was outside the block.
+
+== Fix
+
+* Card chrome (border + type tint) applies to the admonition `table`.
+* `td.icon` and `td.content` stay transparent inside that card.
+* TIP/NOTE pills keep their solid label colors; the soft type tint is the card,
+  not a wash behind the pill alone.
