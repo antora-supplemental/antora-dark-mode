@@ -10,6 +10,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+* *Fix:* Dark-mode inline ``td code`` / ``dt`` / ``dd`` code include border + radius (match paragraph inline code).
 * *Fix:* TIP dark-mode card tint derived from Antora tip green `#41af46`.
 * *Fix:* Admonitions — bordered card wraps TIP/NOTE label + body (`table` chrome; cells transparent). Corrects 1.4.1 which only cleared the label wash while leaving TIP outside the border. See link:changelog-details/2026-08-08%20-%20admonition%20card%20wraps%20tip%20label.adoc[Detailed notes].
 * *Docs:* Guide page xref:guide:legacy-names.adoc[Legacy names & migration] — `antora-dark-theme` → `valentus-theme` / `antora-dark-mode`, canonical org repos vs personal forks, Zulip correction blurb. Linked from Getting Started and Installation.
