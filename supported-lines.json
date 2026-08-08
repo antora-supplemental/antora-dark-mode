@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "updated": "2026-08-08T10:48:19.249Z",
-  "latest": "1.4.2",
+  "updated": "2026-08-08T11:30:47.007Z",
+  "latest": "1.4.3",
   "lines": {
     "1": {
       "tag": "v1",
-      "current": "1.4.2",
+      "current": "1.4.3",
       "url": "https://github.com/antora-supplemental/antora-dark-mode/releases/download/v1/ui-bundle.zip"
     },
     "1.0": {
@@ -30,7 +30,7 @@
     },
     "1.4": {
       "tag": "v1.4",
-      "current": "1.4.2",
+      "current": "1.4.3",
       "url": "https://github.com/antora-supplemental/antora-dark-mode/releases/download/v1.4/ui-bundle.zip"
     }
   }
