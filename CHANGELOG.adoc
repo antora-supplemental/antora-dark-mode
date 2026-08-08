@@ -10,10 +10,13 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
-* *Fix:* Theme toggle timing — during View Transitions, set `html.adt-theme-vt` and match `:active-view-transition` with `transition: none` so Valentus/search per-widget paint transitions (0.2s) cannot finish ahead of the 0.28s root snapshot crossfade. See link:changelog-details/2026-08-08%20-%20theme%20transition%20vt%20suppress.adoc[Detailed notes].
 * *Docs:* Guide page xref:guide:legacy-names.adoc[Legacy names & migration] — `antora-dark-theme` → `valentus-theme` / `antora-dark-mode`, canonical org repos vs personal forks, Zulip correction blurb. Linked from Getting Started and Installation.
 * *Docs:* Clarify product roles — Valentus release bundle already includes dark mode; overlay / ui-module examples use Default UI (do not stack this package on Valentus `ui-bundle.zip`).
 * *CI:* Release workflow fixes (`v*.*.*` tag filter, `workflow_dispatch`, lockfile); npm publish via trusted publishing (OIDC) — no `NPM_TOKEN`.
+
+== [1.4.2] - 2026-08-08
+
+* *Fix:* Theme toggle timing — during View Transitions, set `html.adt-theme-vt` and match `:active-view-transition` with `transition: none` so Valentus/search per-widget paint transitions (0.2s) cannot finish ahead of the 0.28s root snapshot crossfade. See link:changelog-details/2026-08-08%20-%20theme%20transition%20vt%20suppress.adoc[Detailed notes].
 
 == [1.4.1] - 2026-08-08
 
