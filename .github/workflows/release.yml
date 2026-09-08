@@ -33,13 +33,13 @@ jobs:
         uses: pnpm/action-setup@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "24"
-          cache: "pnpm"
+          package-manager-cache: false
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Verify package version matches tag
         run: |
@@ -90,20 +90,34 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js for npm publish
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "24"
           registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Install current npm CLI
+        run: npm install --global npm@11.19.1
+
+      - name: Check npm registry
+        id: npm
+        run: |
+          NAME=$(node -p "require('./package.json').name")
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Publish to npm
-        continue-on-error: true
+        if: steps.npm.outputs.publish == 'true'
         run: |
           pnpm ui-modules:sync
           pnpm ui-modules:validate
           node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));delete p.private;fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
           npm --version
           npm publish --access public
-          npm deprecate antora-dark-theme@* "Split: use valentus-theme (chrome + dark) or antora-dark-mode (overlay only). See https://antora-supplemental.github.io/antora-dark-mode/antora-dark-mode/guide/legacy-names.html" || true
         # Trusted publisher on npmjs.com (package → Settings → Trusted publishing):
         #   Provider: GitHub Actions
         #   Organization/user: antora-supplemental
