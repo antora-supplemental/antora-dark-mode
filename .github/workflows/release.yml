@@ -130,10 +130,12 @@ jobs:
         # Requires npm CLI ≥ 11.5.1 (Node 24 on ubuntu-latest). No NPM_TOKEN.
 
       - name: Resolve release commit
+        if: github.event_name == 'push'
         id: rel
         run: echo "sha=$(git rev-list -n 1 "${RELEASE_TAG}")" >> "$GITHUB_OUTPUT"
 
       - name: Update rolling release lines
+        if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ env.RELEASE_VERSION }}
@@ -142,6 +144,7 @@ jobs:
         run: node .github/scripts/post-release.mjs "${VERSION#v}" ui-bundle.zip
 
       - name: Commit supported-lines.json on main
+        if: github.event_name == 'push'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
