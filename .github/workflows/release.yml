@@ -104,7 +104,10 @@ jobs:
         run: |
           NAME=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
-          if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
+          ESCAPED="${NAME//@/%40}"
+          ESCAPED="${ESCAPED//\//%2F}"
+          if curl --fail --silent --output /dev/null \
+            "https://registry.npmjs.org/${ESCAPED}/${VERSION}"; then
             echo "publish=false" >> "$GITHUB_OUTPUT"
           else
             echo "publish=true" >> "$GITHUB_OUTPUT"
