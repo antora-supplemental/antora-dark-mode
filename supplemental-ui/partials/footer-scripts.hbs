@@ -4,3 +4,8 @@
 {{> search-scripts}}
 {{/if}}
 <script src="{{{uiRootPath}}}/js/site-dark-mode.js"></script>
+<script type="module">
+  import { upgradeThemedSvgImages } from '{{{uiRootPath}}}/js/themed-svg-element.js'
+  document.querySelectorAll('.imageblock.themed-svg img').forEach((image) => image.dataset.themedSvg = '')
+  upgradeThemedSvgImages()
+</script>
