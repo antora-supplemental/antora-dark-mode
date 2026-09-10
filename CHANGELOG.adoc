@@ -1,9 +1,5 @@
 = Changelog
 
-== 2026-09-10 -- Publish robots.txt with sitemap
-
-* Antora `site.robots` now emits `/robots.txt` with an absolute `Sitemap:` line for the production host.
-
 All notable changes to this project will be documented in this file.
 Each release has a short summary below; link:changelog-details/[per-date detailed notes] live under `changelog-details/` (named `YYYY-MM-DD - title`).
 
@@ -14,6 +10,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [Unreleased]
 
+* *Docs / SEO:* Antora `site.robots` now emits `/robots.txt` with an absolute `Sitemap:` line for the production host.
 * *Diagrams:* Replace the duplicated PlantUML sequence with canonical Mermaid and retain local copies of the Valentus Themed SVG manifests and adaptive/host artifacts. The example site progressively upgrades `.themed-svg` roles with the pinned sanitized runtime.
 * *Docs:* Guide page xref:guide:legacy-names.adoc[Legacy names & migration] — `antora-dark-theme` → `valentus-theme` / `antora-dark-mode`, canonical org repos vs personal forks, Zulip correction blurb. Linked from Getting Started and Installation.
 * *Docs:* Clarify product roles — Valentus release bundle already includes dark mode; overlay / ui-module examples use Default UI (do not stack this package on Valentus `ui-bundle.zip`).
