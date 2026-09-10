@@ -5,6 +5,10 @@ site:
   title: Antora Dark Mode
   url: https://antora-supplemental.github.io/antora-dark-mode
   start_page: antora-dark-mode:guide:index.adoc
+  robots: |
+    User-agent: *
+    Allow: /
+    Sitemap: https://antora-supplemental.github.io/antora-dark-mode/sitemap.xml
 
 content:
   sources:

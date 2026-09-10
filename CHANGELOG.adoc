@@ -1,5 +1,9 @@
 = Changelog
 
+== 2026-09-10 -- Publish robots.txt with sitemap
+
+* Antora `site.robots` now emits `/robots.txt` with an absolute `Sitemap:` line for the production host.
+
 All notable changes to this project will be documented in this file.
 Each release has a short summary below; link:changelog-details/[per-date detailed notes] live under `changelog-details/` (named `YYYY-MM-DD - title`).
 
