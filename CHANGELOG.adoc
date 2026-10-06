@@ -15,6 +15,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 * *Docs:* Guide page xref:guide:legacy-names.adoc[Legacy names & migration] — `antora-dark-theme` → `valentus-theme` / `antora-dark-mode`, canonical org repos vs personal forks, Zulip correction blurb. Linked from Getting Started and Installation.
 * *Docs:* Clarify product roles — Valentus release bundle already includes dark mode; overlay / ui-module examples use Default UI (do not stack this package on Valentus `ui-bundle.zip`).
 * *CI:* Release workflow fixes (`v*.*.*` tag filter, `workflow_dispatch`, frozen lockfile); npm publish uses a current CLI and trusted publishing (OIDC), skips versions already present, and no longer hides registry failures.
+* *Dependencies:* Lockfile refresh so Antora's `@asciidoctor/core` resolves to 2.2.9; its Opal runtime (0.3.4) uses `fast-glob` instead of the deprecated `glob@7`.
 
 == [1.4.5] - 2026-08-08
 
