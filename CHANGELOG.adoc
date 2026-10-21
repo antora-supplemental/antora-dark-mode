@@ -8,9 +8,12 @@ and this project adheres to https://semver.org/spec/v2.0.0.html[Semantic Version
 
 Entries below are in **chronological order** by date: prior release, then the **2026-03-04** org creation and repository move, then the next release.
 
-== [Unreleased]
+== [1.4.6] - 2026-10-21
 
 * *Fix:* Valentus 3 header theme toggle — scope Default UI `.theme-toggle` rules in `site-extra.css` to `:not(.valentus-header-icon-btn)` so Valentus `site-doc-layout.css` icon-button chrome wins; detect `.header.valentus-header` (keep `.header.adt-header` fallback) and refresh toggle `className` on init when the button already exists.
+
+== [Unreleased]
+
 * *Docs / SEO:* Antora `site.robots` now emits `/robots.txt` with an absolute `Sitemap:` line for the production host.
 * *Diagrams:* Replace the duplicated PlantUML sequence with canonical Mermaid and retain local copies of the Valentus Themed SVG manifests and adaptive/host artifacts. The example site progressively upgrades `.themed-svg` roles with the pinned sanitized runtime.
 * *Docs:* Guide page xref:guide:legacy-names.adoc[Legacy names & migration] — `antora-dark-theme` → `valentus-theme` / `antora-dark-mode`, canonical org repos vs personal forks, Zulip correction blurb. Linked from Getting Started and Installation.
