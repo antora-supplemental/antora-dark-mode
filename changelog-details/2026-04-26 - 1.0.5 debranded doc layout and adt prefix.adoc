@@ -3,6 +3,6 @@
 :navtitle: 1.0.5 debranded layout
 
 * The supplemental layout stylesheet is now `supplemental-ui/css/site-doc-layout.css` (load after `site-extra.css` in `head-meta`).
-* Breadcrumb component/version script is `js/site-adt-accordion.js`.
-* CSS custom properties and classes use the `adt-` prefix (no product-specific `ftn-` prefix in the distributed package).
+* Breadcrumb component/version script is `js/site-valentus-accordion.js`.
+* CSS custom properties and classes use the `valentus-` prefix (no product-specific `ftn-` prefix in the distributed package).
 * The default header image is `img/logo.svg`; replace or override `partials/header-content.hbs` for your brand.

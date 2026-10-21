@@ -107,7 +107,7 @@ Honoring the contract lets consumers choose a strategy safely:
 | Release | Should mean | Consumer can
 
 | Patch (v1.0.12)
-| Bugfix; no partial/CSS/`adt-*` hook breaks
+| Bugfix; no partial/CSS/`valentus-*` hook breaks
 | Auto-adopt if pinned to `~1.0.0` via Renovate
 
 | Minor (v1.1.0)
@@ -119,7 +119,7 @@ Honoring the contract lets consumers choose a strategy safely:
 | Never auto; explicit migration
 |===
 
-Sites with forked supplemental partials or vendored `site-dark-mode.js` should still review *patches*—renamed `adt-*` classes or header structure changes can affect overlays.
+Sites with forked supplemental partials or vendored `site-dark-mode.js` should still review *patches*—renamed `valentus-*` classes or header structure changes can affect overlays.
 
 == Practical workflow (example)
 

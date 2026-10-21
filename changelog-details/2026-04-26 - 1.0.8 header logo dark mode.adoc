@@ -4,4 +4,4 @@
 
 The bundled `img/logo.svg` is a neutral “document” mark using SVG `currentColor`. Browsers do not resolve `currentColor` for SVG referenced via `<img src="…">`, so the artwork defaulted to a dark fill and disappeared on the dark navigation strip.
 
-Dark mode now applies a standard invert filter to `.adt-header-logo` so the mark reads as light on `var(--adt-header-bar-bg)`.
+Dark mode now applies a standard invert filter to `.valentus-header-logo` so the mark reads as light on `var(--valentus-header-bar-bg)`.

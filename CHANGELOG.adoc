@@ -24,7 +24,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [1.4.4] - 2026-08-08
 
-* *Fix:* Admonition card tints/borders use `var(--adt-admonition-*, …)` so TIP (etc.) match site tokens / Valentus pills instead of a second hardcoded green. See link:changelog-details/2026-08-08%20-%20admonition%20tint%20uses%20tokens.adoc[Detailed notes].
+* *Fix:* Admonition card tints/borders use `var(--valentus-admonition-*, …)` so TIP (etc.) match site tokens / Valentus pills instead of a second hardcoded green. See link:changelog-details/2026-08-08%20-%20admonition%20tint%20uses%20tokens.adoc[Detailed notes].
 
 == [1.4.3] - 2026-08-08
 
@@ -34,7 +34,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [1.4.2] - 2026-08-08
 
-* *Fix:* Theme toggle timing — during View Transitions, set `html.adt-theme-vt` and match `:active-view-transition` with `transition: none` so Valentus/search per-widget paint transitions (0.2s) cannot finish ahead of the 0.28s root snapshot crossfade. See link:changelog-details/2026-08-08%20-%20theme%20transition%20vt%20suppress.adoc[Detailed notes].
+* *Fix:* Theme toggle timing — during View Transitions, set `html.valentus-theme-vt` and match `:active-view-transition` with `transition: none` so Valentus/search per-widget paint transitions (0.2s) cannot finish ahead of the 0.28s root snapshot crossfade. See link:changelog-details/2026-08-08%20-%20theme%20transition%20vt%20suppress.adoc[Detailed notes].
 
 == [1.4.1] - 2026-08-08
 
@@ -42,7 +42,7 @@ Entries below are in **chronological order** by date: prior release, then the **
 
 == [1.4.0] - 2026-08-01
 
-* *Feature:* Root light↔dark theme transition — View Transitions API on toggle when supported; fallback temporary `html.adt-theme-animating` with a universal paint transition so extension chrome following tokens / `html.dark-theme` animates without per-widget rules. Honors `prefers-reduced-motion: reduce`. Documented as the extension contract in Customization / How It Works.
+* *Feature:* Root light↔dark theme transition — View Transitions API on toggle when supported; fallback temporary `html.valentus-theme-animating` with a universal paint transition so extension chrome following tokens / `html.dark-theme` animates without per-widget rules. Honors `prefers-reduced-motion: reduce`. Documented as the extension contract in Customization / How It Works.
 * See link:changelog-details/2026-08-01%20-%20root%20theme%20transition.adoc[Detailed notes — 2026-08-01 root theme transition].
 
 == [1.3.1] - 2026-06-13
@@ -97,7 +97,7 @@ link:changelog-details/2026-06-08%20-%201.0.10%20system%20theme%20and%20lunr%20s
 
 == [1.0.9] - 2026-04-26
 
-* *UI:* `site-doc-layout.css` — double horizontal rail padding (`--adt-mast-pad-h` **0.5rem → 1rem**) so the left nav tree, doc mast, and breadcrumb home share a roomier inset.
+* *UI:* `site-doc-layout.css` — double horizontal rail padding (`--valentus-mast-pad-h` **0.5rem → 1rem**) so the left nav tree, doc mast, and breadcrumb home share a roomier inset.
 
 link:changelog-details/2026-04-26%20-%201.0.9%20nav%20rail%20horizontal%20padding.adoc[Detailed notes — 2026-04-26]
 
@@ -122,7 +122,7 @@ link:changelog-details/2026-04-26%20-%201.0.6%20release%20tag%20fix%20and%20stic
 
 == [1.0.5] - 2026-04-26
 
-* *Debranded “doc site” package:* The theme is now a generic clone of the former FoodTruckNerdz layout: all partials, `site-doc-layout.css` (renamed from `site-ftn-docs.css`), `site-adt-accordion.js` (breadcrumb pickers; renamed from `site-ftn-accordion.js`), `img/logo.svg`, and neutral defaults in `header-content.hbs` (playbook `site.keys` for `site_home_url`, `header_doc_title`, `github_profile_url`, `footer_note`). Public CSS/JS class and ID hooks use the `adt-` prefix; breadcrumb kicker list IDs are `#adt-bc-proj` and `#adt-bc-ver`.
+* *Debranded “doc site” package:* The theme is now a generic clone of the former FoodTruckNerdz layout: all partials, `site-doc-layout.css` (renamed from `site-ftn-docs.css`), `site-valentus-accordion.js` (breadcrumb pickers; renamed from `site-ftn-accordion.js`), `img/logo.svg`, and neutral defaults in `header-content.hbs` (playbook `site.keys` for `site_home_url`, `header_doc_title`, `github_profile_url`, `footer_note`). Public CSS/JS class and ID hooks use the `valentus-` prefix; breadcrumb kicker list IDs are `#valentus-bc-proj` and `#valentus-bc-ver`.
 * *FoodTruckNerdz downstream:* the https://github.com/FoodTruckNerdz/docs[docs] site keeps a branded `header-content.hbs`, `img/foodtrucknerdz.svg`, and project footer; it stays aligned with this package by not copying the full `supplemental-ui` from npm on prebuild (only `site-extra.css` and `img/` sync).
 
 link:changelog-details/2026-04-26%20-%201.0.5%20debranded%20doc%20layout%20and%20adt%20prefix.adoc[Detailed notes — 2026-04-26]
