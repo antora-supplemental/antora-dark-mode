@@ -1,4 +1,4 @@
-// antora-dark-mode UI module catalog — dark mode overlay only (slot-based).
+// antora-dark-mode UI module catalog - DEPRECATED: merged into antora-ui-chassis @antora-supplemental/color-scheme.
 {
   schema: "1.0",
   repository: "https://github.com/antora-supplemental/antora-dark-mode",

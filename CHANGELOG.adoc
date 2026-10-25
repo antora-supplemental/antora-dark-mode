@@ -8,6 +8,12 @@ and this project adheres to https://semver.org/spec/v2.0.0.html[Semantic Version
 
 Entries below are in **chronological order** by date: prior release, then the **2026-03-04** org creation and repository move, then the next release.
 
+== [Unreleased] - 2026-10-25
+
+=== Deprecated
+
+* **Project deprecated:** merged into `@antora-supplemental/color-scheme` (antora-ui-chassis, tag `color-scheme-v0.1.2`, unstyled mechanism) with paint and toggle placement in themes (valentus-theme 4.0.0 `site-paint.css`). README, npm `package.json` description, ui-module manifest and docs carry the notice and migration steps. No new release; repository not archived. See link:changelog-details/2026-10-25%20-%20deprecated%20merged%20into%20chassis.adoc[detail].
+
 == [1.4.6] - 2026-10-21
 
 * *Fix:* Valentus 3 header theme toggle — scope Default UI `.theme-toggle` rules in `site-extra.css` to `:not(.valentus-header-icon-btn)` so Valentus `site-doc-layout.css` icon-button chrome wins; detect `.header.valentus-header` (keep `.header.adt-header` fallback) and refresh toggle `className` on init when the button already exists.
