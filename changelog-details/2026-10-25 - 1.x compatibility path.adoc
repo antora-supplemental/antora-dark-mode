@@ -1,0 +1,29 @@
+= 1.x compatibility path (1.5.0)
+:navtitle: Compatibility path (2026-10-25)
+
+== What changed
+
+Dark mode moved to https://github.com/antora-supplemental/antora-ui-chassis[antora-ui-chassis]. The npm name `antora-dark-mode` continues there as 2.x, a relabel that installs `@antora-supplemental/color-scheme`, `@antora-supplemental/light-dark-mode` and `@antora-supplemental/default-paint`.
+
+This repository stays as the 1.x compatibility path. It is not archived and nothing is deprecated on npm.
+
+* `lib/index.js` is now an Antora extension. `register` calls `this.getLogger('antora-dark-mode').warn(...)` once per build with the migration text and link, then registers light-dark-mode and default-paint with the same options as 2.x (`navbar`, `toggle`, `toggle_placement`, `follow_system`, `paint`, `color_scheme`; `site.keys.dark_mode_navbar` still sets `navbar`).
+* `test/compat.test.js` checks that the warning fires once, through the `antora-dark-mode` logger, includes the migration link, and that options are mapped.
+* The release workflow no longer publishes to npm. 2.x is published by the chassis release workflow.
+* README, docs and ui-module text now describe the compatibility path instead of a deprecation.
+
+== Warning text
+
+----
+antora-dark-mode 1.x is a compatibility path; dark mode moved to antora-ui-chassis. Migrate: npm i -D antora-dark-mode@2 and add "- require: antora-dark-mode" under antora.extensions in your playbook (remove the old UI bundle or supplemental files). See https://github.com/antora-supplemental/antora-ui-chassis/blob/main/docs/modules/ROOT/pages/migrate-dark-mode.adoc
+----
+
+== Not carried over
+
+`themed-svg-element.js` and the VCS header partial.
+
+== Weight (Default UI page, gzip)
+
+* 1.4.6: `site-extra.css` 6.1 KB + `site-dark-mode.js` 2.1 KB + inline head script 0.4 KB = about 8.6 KB (plus 23.4 KB when `themed-svg-element.js` loads).
+* Chassis (2.x / this path): color-scheme.css 0.7 KB + light-dark-mode.css 1.2 KB + default-paint.css 3.5 KB + light-dark-mode.js 4.4 KB = about 9.8 KB; 11.4 KB with the live-paint picker.
+* npm tarball: 1.4.6 47.8 KB packed / 215 KB unpacked (30 files); 2.0.0 45.6 KB packed / 165 KB unpacked (37 files).

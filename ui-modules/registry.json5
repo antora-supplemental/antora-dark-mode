@@ -1,4 +1,4 @@
-// antora-dark-mode UI module catalog - DEPRECATED: merged into antora-ui-chassis @antora-supplemental/color-scheme.
+// antora-dark-mode UI module catalog - compatibility path: dark mode moved to antora-ui-chassis (antora-dark-mode 2.x).
 {
   schema: "1.0",
   repository: "https://github.com/antora-supplemental/antora-dark-mode",

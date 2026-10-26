@@ -2,27 +2,28 @@
 :navtitle: Getting Started
 :description: Dark mode supplemental UI for Antora documentation sites.
 
-[WARNING]
-.Deprecated — merged into antora-ui-chassis
+[IMPORTANT]
+.Compatibility path: dark mode moved to antora-ui-chassis
 ====
-`antora-dark-mode` is *deprecated* and receives no further releases. Its light/dark mechanism (no-FOUC head hook, persistence, system preference, override expiry, crossfade, toggle behavior and accessibility) now lives in the chassis Antora extension https://github.com/antora-supplemental/antora-ui-chassis/tree/main/packages/color-scheme[`@antora-supplemental/color-scheme`]. The chassis package is *unstyled*: colors (paint) come from your theme, for example https://github.com/antora-supplemental/valentus-theme[valentus-theme] `css/site-paint.css`.
+This repository is the *antora-dark-mode 1.x compatibility path*. Dark mode now lives in https://github.com/antora-supplemental/antora-ui-chassis[antora-ui-chassis], and `antora-dark-mode` *2.x* on npm is published from there. It has the same name and installs the chassis packages `@antora-supplemental/color-scheme`, `@antora-supplemental/light-dark-mode` and `@antora-supplemental/default-paint`.
 
-*Migrate:*
+*Migrate (one line):*
 
-. Remove this overlay (`supplemental-ui` merge, `dark-mode` ui-module, or this repo's `ui-bundle.zip`).
-. Add the extension pin: `"@antora-supplemental/color-scheme": "github:antora-supplemental/antora-ui-chassis#color-scheme-v0.1.2&path:packages/color-scheme"`
-. Register it in the playbook:
-+
+[source,console]
+----
+npm i -D antora-dark-mode@2
+----
+
 [source,yaml]
 ----
 antora:
   extensions:
-    - require: "@antora-supplemental/color-scheme"
-      toggle: auto   # or "placed" when your header renders #theme-toggle
+    - require: antora-dark-mode
 ----
-. `localStorage` keys are unchanged (`antora-theme-mode`, legacy `antora-theme` is migrated).
-. CSS hooks renamed: `html.antora-theme-animating` / `valentus-theme-*` → `html.color-scheme-animating` / `color-scheme-vt`. `html.dark-theme` and `data-theme` are unchanged.
-. There is no default dark palette for the plain Default UI any more; supply your own paint or use Valentus.
+
+Remove the old `ui-bundle.zip`, `supplemental-ui` merge or `dark-mode` ui-module. Full guide: https://github.com/antora-supplemental/antora-ui-chassis/blob/main/docs/modules/ROOT/pages/migrate-dark-mode.adoc[Migrate from antora-dark-mode 1.x].
+
+*Staying on 1.x?* Version 1.5.0 of this repository is an Antora extension (`lib/index.js`). It logs one warning per build that links the migration guide, then registers the same chassis packages that 2.x does. `localStorage` keys (`antora-theme-mode`), `html.dark-theme` and `data-theme` are unchanged. Not carried over: `themed-svg-element.js` and the VCS header partial.
 ====
 
 Dark mode toggle, FOUC prevention, and CSS overrides for the Antora Default UI.

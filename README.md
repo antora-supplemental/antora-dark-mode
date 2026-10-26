@@ -1,7 +1,7 @@
 # antora-dark-mode
 
-> [!WARNING]
-> **Deprecated.** Merged into [`@antora-supplemental/color-scheme`](https://github.com/antora-supplemental/antora-ui-chassis/tree/main/packages/color-scheme) (antora-ui-chassis). No further releases. Add `"@antora-supplemental/color-scheme": "github:antora-supplemental/antora-ui-chassis#color-scheme-v0.1.2&path:packages/color-scheme"` and `- require: "@antora-supplemental/color-scheme"` under `antora.extensions`; colors come from your theme (e.g. [valentus-theme](https://github.com/antora-supplemental/valentus-theme)). `localStorage` keys are unchanged.
+> [!IMPORTANT]
+> **Compatibility path.** Dark mode moved to [antora-ui-chassis](https://github.com/antora-supplemental/antora-ui-chassis); `antora-dark-mode` 2.x on npm is published from there. Migrate with `npm i -D antora-dark-mode@2` and `- require: antora-dark-mode` under `antora.extensions`, then remove the old UI bundle or supplemental files. See [Migrate from antora-dark-mode 1.x](https://github.com/antora-supplemental/antora-ui-chassis/blob/main/docs/modules/ROOT/pages/migrate-dark-mode.adoc). Version 1.5.0 of this repo keeps 1.x playbooks building: it warns once per build and uses the chassis packages.
 
 Dark mode supplemental UI for Antora — overlay install or slot-based ui-module.
 

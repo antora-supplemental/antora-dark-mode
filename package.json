@@ -1,8 +1,7 @@
 {
   "name": "antora-dark-mode",
-  "version": "1.4.6",
-  "description": "DEPRECATED - merged into @antora-supplemental/color-scheme (antora-ui-chassis). Dark mode supplemental UI for Antora.",
-  "deprecated": "Merged into @antora-supplemental/color-scheme (antora-ui-chassis)",
+  "version": "1.5.0",
+  "description": "Compatibility path for antora-dark-mode 1.x. Dark mode moved to antora-ui-chassis (antora-dark-mode 2.x on npm). Warns once per build, then uses the chassis packages.",
   "keywords": [
     "antora",
     "antora-extension",
@@ -20,7 +19,9 @@
   },
   "license": "MIT",
   "author": "Ryan Johnson (https://github.com/AMDphreak)",
+  "main": "lib/index.js",
   "files": [
+    "lib/**/*",
     "supplemental-ui/**/*",
     "ui-modules/**/*"
   ],
@@ -33,7 +34,12 @@
     "ui-modules:sync": "node scripts/sync-ui-module.mjs",
     "ui-modules:validate": "node ui-modules/scripts/validate-ui-modules.mjs",
     "prepack": "pnpm ui-modules:sync && pnpm ui-modules:validate",
-    "publish:npm": "node scripts/npm-publish.mjs"
+    "publish:npm": "node scripts/npm-publish.mjs",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@antora-supplemental/default-paint": "github:antora-supplemental/antora-ui-chassis#default-paint-v0.2.0&path:packages/default-paint",
+    "@antora-supplemental/light-dark-mode": "github:antora-supplemental/antora-ui-chassis#light-dark-mode-v0.1.0&path:packages/light-dark-mode"
   },
   "devDependencies": {
     "@antora/lunr-extension": "1.0.0-alpha.12",

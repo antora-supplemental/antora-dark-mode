@@ -8,12 +8,11 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: Semver X.Y.Z to publish (tag vX.Y.Z must exist on the remote)
+        description: Semver X.Y.Z to release (tag vX.Y.Z must exist on the remote)
         required: true
 
 permissions:
   contents: write
-  id-token: write # npm trusted publishing (OIDC) — no NPM_TOKEN secret
 
 env:
   RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && format('v{0}', inputs.version) || github.ref_name }}
@@ -89,45 +88,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js for npm publish
-        uses: actions/setup-node@v7
-        with:
-          node-version: "24"
-          registry-url: https://registry.npmjs.org
-          package-manager-cache: false
-
-      - name: Install current npm CLI
-        run: npm install --global npm@11.19.1
-
-      - name: Check npm registry
-        id: npm
-        run: |
-          NAME=$(node -p "require('./package.json').name")
-          VERSION=$(node -p "require('./package.json').version")
-          ESCAPED="${NAME//@/%40}"
-          ESCAPED="${ESCAPED//\//%2F}"
-          if curl --fail --silent --output /dev/null \
-            "https://registry.npmjs.org/${ESCAPED}/${VERSION}"; then
-            echo "publish=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "publish=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Publish to npm
-        if: steps.npm.outputs.publish == 'true'
-        run: |
-          pnpm ui-modules:sync
-          pnpm ui-modules:validate
-          node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json','utf8'));delete p.private;fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
-          npm --version
-          npm publish --access public
-        # Trusted publisher on npmjs.com (package → Settings → Trusted publishing):
-        #   Provider: GitHub Actions
-        #   Organization/user: antora-supplemental
-        #   Repository: antora-dark-mode
-        #   Workflow filename: release.yml
-        #   Environment: (leave blank unless this job sets `environment:`)
-        # Requires npm CLI ≥ 11.5.1 (Node 24 on ubuntu-latest). No NPM_TOKEN.
+      # No npm publish from this repo. antora-dark-mode 2.x on npm is published by
+      # antora-ui-chassis .github/workflows/release.yml (tag antora-dark-mode-vX.Y.Z).
+      # This repo releases the 1.x compatibility path as GitHub releases only.
 
       - name: Resolve release commit
         if: github.event_name == 'push'

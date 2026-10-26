@@ -9,7 +9,7 @@
       "name": "Antora dark mode",
       "version": "1.3.1",
       "type": "ui-module",
-      "description": "DEPRECATED - use the chassis extension @antora-supplemental/color-scheme (antora-ui-chassis) plus theme paint. Dark mode CSS, FOUC prevention, and navbar theme toggle.",
+      "description": "Compatibility path - dark mode moved to antora-ui-chassis; use antora-dark-mode 2.x (npm i -D antora-dark-mode@2). Dark mode CSS, FOUC prevention, and navbar theme toggle.",
       "repository": "https://github.com/antora-supplemental/antora-dark-mode",
       "manifestPath": "packages/dark-mode/ui-module.json5",
       "modulePath": "packages/dark-mode",

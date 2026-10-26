@@ -8,11 +8,14 @@ and this project adheres to https://semver.org/spec/v2.0.0.html[Semantic Version
 
 Entries below are in **chronological order** by date: prior release, then the **2026-03-04** org creation and repository move, then the next release.
 
-== [Unreleased] - 2026-10-25
+== [1.5.0] - 2026-10-25
 
-=== Deprecated
+=== Changed
 
-* **Project deprecated:** merged into `@antora-supplemental/color-scheme` (antora-ui-chassis, tag `color-scheme-v0.1.2`, unstyled mechanism) with paint and toggle placement in themes (valentus-theme 4.0.0 `site-paint.css`). README, npm `package.json` description, ui-module manifest and docs carry the notice and migration steps. No new release; repository not archived. See link:changelog-details/2026-10-25%20-%20deprecated%20merged%20into%20chassis.adoc[detail].
+* *Compatibility path:* dark mode moved to antora-ui-chassis; `antora-dark-mode` 2.x on npm is published from there. This repo is not archived or deprecated.
+* *Extension:* `lib/index.js` warns once per build through `this.getLogger('antora-dark-mode')` with the migration link, then registers the chassis `light-dark-mode` and `default-paint` packages with the 2.x options. Covered by `test/compat.test.js`.
+* *CI:* the release workflow no longer publishes to npm.
+* *Docs:* README, guide and ui-module text describe the compatibility path and the one-line migration. Not carried over: `themed-svg-element.js` and the VCS header partial. See link:changelog-details/2026-10-25%20-%201.x%20compatibility%20path.adoc[detail].
 
 == [1.4.6] - 2026-10-21
 
